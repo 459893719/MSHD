@@ -1,0 +1,22 @@
+[
+  {
+    "id": "123456400000012001",
+      "date": "2020-02-01",
+      "location": 1,
+    "type": 1,
+      "grade": 1,
+    "picture": 1,
+      "note": 1,
+    "reporting_unit": 5
+  },
+  {
+    "id": "123456400000012002",
+    "date": "2020-02-01 00:00:00",
+    "location": 1,
+    "type": 1,
+    "grade": 1,
+    "picture": 1,
+    "note": 1,
+    "reporting_unit": 5
+  }
+]
