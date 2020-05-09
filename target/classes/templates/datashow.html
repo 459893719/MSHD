@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>展示数据</title>
+</head>
+<body>
+<form th:action="@{/data}" method="get">
+    <table border="1">
+        <tr>
+            <th>编号</th>
+            <th>上报日期</th>
+            <th>地点</th>
+            <th>类型</th>
+            <th>破坏等级</th>
+            <th>典型图片</th>
+            <th>灾情描述</th>
+            <th>上报单位</th>
+        </tr>
+        <tr  th:each="d : ${disaster}" >
+            <th th:text="${d.id}"></th>
+            <th th:text="${d.date}"></th>
+            <th th:text="${d.location}"></th>
+            <th th:text="${d.type}"></th>
+            <th th:text="${d.grade}"></th>
+            <th th:text="${d.picture}"></th>
+            <th th:text="${d.note}"></th>
+            <th th:text="${d.reporting_unit}"></th>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
