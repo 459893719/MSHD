@@ -25,6 +25,8 @@ public class DisasterService {
 
     public List<Disaster> selectByType(String type){return disasterDao.selectByType(type);}
 
+    public List<Disaster> selectByUnit(String reporting_unit){return disasterDao.selectByUnit(reporting_unit);}
+
     public boolean isDatasourceInput(String s) {
         if(s.equals("")) return false;
         else return true;

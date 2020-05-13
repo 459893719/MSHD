@@ -1,18 +1,21 @@
 package com.miaosha.demo.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.miaosha.demo.domain.Disaster;
-import com.miaosha.demo.domain.User;
-import com.miaosha.demo.json.OperateJsonFile;
-import com.miaosha.demo.result.CodeMsg;
 import com.miaosha.demo.result.Result;
 import com.miaosha.demo.service.DisasterService;
-import com.miaosha.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.*;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,7 @@ public class DemoController {
 
     @Autowired
     DisasterService disasterService;
+    List<Disaster> disaster = null;
 
     @RequestMapping("/dbtest")
     @ResponseBody
@@ -30,9 +34,10 @@ public class DemoController {
         return Result.success(disaster.get(0));
     }
 
+    //显示所有的数据
     @RequestMapping(value = "/datashow")
-    public String datashow(Model model){
-        List<Disaster> disaster = disasterService.selectAll();
+    public String dataShow(Model model){
+        disaster = disasterService.selectAll();
         model.addAttribute("disaster",disaster);
         return "datashow";
     }
@@ -42,7 +47,73 @@ public class DemoController {
         return "hello";
     }
 
+    //选择数据显示的方式
+    @RequestMapping("/homepage")
+    public String dataShowSelect(){
+        return "homepage";
+    }
 
+    //按照reporting_unit显示数据
+    @RequestMapping(value = "/find",method = RequestMethod.POST)
+    public String selectByUnit(@RequestParam("reporting_unit")String reporting_unit, Model model){
+        disaster = disasterService.selectByUnit(reporting_unit);
+        model.addAttribute("disaster",disaster);
+        if(disaster != null){
+            return "datashow";
+        }else{
+            return "error";
+        }
+    }
+
+    //下载文件
+    @RequestMapping("/download")
+    @ResponseBody
+    public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws IOException {
+        byte [] body = null;
+        String str= JSON.toJSONString(disaster);;//要弄成json格式的字符串
+        InputStream in = new ByteArrayInputStream(str.getBytes());
+        body = new byte[in.available()];
+        in.read(body);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment;filename=data.txt");
+
+        HttpStatus statusCode = HttpStatus.OK;
+
+        ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(body, headers, statusCode);
+        return response;
+    }
+
+    //上传文件
+    @RequestMapping(value = "/upload")
+    @ResponseBody
+    public String upload(@RequestParam("file") MultipartFile file) {
+        try {
+            if(file.isEmpty()) {
+                return "file is empty";
+            }
+//			String filePath=file.getOriginalFilename();
+            InputStream inputStream = file.getInputStream();
+            StringBuilder sb = new StringBuilder();
+            String line;
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+            String str = sb.toString();
+            disaster = JSONObject.parseArray(str, Disaster.class);
+            disasterService.insertByJson(disaster);
+            return "数据：" + str + "\n" + "导入成功";
+        }catch(IllegalStateException e) {
+            e.printStackTrace();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        return "upload failure";
+    }
+
+    //登录
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String loginForm(Model model){
         return "login";
@@ -52,12 +123,9 @@ public class DemoController {
     public String Login(@RequestParam("username") String username,
                         @RequestParam("password") String password, Model model){
         if(password.equals("1") && username.equals("test")){
-            return datashow(model);
+            return "success";
         }
         else
             return "error";
     }
-
-
-
 }
