@@ -39,12 +39,12 @@ public class DemoController {
     public String dataShow(Model model){
         disaster = disasterService.selectAll();
         model.addAttribute("disaster",disaster);
-        return "datashow";
+        return "Client_showInfor";
     }
 
     @RequestMapping("/")
     public String home(){
-        return "hello";
+        return "Client_index";
     }
 
     //选择数据显示的方式
