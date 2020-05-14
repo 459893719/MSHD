@@ -50,6 +50,7 @@
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column" >
+		<form  action="/export" method="post">
 			<div class="row clearfix">
 				<div class="col-md-9 column"  style="height:650px;background-color:rgba(255, 255, 255, 1)">
 					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
@@ -63,7 +64,7 @@
 								<td>
 									<div class="radio">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> 人员伤亡及失踪
+											<input type="radio" name="disasterOptions" id="optionsRadios1" value="1"> 人员伤亡及失踪
 										</label>
 									</div>
 								</td>
@@ -72,7 +73,7 @@
 								<td>
 									<div class="radio">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> 房屋破坏
+											<input type="radio" name="disasterOptions" id="optionsRadios2" value="2"> 房屋破坏
 										</label>
 									</div>
 								</td>
@@ -81,7 +82,7 @@
 								<td>
 									<div class="radio">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> 生命线工程灾情
+											<input type="radio" name="disasterOptions" id="optionsRadios3" value="3"> 生命线工程灾情
 										</label>
 									</div>
 								</td>								
@@ -90,7 +91,16 @@
 								<td>
 									<div class="radio">
 										<label>
-											<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> 次生灾害
+											<input type="radio" name="disasterOptions" id="optionsRadios4" value="4"> 次生灾害
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr class="">
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="disasterOptions" id="optionsRadios5" value="5"> 震情
 										</label>
 									</div>
 								</td>
@@ -104,7 +114,6 @@
 							导出
 						</p>
 					</blockquote>
-					<form role="form">
 						<div class="form-group">
 							 <label for="">选择导出格式</label>
 							 <select class="form-control">
@@ -113,9 +122,9 @@
 							</select>
 						</div>
 					<button type="submit" class="btn btn-default">导出</button>
-					</form>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 </div>
