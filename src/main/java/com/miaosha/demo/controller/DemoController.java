@@ -92,8 +92,10 @@ public class DemoController {
     @RequestMapping(value = "/upload")
     //@ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
+    	PrintWriter out;
+		try {
+			out = myHttpResponse.getWriter();
     	try {
-    		PrintWriter out = myHttpResponse.getWriter();
     		myHttpResponse.setContentType("text/html; charset=UTF-8"); //转码
             if(file.isEmpty()) {                
                 out.flush();
@@ -116,15 +118,29 @@ public class DemoController {
             disasterService.insertByJson(disaster);
             out.flush();
             out.println("<script>");
-            out.println("alert('Import success！');");
+            out.println("alert('Import success!');");
             out.println("history.back();");
             out.println("</script>");
             //return "数据：" + str + "\n" + "导入成功";
         }catch(IllegalStateException e) {
             e.printStackTrace();
+            out.flush();
+            out.println("<script>");
+            out.println("alert('Import Failure!');");
+            out.println("history.back();");
+            out.println("</script>");
         }catch(IOException e) {
             e.printStackTrace();
+            out.flush();
+            out.println("<script>");
+            out.println("alert('Import Failure!');");
+            out.println("history.back();");
+            out.println("</script>");
         }
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         return "upload failure";
     }
     
