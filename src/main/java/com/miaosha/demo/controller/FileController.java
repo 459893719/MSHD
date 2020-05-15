@@ -27,7 +27,7 @@ public class FileController {
 
 	@RequestMapping(value = "/readfile")
 	public String readFile() {
-		return "readfile";
+		return "Server_Import";
 	}
 
 }

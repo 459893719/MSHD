@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.List;
@@ -21,6 +22,9 @@ import java.util.List;
 @Controller
 public class DemoController {
 
+	@Autowired
+	private HttpServletResponse myHttpResponse;
+	
     @Autowired
     DisasterService disasterService;
     List<Disaster> disaster = null;
@@ -86,11 +90,17 @@ public class DemoController {
 
     //上传文件
     @RequestMapping(value = "/upload")
-    @ResponseBody
+    //@ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
-        try {
-            if(file.isEmpty()) {
-                return "file is empty";
+    	try {
+    		PrintWriter out = myHttpResponse.getWriter();
+    		myHttpResponse.setContentType("text/html; charset=UTF-8"); //转码
+            if(file.isEmpty()) {                
+                out.flush();
+                out.println("<script>");
+                out.println("alert('file is empty!');");
+                out.println("history.back();");
+                out.println("</script>");
             }
 //			String filePath=file.getOriginalFilename();
             InputStream inputStream = file.getInputStream();
@@ -104,7 +114,12 @@ public class DemoController {
             String str = sb.toString();
             disaster = JSONObject.parseArray(str, Disaster.class);
             disasterService.insertByJson(disaster);
-            return "数据：" + str + "\n" + "导入成功";
+            out.flush();
+            out.println("<script>");
+            out.println("alert('Import success！');");
+            out.println("history.back();");
+            out.println("</script>");
+            //return "数据：" + str + "\n" + "导入成功";
         }catch(IllegalStateException e) {
             e.printStackTrace();
         }catch(IOException e) {
@@ -112,7 +127,7 @@ public class DemoController {
         }
         return "upload failure";
     }
-
+    
     //登录
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String loginForm(Model model){
