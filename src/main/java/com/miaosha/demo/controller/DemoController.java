@@ -1,23 +1,33 @@
 package com.miaosha.demo.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.miaosha.demo.domain.Disaster;
-import com.miaosha.demo.result.Result;
-import com.miaosha.demo.service.DisasterService;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.junit.runner.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.*;
-import java.util.List;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.miaosha.demo.domain.Disaster;
+import com.miaosha.demo.service.DisasterService;
 
 @Controller
 public class DemoController {
@@ -29,33 +39,43 @@ public class DemoController {
     DisasterService disasterService;
     List<Disaster> disaster = null;
 
-    @RequestMapping("/dbtest")
-    @ResponseBody
-    public Result<Disaster> dbGet(){
-        List<Disaster> disaster = disasterService.selectByType("2");
-        disaster.get(0).setId("123456400000012004");
-        disasterService.insertOne(disaster.get(0));
-        return Result.success(disaster.get(0));
-    }
+//    @RequestMapping("/dbtest")
+//    @ResponseBody
+//    public Result<Disaster> dbGet(){
+//        List<Disaster> disaster = disasterService.selectByType("2");
+//        disaster.get(0).setId("123456400000012004");
+//        disasterService.insertOne(disaster.get(0));
+//        return Result.success(disaster.get(0));
+//    }
 
-    @RequestMapping(value = "/comm_disaster/query", method = RequestMethod.POST)
-    @ResponseBody
-    public Disaster commdisaster(@RequestParam("id") String id) {
-
-    	return disasterService.selectAll().get(0);
-    }
-    
-    //显示所有的数据
-    @RequestMapping(value = "/datashow")
-    public String dataShow(Model model){
-        disaster = disasterService.selectAll();
-        model.addAttribute("disaster",disaster);
-        return "Client_showInfor";
-    }
+//    @RequestMapping(value = "/comm_disaster/query", method = RequestMethod.POST)
+//    @ResponseBody
+//    public Disaster commdisaster(@RequestParam("id") String id) {
+//
+//    	return disasterService.selectAll().get(0);
+//    }
+//    
+//    //显示所有的数据
+//    @RequestMapping(value = "/datashow")
+//    public String dataShow(Model model){
+//        disaster = disasterService.selectAll();
+//        model.addAttribute("disaster",disaster);
+//        return "Client_showInfor";
+//    }
 
     @RequestMapping("/")
     public String home(){
         return "Client_index";
+    }
+    
+    @RequestMapping("/dataindex")
+    public String dataindex(){
+        return "Client_InforIndex";
+    }
+    
+    @RequestMapping("/dataexport")
+    public String dataexport(){
+        return "Client_Export";
     }
 
     //选择数据显示的方式
