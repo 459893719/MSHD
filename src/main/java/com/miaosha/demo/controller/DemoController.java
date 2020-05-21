@@ -38,6 +38,13 @@ public class DemoController {
         return Result.success(disaster.get(0));
     }
 
+    @RequestMapping(value = "/comm_disaster/query", method = RequestMethod.POST)
+    @ResponseBody
+    public Disaster commdisaster(@RequestParam("id") String id) {
+
+    	return disasterService.selectAll().get(0);
+    }
+    
     //显示所有的数据
     @RequestMapping(value = "/datashow")
     public String dataShow(Model model){

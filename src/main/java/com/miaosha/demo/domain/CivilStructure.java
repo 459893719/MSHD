@@ -1,6 +1,7 @@
 package com.miaosha.demo.domain;
 
 public class CivilStructure {
+	private String key;
 	private String id;
 	private String date;
 	private String location;
@@ -12,8 +13,9 @@ public class CivilStructure {
 	
 	public CivilStructure() {}
 
-	public CivilStructure(String id, String date, String location, String basically_intact_square,
+	public CivilStructure(String key, String id, String date, String location, String basically_intact_square,
 			String damaged_square, String destroyed_square, String note, String reporting_unit) {
+		this.key = key;
 		this.id = id;
 		this.date = date;
 		this.location = location;
@@ -24,11 +26,20 @@ public class CivilStructure {
 		this.reporting_unit = reporting_unit;
 	}
 
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
 	@Override
 	public String toString() {
-		return "CivilStructure [id=" + id + ", date=" + date + ", location=" + location + ", basically_intact_square="
-				+ basically_intact_square + ", damaged_square=" + damaged_square + ", destroyed_square="
-				+ destroyed_square + ", note=" + note + ", reporting_unit=" + reporting_unit + "]";
+		return "CivilStructure [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location
+				+ ", basically_intact_square=" + basically_intact_square + ", damaged_square=" + damaged_square
+				+ ", destroyed_square=" + destroyed_square + ", note=" + note + ", reporting_unit=" + reporting_unit
+				+ "]";
 	}
 
 	public String getId() {

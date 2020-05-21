@@ -21,9 +21,9 @@ public class ReadDataTest {
 
             // 测试数据
             List<Disaster> test = new ArrayList<>();
-            Disaster a1 = new Disaster("123456400000012001","2020-02-01","1",
+            Disaster a1 = new Disaster(null,"123456400000012001","2020-02-01","1",
                     "1","1","1","1","5");
-            Disaster a2 = new Disaster("123456400000012002","2020-02-01 00:00:00","1",
+            Disaster a2 = new Disaster(null,"123456400000012002","2020-02-01 00:00:00","1",
                     "1","1","1","1","5");
 
             test.add(a1);

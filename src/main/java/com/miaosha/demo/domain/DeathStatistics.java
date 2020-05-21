@@ -1,6 +1,7 @@
 package com.miaosha.demo.domain;
 
 public class DeathStatistics {
+	private String key;
 	private String id;
 	private String location;
 	private String date;
@@ -8,17 +9,24 @@ public class DeathStatistics {
 	private String reporting_unit;
 	
 	public DeathStatistics() {}
-	public DeathStatistics(String id, String location, String date, String number, String reporting_unit) {
+	public DeathStatistics(String key, String id, String location, String date, String number, String reporting_unit) {
+		this.key = key;
 		this.id = id;
 		this.location = location;
 		this.date = date;
 		this.number = number;
 		this.reporting_unit = reporting_unit;
 	}
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
 	@Override
 	public String toString() {
-		return "DeathStatistics [id=" + id + ", location=" + location + ", date=" + date + ", number=" + number
-				+ ", reporting_unit=" + reporting_unit + "]";
+		return "DeathStatistics [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", number="
+				+ number + ", reporting_unit=" + reporting_unit + "]";
 	}
 	public String getId() {
 		return id;
