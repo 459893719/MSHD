@@ -1,6 +1,7 @@
 package com.miaosha.demo.domain;
 
 public class CollapseRecord {
+	private String key;
 	private String id;
 	private String location;
 	private String date;
@@ -12,8 +13,9 @@ public class CollapseRecord {
 	
 	public CollapseRecord() {}
 
-	public CollapseRecord(String id, String location, String date, String type, String status, String note,
+	public CollapseRecord(String key, String id, String location, String date, String type, String status, String note,
 			String picture, String reporting_unit) {
+		this.key = key;
 		this.id = id;
 		this.location = location;
 		this.date = date;
@@ -24,10 +26,19 @@ public class CollapseRecord {
 		this.reporting_unit = reporting_unit;
 	}
 
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
 	@Override
 	public String toString() {
-		return "CollapseRecord [id=" + id + ", location=" + location + ", date=" + date + ", type=" + type + ", status="
-				+ status + ", note=" + note + ", picture=" + picture + ", reporting_unit=" + reporting_unit + "]";
+		return "CollapseRecord [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", type="
+				+ type + ", status=" + status + ", note=" + note + ", picture=" + picture + ", reporting_unit="
+				+ reporting_unit + "]";
 	}
 
 	public String getId() {

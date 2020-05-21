@@ -82,8 +82,8 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a th:href="@{/}">首页</a></li>
-					<li><a th:href="@{/datashow}">查看灾情信息</a></li>
-					<li><a th:href="Client_Export.html">导出数据</a></li>
+					<li><a th:href="@{/dataindex}">查看灾情信息</a></li>
+					<li><a th:href="@{/dataexport}">导出数据</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -117,8 +117,8 @@
 					</div>
 					
 					<!-- 灾情分类菜单 -->
-					<div class="col-md-3 column containerstyle"
-						style="border-left:10px solid #eee">
+					<div class="col-md-3 column"
+						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
 						<blockquote class="page-header" style="border-left:5px solid #FF3030">
 							<p>
 								灾情信息分类
@@ -139,7 +139,7 @@
 									aria-labelledby="collapseListGroupHeading1">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">死亡</a>
+										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
 										<a href="#" class="list-group-item">受伤</a>
 										<a href="#" class="list-group-item">失踪</a>
 
@@ -160,7 +160,7 @@
 									aria-labelledby="collapseListGroupHeading2">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">土木</a>
+										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
 										<a href="#" class="list-group-item">砖木</a>
 										<a href="#" class="list-group-item">砖混</a>
 										<a href="#" class="list-group-item">框架</a>
@@ -187,7 +187,7 @@
 										<a href="#" class="list-group-item">输油</a>
 										<a href="#" class="list-group-item">燃气</a>
 										<a href="#" class="list-group-item">电力</a>
-										<a href="#" class="list-group-item">通信</a>
+										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
 										<a href="#" class="list-group-item">水利</a>
 
 
@@ -206,7 +206,7 @@
 									aria-labelledby="collapseListGroupHeading4">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">崩塌</a>
+										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
 										<a href="#" class="list-group-item">滑坡</a>
 										<a href="#" class="list-group-item">泥石流</a>
 										<a href="#" class="list-group-item">岩溶塌陷</a>
@@ -231,7 +231,7 @@
 									<div class="list-group">
 
 										<a href="#" class="list-group-item">基本</a>
-										<a href="#" class="list-group-item">灾情预测</a>
+										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
 
 
 									</div>
@@ -240,9 +240,7 @@
 						</div>
 
 					</div>
-					<!--/.sidebar-offcanvas-->
 				</div>
-				<!--/row-->
 			</div>
 		</div>
 	</div>

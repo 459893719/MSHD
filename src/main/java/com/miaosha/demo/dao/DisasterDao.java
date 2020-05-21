@@ -10,23 +10,23 @@ import java.util.List;
 
 @Mapper
 public interface DisasterDao {
-    @Insert("INSERT INTO commdisaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES " +
+    @Insert("INSERT INTO comm_disaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES " +
             "(#{disaster.id},#{disaster.date},#{disaster.location},#{disaster.type}," +
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Disaster disaster);
 
-    @Select("select * from commdisaster")
+    @Select("select * from comm_disaster")
     public List<Disaster> selectAll();
 
-    @Select("select * from commdisaster where type = #{type}")
+    @Select("select * from comm_disaster where type = #{type}")
     public List<Disaster> selectByType(@Param("type") String type);
 
-    @Select("select * from commdisaster where reporting_unit = #{reporting_unit}")
+    @Select("select * from comm_disaster where reporting_unit = #{reporting_unit}")
     public List<Disaster> selectByUnit(@Param("reporting_unit") String reporting_unit);
 
     @Insert({
      "<script>",
-     "INSERT INTO commdisaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES",
+     "INSERT INTO comm_disaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
      "(#{item.id}, #{item.date}, #{item.location}, #{item.type}, #{item.grade}, #{item.picture}, #{item.note},#{item.reporting_unit})",
      "</foreach>",

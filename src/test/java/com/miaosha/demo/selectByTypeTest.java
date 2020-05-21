@@ -23,7 +23,7 @@ public class selectByTypeTest {
 
         //创建一个 List用来存放正确的待检查数据
         List<Disaster> data = new ArrayList<>();
-        Disaster a1 = new Disaster("123456400000012001","2020-02-01 00:00:00","1",
+        Disaster a1 = new Disaster(null,"123456400000012001","2020-02-01 00:00:00","1",
                 "1","1",null,"1","5");
         data.add(a1);
 

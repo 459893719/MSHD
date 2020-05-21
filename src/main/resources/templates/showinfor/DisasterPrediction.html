@@ -60,74 +60,75 @@
 
 <body>
 	<!--模态框-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">详细信息</h4>
-            </div>
-            <div class="modal-body">
-				<form class="form-horizontal">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">灾情编号</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterID">123123123123</p>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">灾情编号</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterID">123123123123</p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">上报日期</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">上报日期</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">地点</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">地点</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">类型</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterType">I: 中心控制室</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">类型</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterType"></p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">破坏等级</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterLevel">IV: 严重破坏</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">破坏等级</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterGrade"></p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">典型照片</label>
-						<div class="col-sm-10" id="disasterPicture">
-							<img th:src="@{/static/test.jpg}" alt="图片">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">典型照片</label>
+							<div class="col-sm-10" id="disasterPicture">
+								<img th:src="@{/static/test.jpg}" alt="图片">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">灾情描述</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterDiscription">
-								  发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
-							</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">灾情描述</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterDiscription">
+									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
+								</p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">上报单位</label>
-						<div class="col-sm-10">
-						  	<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">上报单位</label>
+							<div class="col-sm-10">
+								<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
+							</div>
 						</div>
-					</div>
-				</form>
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
-            </div>
-          </div>
-        </div>
-      </div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- 导航栏 -->
@@ -141,14 +142,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" th:href="@{/}">多源异构灾情数据综合管理系统</a>
+				<a class="navbar-brand" href="/">多源异构灾情数据综合管理系统</a>
 			</div>
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a th:href="@{/}">首页</a></li>
-					<li><a th:href="@{/datashow}">查看灾情信息</a></li>
-					<li><a th:href="Client_Export.html">导出数据</a></li>
+					<li class="active"><a href="/">首页</a></li>
+					<li><a href="/dataindex">查看灾情信息</a></li>
+					<li><a href="/dataexport">导出数据</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -186,14 +187,15 @@
 							</thead>
 							<tbody>
 								<tr th:each="d : ${disaster}">
-									<th th:text="${d.id}"/>
-									<th th:text="${d.date}"/>
-									<th th:text="${d.reporting_unit}"/>
-									<th><button class="btn btn-primary"  data-target="#myModal" th:onclick='query([[${d.id}]])'>
-										详细信息
-									</button></th>
+									<th th:text="${d.id}">123</th>
+									<th th:text="${d.date}">123</th>
+									<th th:text="${d.reporting_unit}">123</th>
+									<th><button class="btn btn-primary" data-target="#myModal"
+											th:onclick='query([[${d.id}]])'>
+											详细信息
+										</button></th>
 								</tr>
-			
+
 							</tbody>
 						</table>
 					</div>
@@ -356,38 +358,61 @@
 
 		//查询单个
 		function query(id) {
-
-			console.log(id)
+			//console.log(id)
 			$.ajax({
-				url : "/comm_disaster/query",
-				async : true,
-				type : "POST",
-				data : {
-					//"type" : "query",
-					"id" : id
+				url: "/CommDisaster/query", //query请求的URL，待修改
+				async: true,
+				type: "POST",
+				data: {
+
+					"id": id
 				},
 				// 成功后开启模态框
-				success : showQuery,
-				error : function() {
+				success: showQuery,
+				error: function () {
 					alert("查看信息失败");
 				},
-				dataType : "json"
+				dataType: "json"
 			});
 		}
 
 		// 查询成功后向模态框插入数据并开启模态框。data是返回的JSON对象
 		function showQuery(data) {
-			
-			//将data中的每个属性放到modal中
+			//对type和grade属性做进一步改动
+			var type = parseInt(data.type)
+			var grade = parseInt(data.grade)
+			var typeprint, gradeprint;
+			console.log(type)
+			console.log(grade)
+			switch(type){
+				case 1: typeprint="I. 中心控制室";
+				break;
+				case 2: typeprint="II. 通信线路";
+				break;
+			}
+			switch(grade){
+				case 1: gradeprint="I. 基本完好";
+				break;
+				case 2: gradeprint="II. 轻微破坏";
+				break;
+				case 3: gradeprint="III. 中等破坏";
+				break;
+				case 4: gradeprint="IV. 严重破坏";
+				break;
+				case 5: gradeprint="V. 毁坏";
+				break;
+			}
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
 			$("#disasterID").text(data.id);
 			$("#disasterDate").text(data.date);
 			$("#disasterLocation").text(data.location);
-			$("#disasterType").text(data.type);
-			$("#disasterLevel").text(data.grade);
+			$("#disasterType").text(typeprint);
+			$("#disasterGrade").text(gradeprint);
 			$("#disasterPicture").text(data.picture);
 			$("#disasterDiscription").text(data.note);
 			$("#disasterReportingUnit").text(data.reporting_unit);
-			
+
 
 			// 显示模态框
 			$('#myModal').modal('show');

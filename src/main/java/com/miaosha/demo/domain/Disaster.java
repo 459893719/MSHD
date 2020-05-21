@@ -1,6 +1,7 @@
 package com.miaosha.demo.domain;
 
 public class Disaster {
+	private String key;
     private String id;
     private String date;
     private String location;
@@ -13,8 +14,9 @@ public class Disaster {
     public Disaster(){
 
     }
-    public Disaster(String id, String date, String location, String type, String grade, String picture, String note, String reporting_unit) {
-        this.id = id;
+    public Disaster(String key, String id, String date, String location, String type, String grade, String picture, String note, String reporting_unit) {
+        this.key = key;
+    	this.id = id;
         this.date = date;
         this.location = location;
         this.type = type;
@@ -24,7 +26,13 @@ public class Disaster {
         this.reporting_unit = reporting_unit;
     }
 
-    public void setId(String id) {
+    public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+	public void setId(String id) {
         this.id = id;
     }
 
@@ -88,16 +96,9 @@ public class Disaster {
     }
 
     @Override
-    public String toString() {
-        return "Disaster{" +
-                "id='" + id + '\'' +
-                ", date='" + date + '\'' +
-                ", location='" + location + '\'' +
-                ", type='" + type + '\'' +
-                ", grade='" + grade + '\'' +
-                ", picture='" + picture + '\'' +
-                ", note='" + note + '\'' +
-                ", reporting_unit='" + reporting_unit + '\'' +
-                '}';
-    }
+	public String toString() {
+		return "Disaster [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location + ", type=" + type
+				+ ", grade=" + grade + ", picture=" + picture + ", note=" + note + ", reporting_unit=" + reporting_unit
+				+ "]";
+	}
 }

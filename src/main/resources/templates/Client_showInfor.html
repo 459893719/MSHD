@@ -186,9 +186,9 @@
 							</thead>
 							<tbody>
 								<tr th:each="d : ${disaster}">
-									<th th:text="${d.id}">123</th>
-									<th th:text="${d.date}">123</th>
-									<th th:text="${d.reporting_unit}">123</th>
+									<th th:text="${d.id}"/>
+									<th th:text="${d.date}"/>
+									<th th:text="${d.reporting_unit}"/>
 									<th><button class="btn btn-primary"  data-target="#myModal" th:onclick='query([[${d.id}]])'>
 										详细信息
 									</button></th>
@@ -359,7 +359,7 @@
 
 			console.log(id)
 			$.ajax({
-				url : "/commDisaster",
+				url : "/comm_disaster/query",
 				async : true,
 				type : "POST",
 				data : {

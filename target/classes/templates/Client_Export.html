@@ -17,34 +17,37 @@
 </head>
 <body style=" min-height: 2000px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
 
+<!-- 导航栏 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="Client_index.html">多源异构灾情数据综合管理系统</a>
-        </div>
-        
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="Client_index.html">首页</a></li>
-            <li><a href="Client_showInfor.html">查看灾情信息</a></li>
-            <li class="active"><a href="Client_Export.html">导出数据</a></li>
-          </ul>
-          
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="Client_Login.html">注销</a></li>
-            <li><a href="#">用户</a></li>
-          
-          </ul>
-          
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+				aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" th:href="@{/}">多源异构灾情数据综合管理系统</a>
+		</div>
+
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/}">首页</a></li>
+				<li><a th:href="@{/dataindex}">查看灾情信息</a></li>
+				<li><a th:href="@{/dataexport}">导出数据</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="Client_Login.html">注销</a></li>
+				<li><a href="#">用户</a></li>
+
+			</ul>
+
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>
 
 
 <div class="container">
@@ -120,6 +123,8 @@
 								<option>Json</option>
 								<option>XML</option>
 							</select>
+							<label for="">URL</label>
+            				<input type="text" class="form-control">
 						</div>
 					<button type="submit" class="btn btn-default">导出</button>
 				</div>

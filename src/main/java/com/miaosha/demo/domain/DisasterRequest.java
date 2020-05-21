@@ -1,6 +1,13 @@
 package com.miaosha.demo.domain;
 
 public class DisasterRequest {
+	private String key;
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
 	private String id;
 	private String date;
 	private String disaster_type;
@@ -9,8 +16,9 @@ public class DisasterRequest {
 	private String request_unit;
 	
 	public DisasterRequest() {}
-	public DisasterRequest(String id, String date, String disaster_type, String status, String o_url,
+	public DisasterRequest(String key, String id, String date, String disaster_type, String status, String o_url,
 			String request_unit) {
+		this.key = key;
 		this.id = id;
 		this.date = date;
 		this.disaster_type = disaster_type;
@@ -18,10 +26,11 @@ public class DisasterRequest {
 		this.o_url = o_url;
 		this.request_unit = request_unit;
 	}
+
 	@Override
 	public String toString() {
-		return "DisasterRequest [id=" + id + ", date=" + date + ", disaster_type=" + disaster_type + ", status="
-				+ status + ", o_url=" + o_url + ", request_unit=" + request_unit + "]";
+		return "DisasterRequest [key=" + key + ", id=" + id + ", date=" + date + ", disaster_type=" + disaster_type
+				+ ", status=" + status + ", o_url=" + o_url + ", request_unit=" + request_unit + "]";
 	}
 	public String getId() {
 		return id;
