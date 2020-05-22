@@ -4,3 +4,9 @@
 /.project
 target
 *.class
+target/test-classes/com/miaosha/demo/selectByTypeTest.class
+target/classes/templates/Client_showInfor.html
+target/classes/com/miaosha/demo/service/DisasterService.class
+target/classes/com/miaosha/demo/dao/DisasterDao.class
+target/classes/com/miaosha/demo/controller/DemoController.class
+target/classes/application.properties
