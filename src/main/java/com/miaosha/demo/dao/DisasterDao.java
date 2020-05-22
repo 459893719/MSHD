@@ -1,6 +1,8 @@
 package com.miaosha.demo.dao;
 
 import com.miaosha.demo.domain.Disaster;
+import com.miaosha.demo.domain.DisasterRequest;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -23,7 +25,10 @@ public interface DisasterDao {
 
     @Select("select * from comm_disaster where reporting_unit = #{reporting_unit}")
     public List<Disaster> selectByUnit(@Param("reporting_unit") String reporting_unit);
-
+    
+    @Select("select * from comm_disaster where `key` = #{key}")
+    public List<Disaster> selectByKey(@Param("key") String key);
+    
     @Insert({
      "<script>",
      "INSERT INTO comm_disaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES",

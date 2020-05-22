@@ -39,29 +39,6 @@ public class DemoController {
     DisasterService disasterService;
     List<Disaster> disaster = null;
 
-//    @RequestMapping("/dbtest")
-//    @ResponseBody
-//    public Result<Disaster> dbGet(){
-//        List<Disaster> disaster = disasterService.selectByType("2");
-//        disaster.get(0).setId("123456400000012004");
-//        disasterService.insertOne(disaster.get(0));
-//        return Result.success(disaster.get(0));
-//    }
-
-//    @RequestMapping(value = "/comm_disaster/query", method = RequestMethod.POST)
-//    @ResponseBody
-//    public Disaster commdisaster(@RequestParam("id") String id) {
-//
-//    	return disasterService.selectAll().get(0);
-//    }
-//    
-//    //显示所有的数据
-//    @RequestMapping(value = "/datashow")
-//    public String dataShow(Model model){
-//        disaster = disasterService.selectAll();
-//        model.addAttribute("disaster",disaster);
-//        return "Client_showInfor";
-//    }
 
     @RequestMapping("/")
     public String home(){

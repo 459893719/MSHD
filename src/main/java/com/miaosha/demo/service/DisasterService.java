@@ -24,6 +24,8 @@ public class DisasterService {
     }
 
     public List<Disaster> selectByType(String type){return disasterDao.selectByType(type);}
+    
+    public List<Disaster> selectByKey(String key) {return disasterDao.selectByKey(key);}
 
     public List<Disaster> selectByUnit(String reporting_unit){return disasterDao.selectByUnit(reporting_unit);}
 

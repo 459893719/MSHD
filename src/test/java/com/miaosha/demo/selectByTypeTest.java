@@ -2,6 +2,7 @@ package com.miaosha.demo;
 
 import static org.junit.Assert.*;
 
+import com.miaosha.demo.dao.DisasterDao;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.service.DisasterService;
 import org.junit.Test;
@@ -33,6 +34,15 @@ public class selectByTypeTest {
 //            assertTrue(disaster.get(i).toString().equals(data.get(i).toString()));
 //        }
 
+    }
+    
+    DisasterDao dd;
+    @Test
+    public void t() {
+    	List<Disaster> disaster = disasterService.selectAll();
+    	System.out.println(disaster.get(0).toString());
+    	if(disaster==null) fail();
+    	else System.out.println(disaster.get(0).toString());
     }
 
 }
