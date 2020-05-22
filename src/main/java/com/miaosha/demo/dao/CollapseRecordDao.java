@@ -23,7 +23,7 @@ public interface CollapseRecordDao {
     @Select("select * from collapse_record where reporting_unit = #{reporting_unit}")
     public List<CollapseRecord> selectByUnit(@Param("reporting_unit") String reporting_unit);
     
-    @Select("select * from collapse_record where key = #{key}")
+    @Select("select * from collapse_record where `key` = #{key}")
     public List<CollapseRecord> selectByKey(@Param("key") String key);
     
     @Insert({

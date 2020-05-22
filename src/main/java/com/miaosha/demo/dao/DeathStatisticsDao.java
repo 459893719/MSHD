@@ -22,7 +22,7 @@ public interface DeathStatisticsDao {
     @Select("select * from death_statistics where reporting_unit = #{reporting_unit}")
     public List<DeathStatistics> selectByUnit(@Param("reporting_unit") String reporting_unit);
     
-    @Select("select * from death_statistics where key = #{key}")
+    @Select("select * from death_statistics where `key` = #{key}")
     public List<DeathStatistics> selectByKey(@Param("key") String key);
     
     @Insert({

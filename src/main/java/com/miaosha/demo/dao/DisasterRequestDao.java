@@ -17,7 +17,7 @@ public interface DisasterRequestDao {
     @Select("select * from disaster_request")
     public List<DisasterRequest> selectAll();
 
-    @Select("select * from disaster_request where key = #{key}")
+    @Select("select * from disaster_request where `key` = #{key}")
     public List<DisasterRequest> selectByKey(@Param("key") String key);
     
 }

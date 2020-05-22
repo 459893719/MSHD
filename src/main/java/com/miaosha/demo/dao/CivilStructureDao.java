@@ -22,7 +22,7 @@ public interface CivilStructureDao {
     @Select("select * from civil_structure where reporting_unit = #{reporting_unit}")
     public List<CivilStructure> selectByUnit(@Param("reporting_unit") String reporting_unit);
     
-    @Select("select * from civil_structure where key = #{key}")
+    @Select("select * from civil_structure where `key` = #{key}")
     public List<CivilStructure> selectByKey(@Param("key") String key);
     
     @Insert({

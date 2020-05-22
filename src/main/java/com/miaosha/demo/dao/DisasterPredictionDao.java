@@ -25,7 +25,7 @@ public interface DisasterPredictionDao {
     @Select("select * from disaster_prediction where reporting_unit = #{reporting_unit}")
     public List<DisasterPrediction> selectByUnit(@Param("reporting_unit") String reporting_unit);
     
-    @Select("select * from disaster_prediction where key = #{key}")
+    @Select("select * from disaster_prediction where `key` = #{key}")
     public List<DisasterPrediction> selectByKey(@Param("key") String key);
     
     @Insert({
