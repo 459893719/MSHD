@@ -11,7 +11,7 @@ import com.miaosha.demo.domain.DisasterPrediction;
 import com.miaosha.demo.domain.DisasterRequest;
 
 public interface DisasterPredictionDao {
-    @Insert("INSERT INTO disaster_prediction(`key`, `ID`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES " +
+    @Insert("INSERT INTO disaster_prediction(`key`, `id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES " +
             "(#{dr.id},#{dr.date},#{dr.location},#{dr.type}," +
             "#{dr.grade},#{dr.picture},#{dr.note},#{dr.reporting_unit})")
     public void Insert(@Param("dr") DisasterPrediction dr);
@@ -30,7 +30,7 @@ public interface DisasterPredictionDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO disaster_prediction(`key`, `ID`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES",
+     "INSERT INTO disaster_prediction(`key`, `id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
      "(#{item.key}, #{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})",
      "</foreach>",

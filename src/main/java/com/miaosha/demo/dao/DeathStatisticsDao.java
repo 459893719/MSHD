@@ -10,7 +10,7 @@ import com.miaosha.demo.domain.DeathStatistics;
 
 
 public interface DeathStatisticsDao {
-    @Insert("INSERT INTO death_statistics(`key`, `ID`, `location`, `date`, `number`, `reporting_unit`) VALUES " +
+    @Insert("INSERT INTO death_statistics(`key`, `id`, `location`, `date`, `number`, `reporting_unit`) VALUES " +
             "(#{ds.key},#{ds.id},#{ds.location},#{ds.date}," +
             "#{ds.number},#{ds.reporting_unit})")
     public void Insert(@Param("ds") DeathStatistics ds);
@@ -27,7 +27,7 @@ public interface DeathStatisticsDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO death_statistics(`key`, `ID`, `location`, `date`, `number`, `reporting_unit`) VALUES",
+     "INSERT INTO death_statistics(`key`, `id`, `location`, `date`, `number`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
      "(#{item.key}, #{item.id}, #{item.location}, #{item.date}, #{item.number}, #{item.reporting_unit})",
      "</foreach>",
