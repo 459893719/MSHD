@@ -33,13 +33,13 @@
 
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a th:href="@{/}">首页</a></li>
+				<li ><a th:href="@{/}">首页</a></li>
 				<li><a th:href="@{/dataindex}">查看灾情信息</a></li>
-				<li><a th:href="@{/dataexport}">导出数据</a></li>
+				<li class="active"><a th:href="@{dataexport}">导出数据</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="Client_Login.html">注销</a></li>
+				<li class="active"><a href="/logout">注销</a></li>
 				<li><a href="#">用户</a></li>
 
 			</ul>
@@ -53,82 +53,88 @@
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column" >
-		<form  action="/export" method="post">
-			<div class="row clearfix">
-				<div class="col-md-9 column"  style="height:650px;background-color:rgba(255, 255, 255, 1)">
-					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
-						<p>
-							请选择灾情数据源
-						</p>
-					</blockquote>
-					<table class="table">
-						<tbody>
+			<form  action="/download" method="post">
+				<div class="row clearfix">
+					<div class="col-md-9 column"  style="height:650px;background-color:rgba(255, 255, 255, 1)">
+						<blockquote  class="page-header" style="border-left:5px solid #FF3030">
+							<p>
+								请选择灾情数据源
+							</p>
+						</blockquote>
+						<table class="table table-bordered">
+							<thead>
 							<tr>
-								<td>
-									<div class="radio">
-										<label>
-											<input type="radio" name="disasterOptions" id="optionsRadios1" value="1"> 人员伤亡及失踪
-										</label>
-									</div>
-								</td>
+								<th>人员伤亡及失踪</th>
+								<th>
+									<input type="radio" name="disasterOptions" id="optionsRadios11" value="11" checked> 死亡
+									<input type="radio" name="disasterOptions" id="optionsRadios12" value="12" > 受伤
+									<input type="radio" name="disasterOptions" id="optionsRadios13" value="13" > 失踪
+								</th>
 							</tr>
-							<tr class="success">
-								<td>
-									<div class="radio">
-										<label>
-											<input type="radio" name="disasterOptions" id="optionsRadios2" value="2"> 房屋破坏
-										</label>
-									</div>
-								</td>
+							</thead>
+							<tbody>
+							<tr>
+								<th>房屋破坏</th>
+								<th>
+									<input type="radio" name="disasterOptions" id="optionsRadios21" value="21" > 土木
+									<input type="radio" name="disasterOptions" id="optionsRadios22" value="22" > 砖木
+									<input type="radio" name="disasterOptions" id="optionsRadios23" value="23" > 砖混
+									<input type="radio" name="disasterOptions" id="optionsRadios24" value="24" > 框架
+									<input type="radio" name="disasterOptions" id="optionsRadios25" value="25" > 其他
+								</th>
 							</tr>
-							<tr class="">
-								<td>
-									<div class="radio">
-										<label>
-											<input type="radio" name="disasterOptions" id="optionsRadios3" value="3"> 生命线工程灾情
-										</label>
-									</div>
-								</td>								
+							<tr>
+								<th>生命线工程灾情</th>
+								<th>
+									<input type="radio" name="disasterOptions" id="optionsRadios31" value="31" > 交通
+									<input type="radio" name="disasterOptions" id="optionsRadios32" value="32" > 供水
+									<input type="radio" name="disasterOptions" id="optionsRadios33" value="33" > 输油
+									<input type="radio" name="disasterOptions" id="optionsRadios34" value="34" > 燃气
+									<input type="radio" name="disasterOptions" id="optionsRadios35" value="35" > 电力
+									<input type="radio" name="disasterOptions" id="optionsRadios36" value="36" > 通信
+									<input type="radio" name="disasterOptions" id="optionsRadios37" value="37" > 水利
+								</th>
 							</tr>
-							<tr class="warning">
-								<td>
-									<div class="radio">
-										<label>
-											<input type="radio" name="disasterOptions" id="optionsRadios4" value="4"> 次生灾害
-										</label>
-									</div>
-								</td>
+							<tr>
+								<th>次生灾害</th>
+								<th>
+									<input type="radio" name="disasterOptions" id="optionsRadios41" value="41" > 崩塌
+									<input type="radio" name="disasterOptions" id="optionsRadios42" value="42" > 滑坡
+									<input type="radio" name="disasterOptions" id="optionsRadios43" value="43" > 泥石流
+									<input type="radio" name="disasterOptions" id="optionsRadios44" value="44" > 岩溶塌陷
+									<input type="radio" name="disasterOptions" id="optionsRadios45" value="45" > 地裂缝
+									<input type="radio" name="disasterOptions" id="optionsRadios46" value="46" > 地面沉降
+									<input type="radio" name="disasterOptions" id="optionsRadios47" value="47" > 其他
+								</th>
 							</tr>
-							<tr class="">
-								<td>
-									<div class="radio">
-										<label>
-											<input type="radio" name="disasterOptions" id="optionsRadios5" value="5"> 震情
-										</label>
-									</div>
-								</td>
+							<tr>
+								<th>震情</th>
+								<th>
+									<input type="radio" name="disasterOptions" id="optionsRadios51" value="51" > 基本
+									<input type="radio" name="disasterOptions" id="optionsRadios52" value="52" > 灾情预测
+								</th>
 							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
-					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
-						<p>
-							导出
-						</p>
-					</blockquote>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
+						<blockquote  class="page-header" style="border-left:5px solid #FF3030">
+							<p>
+								导出
+							</p>
+						</blockquote>
 						<div class="form-group">
-							 <label for="">选择导出格式</label>
-							 <select class="form-control">
+							<label for="">选择导出格式</label>
+							<select class="form-control">
 								<option>Json</option>
 								<option>XML</option>
 							</select>
 							<label for="">URL</label>
-            				<input type="text" class="form-control">
+							<input type="text" class="form-control">
 						</div>
-					<button type="submit" class="btn btn-default">导出</button>
+						<button type="submit" class="btn btn-default" >导出</button>
+					</div>
 				</div>
-			</div>
 			</form>
 		</div>
 	</div>

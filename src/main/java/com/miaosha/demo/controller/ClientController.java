@@ -79,12 +79,14 @@ public class ClientController {
         byte [] body = null;
         String str = "";
         switch (disasterOptions){
+            case ("1"):
             case ("11"):
             case ("12"):
             case ("13"):
                 List<DeathStatistics> deathStatistics = null;
                 str= JSON.toJSONString(deathStatistics);
                 break;
+            case ("2"):
             case ("21"):
             case ("22"):
             case ("23"):
@@ -93,6 +95,7 @@ public class ClientController {
                 List<CivilStructure> civilStructures = null;
                 str= JSON.toJSONString(civilStructures);
                 break;
+            case ("3"):
             case ("31"):
             case ("32"):
             case ("33"):
@@ -103,6 +106,7 @@ public class ClientController {
                 List<Disaster> disasters  = disasterService.selectAll();
                 str= JSON.toJSONString(disasters);
                 break;
+            case ("4"):
             case ("41"):
             case ("42"):
             case ("43"):
@@ -113,6 +117,7 @@ public class ClientController {
                 List<CollapseRecord> collapseRecords = null;
                 str= JSON.toJSONString(collapseRecords);
                 break;
+            case ("5"):
             case ("51"):
             case ("52"):
                 List<DisasterPrediction> disasterPredictions = null;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>用户管理</title>
+    <title>导出数据</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,13 +33,13 @@
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="Server_index.html">首页</a></li>
-            <li><a href="Server_Import.html">导入数据</a></li>
-            <li class="active"><a href="Server_UsrManage.html">用户管理</a></li>
+            <li><a href="/admin">首页</a></li>
+            <li class="active"><a href="/adminImportData">导入数据</a></li>
+            <li><a href="/adminUserManage">用户管理</a></li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="Server_Login.html">注销</a></li>
+            <li class="active"><a href="/adminLogout">注销</a></li>
             <li><a href="#">管理员</a></li>
           
           </ul>
@@ -54,99 +54,76 @@
 				<div class="col-md-9 column"  style="height:650px;background-color:rgba(255, 255, 255, 1)">
 					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
 						<p>
-							用户管理
+							请选择灾情数据源
 						</p>
 					</blockquote>
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>用户</th>
-								<th>账号</th>
-								<th>密码</th>
-								<th>权限</th>
-								<th>创建时间</th>
-								<th>操作</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr><tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+		<div class="row" style="height:50px"></div>
+        <div class="col-md-offset-2">
+            <form action="upload" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+                <div class="row" style="height:100px">
+                    <div class="col-md-3 column">
+                        <label>选择数据源文件：</label>
+                    </div>
+                    <div class="col-md-3 column">
+                        <input type="file" name="file" style="height:50px" />
+                    </div>
+                </div>
+                <div class="row" style="height:100px">
+                    <div class="col-md-3 column">
+                        <label class="text-right">选择数据来源：</label>
+                    </div>
+                    <div class="col-md-4 column" style="height:50px">
+                        <select name="source">
+                            <!-- 大类1 -->
+                            <option value="101">101 - 公网</option>
+                            <option value="102">102 - 北斗短报文</option>
+                            <option value="103">103 - 卫星通讯</option>
+                            <option value="104">104 - 卫星定位</option>
+                            <option value="105">105 - 专用救灾（例如车载通信）</option>
+                            <option value="106">106 - 其他</option>
+
+                            <!-- 大类2 -->
+                            <option value="201">201 - 互联网</option>
+                            <option value="202">202 - 通信网</option>
+                            <option value="203">203 - 电网</option>
+                            <option value="204">204 - 其他</option>
+
+                            <!-- 大类3 -->
+                            <option value="301">301 - 微博</option>
+                            <option value="302">302 - 博客</option>
+                            <option value="303">303 - 论坛</option>
+                            <option value="304">304 - 微信</option>
+                            <option value="305">305 - 其他</option>
+
+                            <!-- 大类4 -->
+                            <option value="401">401 - 川滇</option>
+                            <option value="402">402 - 其他</option>
+
+                            <!-- 大类5 -->
+                            <option value="501">501 - 其他</option>
+                            <option value="502">502 - 其他</option>
+                            <option value="503">503 - 其他</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-4">
+                        <button type="submit" class="btn btn-default">导入数据</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+		</div>
 				<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
 					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
 						<p>
-							筛选条件
+							常用功能
 						</p>
 					</blockquote>
 					<ul class="list-group">
-						<li href="#" class="list-group-item"><span class="badge">数量：6</span>查看全部用户</li>
-						<li href="#" class="list-group-item"><span class="badge">数量：3</span>查看普通用户</li>
-						<li href="#" class="list-group-item"><span class="badge">数量：3</span>查看管理员用户</li>
+						<li href="Server_Import.html" class="list-group-item">导入数据</li>
+						<li href="Server_UsrManage.html" class="list-group-item">用户管理</li>
 					</ul>
 				</div>
 			</div>
