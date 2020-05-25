@@ -79,20 +79,14 @@ public class ClientController {
         byte [] body = null;
         String str = "";
         switch (disasterOptions){
-<<<<<<< HEAD
-=======
             case ("1"):
->>>>>>> 513481ac7bd0fa3fbcceb8db6efdbbaae54f3e36
             case ("11"):
             case ("12"):
             case ("13"):
                 List<DeathStatistics> deathStatistics = null;
                 str= JSON.toJSONString(deathStatistics);
                 break;
-<<<<<<< HEAD
-=======
             case ("2"):
->>>>>>> 513481ac7bd0fa3fbcceb8db6efdbbaae54f3e36
             case ("21"):
             case ("22"):
             case ("23"):
@@ -101,10 +95,7 @@ public class ClientController {
                 List<CivilStructure> civilStructures = null;
                 str= JSON.toJSONString(civilStructures);
                 break;
-<<<<<<< HEAD
-=======
             case ("3"):
->>>>>>> 513481ac7bd0fa3fbcceb8db6efdbbaae54f3e36
             case ("31"):
             case ("32"):
             case ("33"):
@@ -115,10 +106,7 @@ public class ClientController {
                 List<Disaster> disasters  = disasterService.selectAll();
                 str= JSON.toJSONString(disasters);
                 break;
-<<<<<<< HEAD
-=======
             case ("4"):
->>>>>>> 513481ac7bd0fa3fbcceb8db6efdbbaae54f3e36
             case ("41"):
             case ("42"):
             case ("43"):
@@ -129,10 +117,7 @@ public class ClientController {
                 List<CollapseRecord> collapseRecords = null;
                 str= JSON.toJSONString(collapseRecords);
                 break;
-<<<<<<< HEAD
-=======
             case ("5"):
->>>>>>> 513481ac7bd0fa3fbcceb8db6efdbbaae54f3e36
             case ("51"):
             case ("52"):
                 List<DisasterPrediction> disasterPredictions = null;
