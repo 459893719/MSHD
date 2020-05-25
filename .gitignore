@@ -20,3 +20,13 @@ target/classes/com/miaosha/demo/controller/FileController.class
 target/classes/com/miaosha/demo/controller/ExportController.class
 target/classes/com/miaosha/demo/controller/DemoController.class
 target/classes/application.properties
+target/classes/application.properties
+target/classes/com/miaosha/demo/controller/DemoController.class
+target/classes/com/miaosha/demo/controller/ExportController.class
+target/classes/com/miaosha/demo/controller/FileController.class
+target/classes/com/miaosha/demo/dao/DisasterDao.class
+target/classes/com/miaosha/demo/service/DisasterService.class
+target/classes/static/Client_Login.html
+target/classes/templates/Client_showInfor.html
+target/classes/templates/Server_Import.html
+target/test-classes/com/miaosha/demo/selectByTypeTest.class
