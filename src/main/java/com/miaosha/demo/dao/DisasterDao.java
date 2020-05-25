@@ -12,8 +12,8 @@ import java.util.List;
 
 @Mapper
 public interface DisasterDao {
-    @Insert("INSERT INTO comm_disaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES " +
-            "(#{disaster.id},#{disaster.date},#{disaster.location},#{disaster.type}," +
+    @Insert("INSERT INTO comm_disaster(`key`, `id`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES " +
+            "(#{disaster.key},#{disaster.id},#{disaster.date},#{disaster.location},#{disaster.type}," +
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Disaster disaster);
 
@@ -31,9 +31,9 @@ public interface DisasterDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO comm_disaster(`ID`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES",
+     "INSERT INTO comm_disaster(`key`,`id`, `date`, `location`, `type`, `grade`, `picture`,`note`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
-     "(#{item.id}, #{item.date}, #{item.location}, #{item.type}, #{item.grade}, #{item.picture}, #{item.note},#{item.reporting_unit})",
+     "(#{item.key},#{item.id}, #{item.date}, #{item.location}, #{item.type}, #{item.grade}, #{item.picture}, #{item.note},#{item.reporting_unit})",
      "</foreach>",
      "</script>"
     })

@@ -1,11 +1,28 @@
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\domain\Disaster.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\json\OperateJsonFile.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\dao\DisasterDao.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\domain\User.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\result\Result.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\result\CodeMsg.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\MiaoshaApplication.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\controller\DemoController.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\service\DisasterService.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\service\UserService.java
-E:\IDEA_WorkPlace\miaosha\src\main\java\com\miaosha\demo\dao\UserDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\Disaster.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\UserService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\DisasterDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\MiaoshaApplication.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\result\Result.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\CivilStructureDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\DeathStatisticsDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\DisasterRequestDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\json\OperateJsonFile.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\DisasterService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\DisasterPrediction.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\CivilStructure.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\DisasterRequestService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\DisasterRequest.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\User.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\CollapseRecordService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\DeathStatisticsService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\UserDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\controller\DatashowController.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\CivilStructureService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\service\DisasterPredictionService.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\CollapseRecordDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\result\CodeMsg.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\DeathStatistics.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\dao\DisasterPredictionDao.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\domain\CollapseRecord.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\controller\ServerController.java
+E:\IDEA_WorkPlace\MSHD - git\src\main\java\com\miaosha\demo\controller\ClientController.java

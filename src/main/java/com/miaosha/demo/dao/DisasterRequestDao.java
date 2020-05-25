@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.miaosha.demo.domain.DisasterRequest;
 
 public interface DisasterRequestDao {
-    @Insert("INSERT INTO disaster_request('key', `ID`, `date`, `disaster_type`, `status`, `o_url`, `request_unit`) VALUES " +
+    @Insert("INSERT INTO disaster_request('key', `id`, `date`, `disaster_type`, `status`, `o_url`, `request_unit`) VALUES " +
             "(#{dr.key},#{dr.id},#{dr.date},#{dr.disaster_type},#{dr.status}," +
             "#{dr.o_url},#{dr.reporting_unit})")
     public void Insert(@Param("dr") DisasterRequest dr);
