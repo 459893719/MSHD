@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +19,85 @@
 	</style>
   </head>
   <body  style=" min-height: 2000px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
+	<!-- 修改用户模态框（Modal） -->
+<div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">修改用户</h4>
+            </div>
+             <form  action="/adminUserManage/modify" method="post">
+            <div class="modal-body">
+			<div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">用户ID</button>
+                 </span>
+				<input type="text" class="form-control" name="userid" id="userid">
+			</div>
+			<br>
+			<div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">用户名</button>
+                 </span>
+				<input type="text" class="form-control" name="username" id="username"> 
+			</div>
+			<br>
+			<div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">密  码</button>
+                 </span>
+				<input type="text" class="form-control" name="userpwd" id="userpwd"> 
+			</div>
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">确认修改</button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+	<!-- 添加用户模态框（Modal） -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+            </div>
+            <form  action="/adminUserManage/addUser" method="post">
+            <div class="modal-body">
+            <div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">用户ID</button>
+                 </span>
+				<input type="text" class="form-control" name="userid" id="userid">
+			</div>
+			<br>
+			<div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">用户名</button>
+                 </span>
+				<input type="text" class="form-control" name="username" id="username"> 
+			</div>
+			<br>
+			<div class="input-group">
+				 <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">密  码</button>
+                 </span>
+				<input type="text" class="form-control" name="userpwd" id="userpwd"> 
+			</div>
+			</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">确认添加</button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -60,93 +139,47 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th>用户</th>
+								
 								<th>账号</th>
+								<th>用户</th>
 								<th>密码</th>
-								<th>权限</th>
-								<th>创建时间</th>
-								<th>操作</th>
+								<th>删除操作</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
+						<tbody >
+							<tr th:each="usr:${User}">
+								
+								<td th:text="${usr.id}"></td>
+								<td th:text="${usr.name}"></td>
+								<td th:text="${usr.password}"></td>
 								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>管理员</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr>
-							<tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
-								</td>
-							</tr><tr>
-								<td>user1</td>
-								<td>2017211001</td>
-								<td>BUPT01</td>
-								<td>用户</td>
-								<td>20/04/26</td>
-								<td>
-									<a href="#">修改 </a>
-									<a href="#">删除 </a>
+									<a th:href="@{'/adminUserManage/delete?userID='+${usr.id}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
 								</td>
 							</tr>
 						</tbody>
 					</table>
+					<button class="btn btn-default " data-toggle="modal" data-target="#addModal">添加新用户</button>
+					<button class="btn btn-default" data-toggle="modal" data-target="#modifyModal">修改用户</button>
+									
 				</div>
 				<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
 					<blockquote  class="page-header" style="border-left:5px solid #FF3030">
 						<p>
-							筛选条件
+							常用功能
 						</p>
 					</blockquote>
-					<ul class="list-group">
-						<li href="#" class="list-group-item"><span class="badge">数量：6</span>查看全部用户</li>
-						<li href="#" class="list-group-item"><span class="badge">数量：3</span>查看普通用户</li>
-						<li href="#" class="list-group-item"><span class="badge">数量：3</span>查看管理员用户</li>
+				<!-- 	<form  action="/adminUserManage/search" method="get">
+						<div class="input-group">
+          					  <input type="text" name="searchUser" class="form-control" placeholder="请输入要查找的用户id">
+          					  <span class="input-group-btn">
+                       			 <button  class="btn btn-default" type="submit">查找</button>
+                    		</span>
+       					</div>
+       					</form>
+       					<br> -->
+       				<ul class="list-group">
+						<li class="list-group-item"><a  href="/adminImportData" >导入数据</a></li>
+						<li class="list-group-item"><a  href="/adminUserManage" >用户管理</a></li>
 					</ul>
 				</div>
 			</div>

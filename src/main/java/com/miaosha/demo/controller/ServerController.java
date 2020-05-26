@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.miaosha.demo.domain.*;
 import com.miaosha.demo.service.DisasterService;
+import com.miaosha.demo.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,10 @@ public class ServerController {
 
     @Autowired
     private HttpServletResponse myHttpResponse;
-
+    
+    @Autowired
+    UserService usrService;
+    
     //有五个Service
     @Autowired
     DisasterService disasterService;
@@ -46,10 +51,12 @@ public class ServerController {
     public String viewData(Model model){
         return "Client_showInfor";
     }
-
+    List<User>  usrList=null;
     //用户管理
     @RequestMapping("/adminUserManage")
-    public String userManage(){
+    public String userManage(Model model){
+    	usrList=usrService.selectAll();
+    	model.addAttribute("User", usrList);
         return "Server_UsrManage";
     }
 

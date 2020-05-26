@@ -3,27 +3,32 @@ package com.miaosha.demo.service;
 import com.miaosha.demo.dao.UserDao;
 import com.miaosha.demo.domain.User;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
     @Autowired
     UserDao userDao;
-    public User getById(int id) {
-        return userDao.getById(id);
+    public List<User> selectAll() {
+        return userDao.selectAll();
     }
-    //使用事务
-    @Transactional
-    public boolean tx() {
-        User user=new User();
-        user.setId(3);
-        user.setName("ljs");
+    
+    public List<User> getById(int id) {
+    	List<User> user=new ArrayList<User>();
+    	user.add(userDao.getById(id));
+        return user;
+    }
+    public void insertUser(User user) {
         userDao.insert(user);
-        User user1=new User();
-        user1.setId(1);
-        user1.setName("ljs2");
-        userDao.insert(user1);			//这里出问题则回滚
-        return true;
+    }
+    public void modifyById(int id,User user) {
+        userDao.modifyById(id, user);;
+    }
+    public void deleteById(int id) {
+        userDao.deleteById(id);
     }
 }
