@@ -55,6 +55,9 @@
 			background: #C4E3F3;
 			border: 1px solid #1E90FF;
 		}
+		.mybutton .btn{
+			margin-right: 10px;
+		}
 	</style>
 </head>
 
@@ -71,52 +74,52 @@
 				<div class="modal-body">
 					<form class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 control-label">灾情编号</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterID">123123123123</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报日期</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">地点</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">类型</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterType"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">破坏等级</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">破坏等级</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterGrade"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">典型照片</label>
-							<div class="col-sm-10" id="disasterPicture">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" id="disasterPicture">
 								<img th:src="@{/static/test.jpg}" alt="图片">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">灾情描述</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">灾情描述</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterDiscription">
 									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
 								</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报单位</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
 							</div>
 						</div>
@@ -179,21 +182,36 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>编号</th>
-									<th>上报日期</th>
-									<th>上报单位</th>
-									<th>操作</th>
+									<th class="text-center">编号</th>
+									<th class="text-center">上报日期</th>
+									<th class="text-center">上报单位</th>
+									<th class="text-center">操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="d : ${disaster}">
-									<th th:text="${d.id}">123</th>
-									<th th:text="${d.date}">123</th>
-									<th th:text="${d.reporting_unit}">123</th>
-									<th><button class="btn btn-primary" data-target="#myModal"
-											th:onclick='query([[${d.key}]])'>
-											详细信息
-										</button></th>
+								<tr th:each="dp : ${dplist}">
+									<th th:text="${dp.id}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.date}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.reporting_unit}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th style='vertical-align: middle;text-align: center;'>
+										<div class="mybutton">
+											<button class="btn btn-primary" data-target="#myModal"
+												th:onclick='query([[${dp.key}]])' >
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												详细信息
+											</button>
+											<button class="btn btn-success"	data-target="#myModal2"
+												th:onclick='update([[${dp.key}]])'>
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+												编辑
+											</button>
+											<button class="btn btn-danger"	th:onclick='deleterow([[${dp.key}]])'>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												删除
+											</button>
+											
+										</div>
+									</th>
 								</tr>
 
 							</tbody>

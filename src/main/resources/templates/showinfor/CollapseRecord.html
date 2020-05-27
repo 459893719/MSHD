@@ -55,6 +55,10 @@
 			background: #C4E3F3;
 			border: 1px solid #1E90FF;
 		}
+
+		.mybutton .btn {
+			margin-right: 10px;
+		}
 	</style>
 </head>
 
@@ -71,53 +75,53 @@
 				<div class="modal-body">
 					<form class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 control-label">灾情编号</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterID">123123123123</p>
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crID"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报日期</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crDate"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">地点</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crLocation"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">类型</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterType"></p>
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crType"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">破坏等级</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterGrade"></p>
+							<label class="col-sm-3 control-label">灾害程度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crStatus"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">典型照片</label>
-							<div class="col-sm-10" id="disasterPicture">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" id="crPicture">
 								<img th:src="@{/static/test.jpg}" alt="图片">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">灾情描述</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterDiscription">
+							<label class="col-sm-3 control-label">灾情描述</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crDiscription">
 									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
 								</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报单位</label>
-							<div class="col-sm-10">
-								<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="crReportingUnit"></p>
 							</div>
 						</div>
 					</form>
@@ -130,6 +134,77 @@
 		</div>
 	</div>
 
+	<!--修改信息模态框-->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel2">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<input type="text" class="form-control" id="crKey2" style="display: none;">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crID2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crDate2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crLocation2" >
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crType2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾害程度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crStatus2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" id="crPicture2">
+								<img th:src="@{/static/test.jpg}" alt="图片">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情描述</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" rows="3" id="crDiscription2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="crReportingUnit2" >
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        			<button type="button" class="btn btn-primary" onclick='updateData()'>提交更改</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -179,21 +254,37 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>编号</th>
-									<th>上报日期</th>
-									<th>上报单位</th>
-									<th>操作</th>
+									<th class="text-center">编号</th>
+									<th class="text-center">上报日期</th>
+									<th class="text-center">上报单位</th>
+									<th class="text-center">操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="d : ${disaster}">
-									<th th:text="${d.id}">123</th>
-									<th th:text="${d.date}">123</th>
-									<th th:text="${d.reporting_unit}">123</th>
-									<th><button class="btn btn-primary" data-target="#myModal"
-											th:onclick='query([[${d.key}]])'>
-											详细信息
-										</button></th>
+								<tr th:each="cr : ${crlist}">
+									<th th:text="${cr.id}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${cr.date}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${cr.reporting_unit}"
+										style='vertical-align: middle;text-align: center;'>123</th>
+									<th style='vertical-align: middle;text-align: center;'>
+										<div class="mybutton">
+											<button class="btn btn-primary" data-target="#myModal"
+												th:onclick='query([[${cr.key}]])'>
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												详细信息
+											</button>
+											<button class="btn btn-success" data-target="#myModal2"
+												th:onclick='update([[${cr.key}]])'>
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+												编辑
+											</button>
+											<button class="btn btn-danger" th:onclick='deleterow([[${cr.key}]])'>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												删除
+											</button>
+
+										</div>
+									</th>
 								</tr>
 
 							</tbody>
@@ -358,7 +449,7 @@
 		function query(id) {
 			//console.log(id)
 			$.ajax({
-				url: "/CommDisaster/query", //query请求的URL，待修改
+				url: "/CollapseRecord/query", //query请求的URL，待修改
 				async: true,
 				type: "POST",
 				data: {
@@ -378,43 +469,135 @@
 		function showQuery(data) {
 			//对type和grade属性做进一步改动
 			var type = parseInt(data.type)
-			var grade = parseInt(data.grade)
-			var typeprint, gradeprint;
-			console.log(type)
-			console.log(grade)
-			switch(type){
-				case 1: typeprint="I. 中心控制室";
-				break;
-				case 2: typeprint="II. 通信线路";
-				break;
+			var status = parseInt(data.status)
+			var typeprint, statusprint;
+			switch (type) {
+				case 1: typeprint = "I. 特大型";
+					break;
+				case 2: typeprint = "II. 大型";
+					break;
+				case 3: typeprint = "III. 中型";
+					break;
+				case 4: typeprint = "IV. 小型";
+					break;
 			}
-			switch(grade){
-				case 1: gradeprint="I. 基本完好";
-				break;
-				case 2: gradeprint="II. 轻微破坏";
-				break;
-				case 3: gradeprint="III. 中等破坏";
-				break;
-				case 4: gradeprint="IV. 严重破坏";
-				break;
-				case 5: gradeprint="V. 毁坏";
-				break;
+			switch (status) {
+				case 1: statusprint = "I. 特大";
+					break;
+				case 2: statusprint = "II. 重大";
+					break;
+				case 3: statusprint = "III. 较大";
+					break;
+				case 4: statusprint = "IV. 一般";
+					break;
 			}
 
 			//将data中的每个属性放到modal中，data对象的属性名待修改
-			$("#disasterID").text(data.id);
-			$("#disasterDate").text(data.date);
-			$("#disasterLocation").text(data.location);
-			$("#disasterType").text(typeprint);
-			$("#disasterGrade").text(gradeprint);
-			$("#disasterPicture").text(data.picture);
-			$("#disasterDiscription").text(data.note);
-			$("#disasterReportingUnit").text(data.reporting_unit);
+			$("#crID").text(data.id);
+			$("#crDate").text(data.date);
+			$("#crLocation").text(data.location);
+			$("#crType").text(typeprint);
+			$("#crStatus").text(statusprint);
+			$("#crPicture").text(data.picture);
+			$("#crDiscription").text(data.note);
+			$("#crReportingUnit").text(data.reporting_unit);
 
 
 			// 显示模态框
 			$('#myModal').modal('show');
 		}
+
+		//删除一行数据
+		function deleterow(id) {
+			$.ajax({
+				url: "/CollapseRecord/delete", //query请求的URL，待修改
+				async: true,
+				type: "DELETE",
+				data: {
+					"id": id
+				},
+				// 成功后开启模态框
+				success: function () {
+					alert("删除成功！");
+					window.location.reload();
+				},
+				error: function () {
+					alert("删除失败");
+					window.location.reload();
+				},
+			});
+		}
+
+		function update(id) {
+			$.ajax({
+				url: "/CollapseRecord/query", //query请求的URL，待修改
+				async: true,
+				type: "POST",
+				data: {
+
+					"id": id
+				},
+				// 成功后开启模态框
+				success: showUpdateModal,
+				error: function () {
+					alert("查看信息失败");
+				},
+				dataType: "json"
+			});
+		}
+
+		function showUpdateModal(data) {
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
+			$("#crKey2").val(data.key);
+			$("#crID2").val(data.id);
+			$("#crDate2").val(data.date);
+			$("#crLocation2").val(data.location);
+			$("#crType2").val(data.type);
+			$("#crStatus2").val(data.status);
+			$("#crPicture2").text(data.picture);
+			$("#crDiscription2").val(data.note);
+			$("#crReportingUnit2").val(data.reporting_unit);
+
+			// 显示模态框
+			$('#myModal2').modal('show');
+		}
+
+		function updateData(){
+			//将模态框中的数据拿出来，封装成对象传给controller
+			var data={}
+			data["key"] = $("#crKey2").val();
+			data["id"] = $("#crID2").val();
+			data["date"] = $("#crDate2").val();
+			data["location"] = $("#crLocation2").val();
+			data["type"] = $("#crType2").val();
+			data["status"] = $("#crStatus2").val();
+			data["picture"] = $("#crPicture2").text();
+			data["note"] = $("#crDiscription2").val();
+			data["reporting_unit"] = $("#crReportingUnit2").val();
+
+			$.ajax({
+				url:'/CollapseRecord/update',
+				async: true,
+				type:'POST',
+				dataType:'json',
+				contentType:'application/json;charset=UTF-8',
+				data:JSON.stringify(data),
+				success:function(data,status){
+					alert("修改成功！");
+
+					window.location.reload();
+				},
+				error:function(data,status){
+					alert("修改成功！");
+					window.location.reload();
+				},
+			});
+
+			console.log(data);
+		}
+		
+
 	</script>
 </body>
 

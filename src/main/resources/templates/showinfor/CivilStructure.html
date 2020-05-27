@@ -55,6 +55,9 @@
 			background: #C4E3F3;
 			border: 1px solid #1E90FF;
 		}
+		.mybutton .btn{
+			margin-right: 10px;
+		}
 	</style>
 </head>
 
@@ -71,52 +74,52 @@
 				<div class="modal-body">
 					<form class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 control-label">灾情编号</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csID">123123123123</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报日期</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csDate">2020-02-01 00:00:00</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">地点</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csLocation">北京市 郑各庄村 北京邮电大学</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">基本完好面积</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">基本完好面积</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csBISquare"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">破坏面积</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">破坏面积</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csDamagedSquare"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">毁坏面积</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">毁坏面积</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csDestroyedSquare"></p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">破坏情况描述</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">破坏情况描述</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csDiscription">
 									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
 								</p>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">上报单位</label>
-							<div class="col-sm-10">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
 								<p class="form-control-static" id="csReportingUnit">北京市公安局</p>
 							</div>
 						</div>
@@ -130,6 +133,76 @@
 		</div>
 	</div>
 
+	<!--修改信息模态框-->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel2">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<input type="text" class="form-control" id="csKey2" style="display: none;">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csID2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csDate2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csLocation2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">基本完好面积</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csBISquare2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">破坏面积</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csDamagedSquare2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">毁坏面积</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csDestroyedSquare2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">破坏情况描述</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" rows="3" id="csDiscription2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="csReportingUnit2" >
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        			<button type="button" class="btn btn-primary" onclick='updateData()'>提交更改</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -179,21 +252,36 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>编号</th>
-									<th>上报日期</th>
-									<th>上报单位</th>
-									<th>操作</th>
+									<th class="text-center">编号</th>
+									<th class="text-center">上报日期</th>
+									<th class="text-center">上报单位</th>
+									<th class="text-center">操作</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="cs : ${cslist}">
-									<th th:text="${cs.id}">123</th>
-									<th th:text="${cs.date}">123</th>
-									<th th:text="${cs.reporting_unit}">123</th>
-									<th><button class="btn btn-primary" data-target="#myModal"
-											th:onclick='query([[${cs.key}]])'>
-											详细信息
-										</button></th>
+									<th th:text="${cs.id}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${cs.date}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${cs.reporting_unit}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th style='vertical-align: middle;text-align: center;'>
+										<div class="mybutton">
+											<button class="btn btn-primary" data-target="#myModal"
+												th:onclick='query([[${cs.key}]])' >
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												详细信息
+											</button>
+											<button class="btn btn-success"	data-target="#myModal2"
+												th:onclick='update([[${cs.key}]])'>
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+												编辑
+											</button>
+											<button class="btn btn-danger"	th:onclick='deleterow([[${cs.key}]])'>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												删除
+											</button>
+											
+										</div>
+									</th>
 								</tr>
 
 							</tbody>
@@ -388,6 +476,96 @@
 
 			// 显示模态框
 			$('#myModal').modal('show');
+		}
+
+		//删除一行数据
+		function deleterow(id){
+			$.ajax({
+				url: "/CivilStructure/delete", //query请求的URL，待修改
+				async: true,
+				type: "DELETE",
+				data: {
+					"id": id
+				},
+				// 成功后开启模态框
+				success: function(){
+					alert("删除成功！");
+					window.location.reload();
+				},
+				error: function () {
+					alert("删除失败");
+					window.location.reload();
+				},
+			});
+		}
+	
+		function update(id) {
+			$.ajax({
+				url: "/CivilStructure/query", //query请求的URL，待修改
+				async: true,
+				type: "POST",
+				data: {
+
+					"id": id
+				},
+				// 成功后开启模态框
+				success: showUpdateModal,
+				error: function () {
+					alert("查看信息失败");
+				},
+				dataType: "json"
+			});
+		}
+
+		function showUpdateModal(data){
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
+			$("#csKey2").val(data.key);
+			$("#csID2").val(data.id);
+			$("#csDate2").val(data.date);
+			$("#csLocation2").val(data.location);
+			$("#csBISquare2").val(data.basically_intact_square);
+			$("#csDamagedSquare2").val(data.damaged_square);
+			$("#csDestroyedSquare2").val(data.destroyed_square);
+			$("#csDiscription2").val(data.note);
+			$("#csReportingUnit2").val(data.reporting_unit);
+
+			// 显示模态框
+			$('#myModal2').modal('show');
+		}
+
+		function updateData(){
+			//将模态框中的数据拿出来，封装成对象传给controller
+			var data={}
+			data["key"] = $("#csKey2").val();
+			data["id"] = $("#csID2").val();
+			data["date"] = $("#csDate2").val();
+			data["location"] = $("#csLocation2").val();
+			data["basically_intact_square"] = $("#csBISquare2").val();
+			data["damaged_square"] = $("#csDamagedSquare2").val();
+			data["destroyed_square"] = $("#csDestroyedSquare2").val();
+			data["note"] = $("#csDiscription2").val();
+			data["reporting_unit"] = $("#csReportingUnit2").val();
+
+			$.ajax({
+				url:'/CivilStructure/update',
+				async: true,
+				type:'POST',
+				dataType:'json',
+				contentType:'application/json;charset=UTF-8',
+				data:JSON.stringify(data),
+				success:function(data,status){
+					alert("修改成功！");
+
+					window.location.reload();
+				},
+				error:function(data,status){
+					alert("修改成功！");
+					window.location.reload();
+				},
+			});
+
+			console.log(data);
 		}
 	</script>
 </body>

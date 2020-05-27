@@ -113,6 +113,19 @@ public class DatashowController {
     	return csService.selectByKey(id).get(0);
     }
     
+    @RequestMapping(value = "/CivilStructure/delete", method = RequestMethod.DELETE)
+    public String csdelete(@RequestParam("id") String key){
+        csService.deleteByKey(key);
+        return "showinfor/CivilStructure";
+    }
+    
+    @RequestMapping(value = "/CivilStructure/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String csupdate(@RequestBody JSONObject json){
+    	CivilStructure cs = JSONObject.toJavaObject(json, CivilStructure.class);
+    	csService.updateByKey(cs);
+        return "success";
+    }
     
     /**
      * CollapseRecord
@@ -132,6 +145,20 @@ public class DatashowController {
     @ResponseBody
     public CollapseRecord crquery(@RequestParam("id") String id) {
     	return crService.selectByKey(id).get(0);
+    }
+    
+    @RequestMapping(value = "/CollapseRecord/delete", method = RequestMethod.DELETE)
+    public String crdelete(@RequestParam("id") String key){
+        crService.deleteByKey(key);
+        return "showinfor/CivilStructure";
+    }
+    
+    @RequestMapping(value = "/CollapseRecord/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String crupdate(@RequestBody JSONObject json){
+    	CollapseRecord cr = json.toJavaObject(CollapseRecord.class);
+    	crService.updateByKey(cr);
+        return "success";
     }
     
     /**
