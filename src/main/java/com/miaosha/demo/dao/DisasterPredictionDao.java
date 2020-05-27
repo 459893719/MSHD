@@ -43,6 +43,6 @@ public interface DisasterPredictionDao {
     public void deleteByKey(@Param("key") String key);
     
     @Update("update disaster_prediction SET id=#{item.id}, date=#{item.date}, location=#{item.location}, longitude=#{item.longitude}, latitude=#{item.latitude}, depth=#{item.depth}, "
-    		+ "magnitude=#{item.magnitude}, intensity=#{item.intensity}, type=#{item.type}, picture=#{item.picture}, note=#{item.note}, reporting_unit#{item.reporting_unit} where `key` = #{item.key} ")
+    		+ "magnitude=#{item.magnitude}, intensity=#{item.intensity}, type=#{item.type}, picture=#{item.picture}, note=#{item.note}, reporting_unit=#{item.reporting_unit} where `key` = #{item.key} ")
     public void updateByKey(@Param("item") DisasterPrediction item);
 }

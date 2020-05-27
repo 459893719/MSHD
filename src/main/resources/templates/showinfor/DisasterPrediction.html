@@ -55,7 +55,8 @@
 			background: #C4E3F3;
 			border: 1px solid #1E90FF;
 		}
-		.mybutton .btn{
+
+		.mybutton .btn {
 			margin-right: 10px;
 		}
 	</style>
@@ -76,43 +77,67 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">灾情编号</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterID">123123123123</p>
+								<p class="form-control-static" id="dpID">123123123123</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">上报日期</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
+								<p class="form-control-static" id="dpDate">2020-02-01 00:00:00</p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">地点</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
+								<p class="form-control-static" id="dpLocation">北京市 郑各庄村 北京邮电大学</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">经度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpLongitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">纬度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpLatitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">深度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpDepth"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">震级</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpMagnitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">烈度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpIntensity"></p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">类型</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterType"></p>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">破坏等级</label>
-							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterGrade"></p>
+								<p class="form-control-static" id="dpType"></p>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
-							<div class="col-sm-9" id="disasterPicture">
+							<div class="col-sm-9" id="dpPicture">
 								<img th:src="@{/static/test.jpg}" alt="图片">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">灾情描述</label>
+							<label class="col-sm-3 control-label">破坏情况描述</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterDiscription">
+								<p class="form-control-static" id="dpDiscription">
 									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
 								</p>
 							</div>
@@ -120,7 +145,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 control-label">上报单位</label>
 							<div class="col-sm-9">
-								<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
+								<p class="form-control-static" id="dpReportingUnit">北京市公安局</p>
 							</div>
 						</div>
 					</form>
@@ -133,6 +158,100 @@
 		</div>
 	</div>
 
+	<!--模态框-->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel2">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<input type="text" class="form-control" id="dpKey2" style="display: none;">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpID2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpDate2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLocation2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">经度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLongitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">纬度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLatitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">深度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpDepth2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">震级</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpMagnitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">烈度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpIntensity2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpType2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" id="dpPicture2">
+								<img th:src="@{/static/test.jpg}" alt="图片">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">破坏情况描述</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" rows="3" id="dpDiscription2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpReportingUnit2" >
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        			<button type="button" class="btn btn-primary" onclick='updateData()'>提交更改</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -190,26 +309,27 @@
 							</thead>
 							<tbody>
 								<tr th:each="dp : ${dplist}">
-									<th th:text="${dp.id}"style='vertical-align: middle;text-align: center;'>123</th>
-									<th th:text="${dp.date}"style='vertical-align: middle;text-align: center;'>123</th>
-									<th th:text="${dp.reporting_unit}"style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.id}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.date}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.reporting_unit}"
+										style='vertical-align: middle;text-align: center;'>123</th>
 									<th style='vertical-align: middle;text-align: center;'>
 										<div class="mybutton">
 											<button class="btn btn-primary" data-target="#myModal"
-												th:onclick='query([[${dp.key}]])' >
+												th:onclick='query([[${dp.key}]])'>
 												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 												详细信息
 											</button>
-											<button class="btn btn-success"	data-target="#myModal2"
+											<button class="btn btn-success" data-target="#myModal2"
 												th:onclick='update([[${dp.key}]])'>
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 												编辑
 											</button>
-											<button class="btn btn-danger"	th:onclick='deleterow([[${dp.key}]])'>
+											<button class="btn btn-danger" th:onclick='deleterow([[${dp.key}]])'>
 												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 												删除
 											</button>
-											
+
 										</div>
 									</th>
 								</tr>
@@ -376,7 +496,7 @@
 		function query(id) {
 			//console.log(id)
 			$.ajax({
-				url: "/CommDisaster/query", //query请求的URL，待修改
+				url: "/DisasterPrediction/query", //query请求的URL，待修改
 				async: true,
 				type: "POST",
 				data: {
@@ -396,42 +516,135 @@
 		function showQuery(data) {
 			//对type和grade属性做进一步改动
 			var type = parseInt(data.type)
-			var grade = parseInt(data.grade)
-			var typeprint, gradeprint;
-			console.log(type)
-			console.log(grade)
-			switch(type){
-				case 1: typeprint="I. 中心控制室";
-				break;
-				case 2: typeprint="II. 通信线路";
-				break;
-			}
-			switch(grade){
-				case 1: gradeprint="I. 基本完好";
-				break;
-				case 2: gradeprint="II. 轻微破坏";
-				break;
-				case 3: gradeprint="III. 中等破坏";
-				break;
-				case 4: gradeprint="IV. 严重破坏";
-				break;
-				case 5: gradeprint="V. 毁坏";
-				break;
+			var typeprint;
+			switch (type) {
+				case 1: typeprint = "天然地震";
+					break;
+				case 2: typeprint = "人为破坏引发";
+					break;
+				case 3: typeprint = "海啸引发";
+					break;
+				case 4: typeprint = "火山引发";
+					break;
+				case 5: typeprint = "其他";
+					break;
 			}
 
 			//将data中的每个属性放到modal中，data对象的属性名待修改
-			$("#disasterID").text(data.id);
-			$("#disasterDate").text(data.date);
-			$("#disasterLocation").text(data.location);
-			$("#disasterType").text(typeprint);
-			$("#disasterGrade").text(gradeprint);
-			$("#disasterPicture").text(data.picture);
-			$("#disasterDiscription").text(data.note);
-			$("#disasterReportingUnit").text(data.reporting_unit);
+			$("#dpID").text(data.id);
+			$("#dpDate").text(data.date);
+			$("#dpLocation").text(data.location);
+			$("#dpLongitude").text(data.longitude);
+			$("#dpLatitude").text(data.latitude);
+			$("#dpDepth").text(data.depth);
+			$("#dpMagnitude").text(data.magnitude);
+			$("#dpIntensity").text(data.intensity);
+			$("#dpType").text(typeprint);
+			$("#dpPicture").text(data.picture);
+			$("#dpDiscription").text(data.note);
+			$("#dpReportingUnit").text(data.reporting_unit);
 
 
 			// 显示模态框
 			$('#myModal').modal('show');
+		}
+
+		//删除一行数据
+		function deleterow(id) {
+			$.ajax({
+				url: "/DisasterPrediction/delete", //query请求的URL，待修改
+				async: true,
+				type: "DELETE",
+				data: {
+					"id": id
+				},
+				// 成功后开启模态框
+				success: function () {
+					alert("删除成功！");
+					window.location.reload();
+				},
+				error: function () {
+					alert("删除失败");
+					window.location.reload();
+				},
+			});
+		}
+
+		function update(id) {
+			$.ajax({
+				url: "/DisasterPrediction/query", //query请求的URL，待修改
+				async: true,
+				type: "POST",
+				data: {
+
+					"id": id
+				},
+				// 成功后开启模态框
+				success: showUpdateModal,
+				error: function () {
+					alert("查看信息失败");
+				},
+				dataType: "json"
+			});
+		}
+
+		function showUpdateModal(data) {
+		
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
+			$("#dpKey2").val(data.key);
+			$("#dpID2").val(data.id);
+			$("#dpDate2").val(data.date);
+			$("#dpLocation2").val(data.location);
+			$("#dpLongitude2").val(data.longitude);
+			$("#dpLatitude2").val(data.latitude);
+			$("#dpDepth2").val(data.depth);
+			$("#dpMagnitude2").val(data.magnitude);
+			$("#dpIntensity2").val(data.intensity);
+			$("#dpType2").val(data.type);
+			$("#dpPicture2").text(data.picture);
+			$("#dpDiscription2").val(data.note);
+			$("#dpReportingUnit2").val(data.reporting_unit);
+
+			// 显示模态框
+			$('#myModal2').modal('show');
+		}
+
+		function updateData(){
+			//将模态框中的数据拿出来，封装成对象传给controller
+			var data={}
+			data["key"] = $("#dpKey2").val();
+			data["id"] = $("#dpID2").val();
+			data["date"] = $("#dpDate2").val();
+			data["location"] = $("#dpLocation2").val();
+			data["longitude"] = $("#dpLongitude2").val();
+			data["latitude"] = $("#dpLatitude2").val();
+			data["depth"] = $("#dpDepth2").val();
+			data["magnitude"] = $("#dpMagnitude2").val();
+			data["intensity"] = $("#dpIntensity2").val();
+			data["type"] = $("#dpType2").val();
+			data["picture"] = $("#dpPicture2").text();
+			data["note"] = $("#dpDiscription2").val();
+			data["reporting_unit"] = $("#dpReportingUnit2").val();
+
+			$.ajax({
+				url:'/DisasterPrediction/update',
+				async: true,
+				type:'POST',
+				dataType:'json',
+				contentType:'application/json;charset=UTF-8',
+				data:JSON.stringify(data),
+				success:function(data,status){
+					alert("修改成功！");
+
+					window.location.reload();
+				},
+				error:function(data,status){
+					alert("修改成功！");
+					window.location.reload();
+				},
+			});
+
 		}
 	</script>
 </body>

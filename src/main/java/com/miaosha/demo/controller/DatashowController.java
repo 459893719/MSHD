@@ -180,4 +180,18 @@ public class DatashowController {
     public DisasterPrediction dpquery(@RequestParam("id") String id) {
     	return dpService.selectByKey(id).get(0);
     }
+    
+    @RequestMapping(value = "/DisasterPrediction/delete", method = RequestMethod.DELETE)
+    public String dpdelete(@RequestParam("id") String key){
+        dpService.deleteByKey(key);
+        return "showinfor/DisasterPrediction";
+    }
+    
+    @RequestMapping(value = "/DisasterPrediction/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String dpupdate(@RequestBody JSONObject json){
+    	DisasterPrediction dp = json.toJavaObject(DisasterPrediction.class);
+    	dpService.updateByKey(dp);
+        return "success";
+    }
 }
