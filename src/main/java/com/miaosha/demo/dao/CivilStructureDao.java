@@ -28,7 +28,7 @@ public interface CivilStructureDao {
     @Delete("delete from civil_structure where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
-    @Update("update civil_structure SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square}"
+    @Update("update civil_structure SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
     		+ "destroyed_square = #{cs.destroyed_square},note = #{cs.note},reporting_unit = #{cs.reporting_unit} where `key` = #{cs.key} ")
     public void updateByKey(@Param("cs") CivilStructure cs);
     
