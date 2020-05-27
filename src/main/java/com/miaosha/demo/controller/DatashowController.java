@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.miaosha.demo.domain.CivilStructure;
 import com.miaosha.demo.domain.CollapseRecord;
 import com.miaosha.demo.domain.DeathStatistics;
@@ -43,6 +45,22 @@ public class DatashowController {
     public Disaster commdisasterquery(@RequestParam("id") String id) {
     	return disasterService.selectByKey(id).get(0);
     }    
+    
+    @RequestMapping(value = "/CommDisaster/delete", method = RequestMethod.DELETE)
+    public String cddelete(@RequestParam("id") String key){
+        disasterService.deleteByKey(key);
+        return "showinfor/CommDisaster";
+    }
+    
+    @RequestMapping(value = "/CommDisaster/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String cdquery(@RequestBody JSONObject json){
+    	Disaster disaster = (Disaster) JSONObject.toJavaObject(json, Disaster.class);
+    	disasterService.updateByKey(disaster);
+        return "success";
+    }
+    
+    
 
     // death_statistics表
     @Autowired
@@ -59,7 +77,22 @@ public class DatashowController {
     @RequestMapping(value = "/DeathStatistics/query", method = RequestMethod.POST)
     @ResponseBody
     public DeathStatistics dsquery(@RequestParam("id") String id) {
+    	
     	return dsService.selectByKey(id).get(0);
+    }
+    
+    @RequestMapping(value = "/DeathStatistics/delete", method = RequestMethod.DELETE)
+    public String dsdelete(@RequestParam("id") String key){
+        dsService.deleteByKey(key);
+        return "showinfor/DeathStatistics";
+    }
+    
+    @RequestMapping(value = "/DeathStatistics/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String dsquery(@RequestBody JSONObject json){
+    	DeathStatistics ds = JSONObject.toJavaObject(json, DeathStatistics.class);
+    	dsService.updateByKey(ds);
+        return "success";
     }
     
     // civil_structure表

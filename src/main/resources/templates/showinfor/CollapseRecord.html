@@ -209,7 +209,6 @@
 						</blockquote>
 						<div class="panel-group table-responsive" role="tablist">
 							<div class="panel panel-primary leftMenu">
-								<!-- 利用data-target指定要折叠的分组列表 -->
 								<div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
 									data-target="#collapseListGroup1" role="tab">
 									<h4 class="panel-title">
@@ -217,12 +216,11 @@
 										<span class="glyphicon glyphicon-chevron-up right"></span>
 									</h4>
 								</div>
-								<!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
 								<div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel"
 									aria-labelledby="collapseListGroupHeading1">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">死亡</a>
+										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
 										<a href="#" class="list-group-item">受伤</a>
 										<a href="#" class="list-group-item">失踪</a>
 
@@ -243,7 +241,7 @@
 									aria-labelledby="collapseListGroupHeading2">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">土木</a>
+										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
 										<a href="#" class="list-group-item">砖木</a>
 										<a href="#" class="list-group-item">砖混</a>
 										<a href="#" class="list-group-item">框架</a>
@@ -270,7 +268,7 @@
 										<a href="#" class="list-group-item">输油</a>
 										<a href="#" class="list-group-item">燃气</a>
 										<a href="#" class="list-group-item">电力</a>
-										<a th:href="@{/showInforTest/202}" class="list-group-item">通信</a>
+										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
 										<a href="#" class="list-group-item">水利</a>
 
 
@@ -289,7 +287,7 @@
 									aria-labelledby="collapseListGroupHeading4">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">崩塌</a>
+										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
 										<a href="#" class="list-group-item">滑坡</a>
 										<a href="#" class="list-group-item">泥石流</a>
 										<a href="#" class="list-group-item">岩溶塌陷</a>
@@ -314,7 +312,7 @@
 									<div class="list-group">
 
 										<a href="#" class="list-group-item">基本</a>
-										<a href="#" class="list-group-item">灾情预测</a>
+										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
 
 
 									</div>
