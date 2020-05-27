@@ -31,4 +31,10 @@ public class UserService {
     public void deleteById(int id) {
         userDao.deleteById(id);
     }
+    
+    public boolean isIdExist(int id) {
+    	List<User> ulist = userDao.selectById(id);
+    	if(!ulist.isEmpty()) return true;
+    	return false;
+    }
 }

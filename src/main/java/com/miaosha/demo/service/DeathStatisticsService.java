@@ -28,4 +28,12 @@ public class DeathStatisticsService {
     public List<DeathStatistics> selectByKey(String key) {return dsdao.selectByKey(key);}
 
     public List<DeathStatistics> selectByUnit(String reporting_unit){return dsdao.selectByUnit(reporting_unit);}
+    
+    public void deleteByKey(String key) {
+    	dsdao.deleteByKey(key);
+    }
+    
+    public void updateByKey(DeathStatistics ds) {
+    	dsdao.updateByKey(ds);
+    }
 }

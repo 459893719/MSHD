@@ -30,4 +30,12 @@ public class CollapseRecordService {
     public List<CollapseRecord> selectByKey(String key) {return crdao.selectByKey(key);}
 
     public List<CollapseRecord> selectByUnit(String reporting_unit){return crdao.selectByUnit(reporting_unit);}
+    
+    public void deleteByKey(String key) {
+    	crdao.deleteByKey(key);
+    }
+    
+    public void updateByKey(CollapseRecord cr) {
+    	crdao.updateByKey(cr);
+    }
 }

@@ -1,12 +1,15 @@
 package com.miaosha.demo.dao;
 
+import com.miaosha.demo.domain.DeathStatistics;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.domain.DisasterRequest;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -38,4 +41,11 @@ public interface DisasterDao {
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<Disaster> list);
+    
+    @Delete("delete from comm_disaster where 'key' = #{key}")
+    public void deleteByKey(@Param("key") String key);
+    
+    @Update("update collapse_record SET id=#{disaster.id},date=#{disaster.date},location=#{disaster.location},type=#{disaster.type},grade=#{disaster.grade},"
+    		+ "picture=#{disaster.picture},note=#{disaster.note},reporting_unit=#{disaster.reporting_unit} where `key` = #{disaster.key} ")
+    public void updateByKey(@Param("disaster") Disaster disaster);
 }

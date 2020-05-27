@@ -2,10 +2,13 @@ package com.miaosha.demo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import com.miaosha.demo.domain.DisasterPrediction;
 import com.miaosha.demo.domain.DisasterRequest;
 
 public interface DisasterRequestDao {
@@ -20,4 +23,9 @@ public interface DisasterRequestDao {
     @Select("select * from disaster_request where `key` = #{key}")
     public List<DisasterRequest> selectByKey(@Param("key") String key);
     
+    @Delete("delete from disaster_request where 'key' = #{key}")
+    public void deleteByKey(@Param("key") String key);
+    
+    @Update("update collapse_record SET status=#{dr.status} where `key` = #{item.key} ")
+    public void updateByKey(@Param("dr") DisasterRequest dr);
 }

@@ -2,9 +2,11 @@ package com.miaosha.demo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.miaosha.demo.domain.DeathStatistics;
 
@@ -34,4 +36,10 @@ public interface DeathStatisticsDao {
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<DeathStatistics> list);
+    
+    @Delete("delete from death_statistics where 'key' = #{key}")
+    public void deleteByKey(@Param("key") String key);
+    
+    @Update("update collapse_record SET id=#{ds.id},location=#{ds.location},date=#{ds.date},number=#{ds.number},reporting_unit=#{ds.reporting_unit} where `key` = #{ds.key} ")
+    public void updateByKey(@Param("ds") DeathStatistics ds);
 }

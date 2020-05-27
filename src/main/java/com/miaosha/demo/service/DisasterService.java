@@ -33,4 +33,12 @@ public class DisasterService {
         if(s.equals("")) return false;
         else return true;
     }
+    
+    public void deleteByKey(String key) {
+    	disasterDao.deleteByKey(key);
+    }
+    
+    public void updateByKey(Disaster d) {
+    	disasterDao.updateByKey(d);
+    }
 }

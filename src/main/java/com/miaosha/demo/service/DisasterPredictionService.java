@@ -30,4 +30,12 @@ public class DisasterPredictionService {
     public List<DisasterPrediction> selectByKey(String key) {return dpdao.selectByKey(key);}
 
     public List<DisasterPrediction> selectByUnit(String reporting_unit){return dpdao.selectByUnit(reporting_unit);}
+    
+    public void deleteByKey(String key) {
+    	dpdao.deleteByKey(key);
+    }
+    
+    public void updateByKey(DisasterPrediction dp) {
+    	dpdao.updateByKey(dp);
+    }
 }

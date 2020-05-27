@@ -25,6 +25,14 @@ public class CivilStructureService {
         csdao.Insert(cs);
     }
     
+    public void deleteByKey(String key) {
+    	csdao.deleteByKey(key);
+    }
+    
+    public void updateByKey(CivilStructure cs) {
+    	csdao.updateByKey(cs);
+    }
+    
     public List<CivilStructure> selectByKey(String key) {return csdao.selectByKey(key);}
 
     public List<CivilStructure> selectByUnit(String reporting_unit){return csdao.selectByUnit(reporting_unit);}

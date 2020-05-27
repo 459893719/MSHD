@@ -20,5 +20,12 @@ public class DisasterRequestService {
     }
     
     public List<DisasterRequest> selectByKey(String key) {return drdao.selectByKey(key);}
-
+    
+    public void updateByKey(DisasterRequest dr) {
+    	drdao.updateByKey(dr);
+    }
+    
+    public void deleteByKey(String key) {
+    	drdao.deleteByKey(key);
+    }
 }
