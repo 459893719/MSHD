@@ -25,7 +25,7 @@ public interface CivilStructureDao {
     @Select("select * from civil_structure where `key` = #{key}")
     public List<CivilStructure> selectByKey(@Param("key") String key);
     
-    @Delete("delete from civil_structure where 'key' = #{key}")
+    @Delete("delete from civil_structure where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
     @Update("update civil_structure SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square}"

@@ -39,10 +39,9 @@ public class selectByTypeTest {
     DisasterDao dd;
     @Test
     public void t() {
-    	List<Disaster> disaster = disasterService.selectAll();
-    	System.out.println(disaster.get(0).toString());
-    	if(disaster==null) fail();
-    	else System.out.println(disaster.get(0).toString());
+    	dd.deleteByKey("2");
     }
+    
+    
 
 }

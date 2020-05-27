@@ -23,9 +23,9 @@ public interface DisasterRequestDao {
     @Select("select * from disaster_request where `key` = #{key}")
     public List<DisasterRequest> selectByKey(@Param("key") String key);
     
-    @Delete("delete from disaster_request where 'key' = #{key}")
+    @Delete("delete from disaster_request where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
-    @Update("update collapse_record SET status=#{dr.status} where `key` = #{item.key} ")
+    @Update("update disaster_request SET status=#{dr.status} where `key` = #{item.key} ")
     public void updateByKey(@Param("dr") DisasterRequest dr);
 }

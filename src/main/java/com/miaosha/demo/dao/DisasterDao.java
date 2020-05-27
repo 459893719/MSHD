@@ -42,10 +42,10 @@ public interface DisasterDao {
     })
     public boolean insertForeach(@Param(value = "list") List<Disaster> list);
     
-    @Delete("delete from comm_disaster where 'key' = #{key}")
+    @Delete("delete from comm_disaster where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
-    @Update("update collapse_record SET id=#{disaster.id},date=#{disaster.date},location=#{disaster.location},type=#{disaster.type},grade=#{disaster.grade},"
+    @Update("update comm_disaster SET id=#{disaster.id},date=#{disaster.date},location=#{disaster.location},type=#{disaster.type},grade=#{disaster.grade},"
     		+ "picture=#{disaster.picture},note=#{disaster.note},reporting_unit=#{disaster.reporting_unit} where `key` = #{disaster.key} ")
     public void updateByKey(@Param("disaster") Disaster disaster);
 }

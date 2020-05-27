@@ -37,9 +37,9 @@ public interface DeathStatisticsDao {
     })
     public boolean insertForeach(@Param(value = "list") List<DeathStatistics> list);
     
-    @Delete("delete from death_statistics where 'key' = #{key}")
+    @Delete("delete from death_statistics where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
-    @Update("update collapse_record SET id=#{ds.id},location=#{ds.location},date=#{ds.date},number=#{ds.number},reporting_unit=#{ds.reporting_unit} where `key` = #{ds.key} ")
+    @Update("update death_statistics SET id=#{ds.id},location=#{ds.location},date=#{ds.date},number=#{ds.number},reporting_unit=#{ds.reporting_unit} where `key` = #{ds.key} ")
     public void updateByKey(@Param("ds") DeathStatistics ds);
 }
