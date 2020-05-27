@@ -39,7 +39,7 @@ public interface CollapseRecordDao {
     })
     public boolean insertForeach(@Param(value = "list") List<CollapseRecord> list);
     
-    @Delete("delete from collapse_record where 'key' = #{key}")
+    @Delete("delete from collapse_record where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
     @Update("update collapse_record SET id = #{cr.id},location=#{cr.location},date=#{cr.date},type=#{cr.type},status=#{cr.status},note=#{cr.note},picture=#{cr.picture},reporting_unit=#{cr.reporting_unit} where `key` = #{cr.key} ")

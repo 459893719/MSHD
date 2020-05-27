@@ -39,10 +39,10 @@ public interface DisasterPredictionDao {
     })
     public boolean insertForeach(@Param(value = "list") List<DisasterPrediction> list);
     
-    @Delete("delete from disaster_prediction where 'key' = #{key}")
+    @Delete("delete from disaster_prediction where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
     
-    @Update("update collapse_record SET id=#{item.id}, date=#{item.date}, location=#{item.location}, longitude=#{item.longitude}, latitude=#{item.latitude}, depth=#{item.depth}, "
+    @Update("update disaster_prediction SET id=#{item.id}, date=#{item.date}, location=#{item.location}, longitude=#{item.longitude}, latitude=#{item.latitude}, depth=#{item.depth}, "
     		+ "magnitude=#{item.magnitude}, intensity=#{item.intensity}, type=#{item.type}, picture=#{item.picture}, note=#{item.note}, reporting_unit#{item.reporting_unit} where `key` = #{item.key} ")
     public void updateByKey(@Param("item") DisasterPrediction item);
 }

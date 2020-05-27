@@ -43,6 +43,13 @@ public class DatashowController {
     public Disaster commdisasterquery(@RequestParam("id") String id) {
     	return disasterService.selectByKey(id).get(0);
     }    
+    
+    //CommDisaster delete
+    @RequestMapping(value = "/CommDisaster/delete", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void commdisasterdelete(@RequestParam("id") String id) {
+    	disasterService.deleteByKey(id);
+    }
 
     // death_statistics表
     @Autowired
