@@ -11,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ReadDataTest {
+	/*
     @Test
     public void testJsonread() {
         OperateJsonFile a = new OperateJsonFile();
@@ -44,7 +45,7 @@ public class ReadDataTest {
             fail("DataRead has exception:"+e.getStackTrace());
         }
     }
-
+*/
     @Test
     public void testisDatasourceInput() {
         DisasterService a = new DisasterService();

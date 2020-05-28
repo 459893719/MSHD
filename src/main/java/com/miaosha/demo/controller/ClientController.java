@@ -3,6 +3,7 @@ package com.miaosha.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.miaosha.demo.domain.*;
+import com.miaosha.demo.json.OperateJsonFile;
 import com.miaosha.demo.service.DisasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -28,12 +29,15 @@ public class ClientController {
 
     @Autowired
     DisasterService disasterService;
+    
+    OperateJsonFile op;
 
     //客户端主页
     @RequestMapping("/")
     public String home(){
         return "Client_index";
     }
+    
 
     //登录
     @RequestMapping(value = "/login",method = RequestMethod.GET)
@@ -75,7 +79,11 @@ public class ClientController {
     //下载文件
     @RequestMapping("/download")
     @ResponseBody
-    public ResponseEntity<byte[]> testResponseEntity(@RequestParam("disasterOptions") String disasterOptions, HttpSession session) throws IOException {
+    //ResponseEntity<byte[]>
+    public  void testResponseEntity(@RequestParam("disasterOptions") String disasterOptions,
+                                                     @RequestParam("url") String url,
+                                                     HttpSession session) throws IOException {
+        OperateJsonFile op = new OperateJsonFile();
         byte [] body = null;
         String str = "";
         switch (disasterOptions){
@@ -104,6 +112,11 @@ public class ClientController {
             case ("36"):
             case ("37"):
                 List<Disaster> disasters  = disasterService.selectAll();
+                try {
+                    op.write_disaster(disasters, url + "/comm_disaster.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 str= JSON.toJSONString(disasters);
                 break;
             case ("4"):
@@ -126,17 +139,19 @@ public class ClientController {
             default:
                 break;
         }
-        InputStream in = new ByteArrayInputStream(str.getBytes());
-        body = new byte[in.available()];
-        in.read(body);
+//        InputStream in = new ByteArrayInputStream(str.getBytes());
+//        body = new byte[in.available()];
+//        in.read(body);
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Content-Disposition", "attachment;filename=data.txt");
+//
+//        HttpStatus statusCode = HttpStatus.OK;
+//
+//        ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(body, headers, statusCode);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Disposition", "attachment;filename=data.txt");
-
-        HttpStatus statusCode = HttpStatus.OK;
-
-        ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(body, headers, statusCode);
-        return response;
+        //导出的后置处理，将记录写入
+        //return response;
     }
 
 }
