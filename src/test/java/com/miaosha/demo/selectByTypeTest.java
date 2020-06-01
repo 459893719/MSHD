@@ -3,6 +3,7 @@ package com.miaosha.demo;
 import static org.junit.Assert.*;
 
 import com.miaosha.demo.dao.DisasterDao;
+import com.miaosha.demo.dao.DisasterRequestDao;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.service.DisasterService;
 import org.junit.Test;
@@ -37,9 +38,10 @@ public class selectByTypeTest {
     }
     
     DisasterDao dd;
+    DisasterRequestDao dr;
     @Test
     public void t() {
-    	dd.deleteByKey("2");
+    	dr.selectAll();
     }
     
     

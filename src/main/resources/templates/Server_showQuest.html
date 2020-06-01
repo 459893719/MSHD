@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>查看请求信息</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 800px;
+            padding-top: 70px;
+            background-color: rgba(242, 242, 242, 1);
+        }
+
+        .panel-group {
+            max-height: 2000px;
+            overflow: auto;
+        }
+
+        .leftMenu {
+            margin: 10px;
+            margin-top: 5px;
+        }
+
+        .leftMenu .panel-heading {
+            font-size: 14px;
+            padding-left: 20px;
+            height: 36px;
+            line-height: 36px;
+            color: white;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /*转成手形图标*/
+        .leftMenu .panel-heading span {
+            position: absolute;
+            right: 10px;
+            top: 12px;
+        }
+
+        .leftMenu .menu-item-left {
+            padding: 2px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+        }
+
+        .leftMenu .menu-item-left:hover {
+            background: #C4E3F3;
+            border: 1px solid #1E90FF;
+        }
+    </style>
+</head>
+
+<body>
+<!--模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">灾情编号</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">123123123123</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">上报日期</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">2020-02-01 00:00:00</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">地点</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">北京市 郑各庄村 北京邮电大学</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">类型</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">I: 中心控制室</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">破坏等级</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">IV: 严重破坏</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">典型照片</label>
+                        <div class="col-sm-10">
+                            <img th:src="@{/static/test.jpg}" alt="图片">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">灾情描述</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">上报单位</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">北京市公安局</p>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 导航栏 -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">多源异构灾情数据综合管理系统</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/}">首页</a></li>
+                <li><a th:href="@{/datashow}">查看灾情信息</a></li>
+                <li><a th:href="Client_Export.html">导出数据</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="Client_Login.html">注销</a></li>
+                <li><a href="#">用户</a></li>
+
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <!-- 灾情信息表格 -->
+                <div class="col-md-9 column"
+                     style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1)">
+                    <blockquote class="page-header" style="border-left:5px solid #FF3030">
+                        <p>
+                            请求信息
+                        </p>
+                    </blockquote>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>灾情类型</th>
+                            <th>URL</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="quest : ${quests}">
+							<th th:text="${quest.disaster_type}"style='vertical-align: middle;text-align: center;'>123</th>
+							<th th:text="${quest.o_url}"style='vertical-align: middle;text-align: center;'>123</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 灾情分类菜单 -->
+                <div class="col-md-3 column"
+                     style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
+                    <blockquote class="page-header" style="border-left:5px solid #FF3030">
+                        <p>
+                            灾情信息分类
+                        </p>
+                    </blockquote>
+                    <div class="panel-group table-responsive" role="tablist">
+                        <div class="panel panel-primary leftMenu">
+                            <!-- 利用data-target指定要折叠的分组列表 -->
+                            <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
+                                 data-target="#collapseListGroup1" role="tab">
+                                <h4 class="panel-title">
+                                    人员伤亡及失踪
+                                    <span class="glyphicon glyphicon-chevron-up right"></span>
+                                </h4>
+                            </div>
+                            <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                            <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="collapseListGroupHeading1">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">死亡</a>
+                                    <a href="#" class="list-group-item">受伤</a>
+                                    <a href="#" class="list-group-item">失踪</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--panel end-->
+                        <div class="panel panel-primary leftMenu">
+                            <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse"
+                                 data-target="#collapseListGroup2" role="tab">
+                                <h4 class="panel-title">
+                                    房屋破坏
+                                    <span class="glyphicon glyphicon-chevron-up right"></span>
+                                </h4>
+                            </div>
+                            <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="collapseListGroupHeading2">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">土木</a>
+                                    <a href="#" class="list-group-item">砖木</a>
+                                    <a href="#" class="list-group-item">砖混</a>
+                                    <a href="#" class="list-group-item">框架</a>
+                                    <a href="#" class="list-group-item">其他</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary leftMenu">
+                            <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse"
+                                 data-target="#collapseListGroup3" role="tab">
+                                <h4 class="panel-title">
+                                    生命线工程灾情
+                                    <span class="glyphicon glyphicon-chevron-up right"></span>
+                                </h4>
+                            </div>
+                            <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="collapseListGroupHeading3">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">交通</a>
+                                    <a href="#" class="list-group-item">供水</a>
+                                    <a href="#" class="list-group-item">输油</a>
+                                    <a href="#" class="list-group-item">燃气</a>
+                                    <a href="#" class="list-group-item">电力</a>
+                                    <a href="#" class="list-group-item">通信</a>
+                                    <a href="#" class="list-group-item">水利</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary leftMenu">
+                            <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse"
+                                 data-target="#collapseListGroup4" role="tab">
+                                <h4 class="panel-title">
+                                    次生灾害
+                                    <span class="glyphicon glyphicon-chevron-up right"></span>
+                                </h4>
+                            </div>
+                            <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="collapseListGroupHeading4">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">崩塌</a>
+                                    <a href="#" class="list-group-item">滑坡</a>
+                                    <a href="#" class="list-group-item">泥石流</a>
+                                    <a href="#" class="list-group-item">岩溶塌陷</a>
+                                    <a href="#" class="list-group-item">地裂缝</a>
+                                    <a href="#" class="list-group-item">地面沉降</a>
+                                    <a href="#" class="list-group-item">其他</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary leftMenu">
+                            <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse"
+                                 data-target="#collapseListGroup5" role="tab">
+                                <h4 class="panel-title">
+                                    震情
+                                    <span class="glyphicon glyphicon-chevron-up right"></span>
+                                </h4>
+                            </div>
+                            <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="collapseListGroupHeading5">
+                                <div class="list-group">
+
+                                    <a href="#" class="list-group-item">基本</a>
+                                    <a href="#" class="list-group-item">灾情预测</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/.sidebar-offcanvas-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<hr>
+
+<footer class="navbar-fixed-bottom">
+    <div class="container">
+        <p>&copy; 2016 Company, Inc.</p>
+    </div>
+</footer>
+
+</div>
+<!--/.container-->
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+        $(".panel-heading").click(function (e) {
+            /*切换折叠指示图标*/
+            $(this).find("span").toggleClass("glyphicon-chevron-down");
+            $(this).find("span").toggleClass("glyphicon-chevron-up");
+        });
+    });
+</script>
+</body>
+
+</html>

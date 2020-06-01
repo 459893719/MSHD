@@ -18,16 +18,29 @@ import com.miaosha.demo.domain.CollapseRecord;
 import com.miaosha.demo.domain.DeathStatistics;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.domain.DisasterPrediction;
+import com.miaosha.demo.domain.DisasterRequest;
 import com.miaosha.demo.service.CivilStructureService;
 import com.miaosha.demo.service.CollapseRecordService;
 import com.miaosha.demo.service.DeathStatisticsService;
 import com.miaosha.demo.service.DisasterPredictionService;
+import com.miaosha.demo.service.DisasterRequestService;
 import com.miaosha.demo.service.DisasterService;
 
 @Controller
 public class DatashowController {
 	
 	// comm_disaster 表
+
+	@Autowired
+    DisasterRequestService drservice;
+    @RequestMapping(value = "/showQuest")
+    public String showQuest(Model model){
+    	List<DisasterRequest> drlist;
+    	drlist = drservice.selectAll();
+        model.addAttribute("quests",drlist);
+        return "Server_showQuest";
+    }
+    
     @Autowired
     DisasterService disasterService;
     List<Disaster> disasterlist = null;
