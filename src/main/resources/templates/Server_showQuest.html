@@ -59,74 +59,6 @@
 </head>
 
 <body>
-<!--模态框-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">详细信息</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">灾情编号</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">123123123123</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">上报日期</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">2020-02-01 00:00:00</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">地点</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">北京市 郑各庄村 北京邮电大学</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">类型</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">I: 中心控制室</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">破坏等级</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">IV: 严重破坏</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">典型照片</label>
-                        <div class="col-sm-10">
-                            <img th:src="@{/static/test.jpg}" alt="图片">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">灾情描述</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">上报单位</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">北京市公安局</p>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- 导航栏 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -143,20 +75,21 @@
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a th:href="@{/}">首页</a></li>
-                <li><a th:href="@{/datashow}">查看灾情信息</a></li>
-                <li><a th:href="Client_Export.html">导出数据</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="Client_Login.html">注销</a></li>
-                <li><a href="#">用户</a></li>
-
-            </ul>
-
-        </div>
-        <!--/.nav-collapse -->
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li ><a href="/adminImportData">导入数据</a></li>
+            <li><a href="/admindataindex">查看灾情信息</a></li>
+            <li class="active"><a href="/adminShowQuest">请求管理</a></li>
+            <li><a href="/adminUserManage">用户管理</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/adminLogout">管理员</a></li>
+            <li><a href="/dataexport"><small>切换到客户端</small></a></li>
+          
+          </ul>
+          
+        </div><!--/.nav-collapse -->
     </div>
 </nav>
 
@@ -193,123 +126,15 @@
                      style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
                     <blockquote class="page-header" style="border-left:5px solid #FF3030">
                         <p>
-                            灾情信息分类
+							常用功能
                         </p>
                     </blockquote>
-                    <div class="panel-group table-responsive" role="tablist">
-                        <div class="panel panel-primary leftMenu">
-                            <!-- 利用data-target指定要折叠的分组列表 -->
-                            <div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
-                                 data-target="#collapseListGroup1" role="tab">
-                                <h4 class="panel-title">
-                                    人员伤亡及失踪
-                                    <span class="glyphicon glyphicon-chevron-up right"></span>
-                                </h4>
-                            </div>
-                            <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                            <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="collapseListGroupHeading1">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">死亡</a>
-                                    <a href="#" class="list-group-item">受伤</a>
-                                    <a href="#" class="list-group-item">失踪</a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <!--panel end-->
-                        <div class="panel panel-primary leftMenu">
-                            <div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse"
-                                 data-target="#collapseListGroup2" role="tab">
-                                <h4 class="panel-title">
-                                    房屋破坏
-                                    <span class="glyphicon glyphicon-chevron-up right"></span>
-                                </h4>
-                            </div>
-                            <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="collapseListGroupHeading2">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">土木</a>
-                                    <a href="#" class="list-group-item">砖木</a>
-                                    <a href="#" class="list-group-item">砖混</a>
-                                    <a href="#" class="list-group-item">框架</a>
-                                    <a href="#" class="list-group-item">其他</a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary leftMenu">
-                            <div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse"
-                                 data-target="#collapseListGroup3" role="tab">
-                                <h4 class="panel-title">
-                                    生命线工程灾情
-                                    <span class="glyphicon glyphicon-chevron-up right"></span>
-                                </h4>
-                            </div>
-                            <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="collapseListGroupHeading3">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">交通</a>
-                                    <a href="#" class="list-group-item">供水</a>
-                                    <a href="#" class="list-group-item">输油</a>
-                                    <a href="#" class="list-group-item">燃气</a>
-                                    <a href="#" class="list-group-item">电力</a>
-                                    <a href="#" class="list-group-item">通信</a>
-                                    <a href="#" class="list-group-item">水利</a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary leftMenu">
-                            <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse"
-                                 data-target="#collapseListGroup4" role="tab">
-                                <h4 class="panel-title">
-                                    次生灾害
-                                    <span class="glyphicon glyphicon-chevron-up right"></span>
-                                </h4>
-                            </div>
-                            <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="collapseListGroupHeading4">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">崩塌</a>
-                                    <a href="#" class="list-group-item">滑坡</a>
-                                    <a href="#" class="list-group-item">泥石流</a>
-                                    <a href="#" class="list-group-item">岩溶塌陷</a>
-                                    <a href="#" class="list-group-item">地裂缝</a>
-                                    <a href="#" class="list-group-item">地面沉降</a>
-                                    <a href="#" class="list-group-item">其他</a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary leftMenu">
-                            <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse"
-                                 data-target="#collapseListGroup5" role="tab">
-                                <h4 class="panel-title">
-                                    震情
-                                    <span class="glyphicon glyphicon-chevron-up right"></span>
-                                </h4>
-                            </div>
-                            <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel"
-                                 aria-labelledby="collapseListGroupHeading5">
-                                <div class="list-group">
-
-                                    <a href="#" class="list-group-item">基本</a>
-                                    <a href="#" class="list-group-item">灾情预测</a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <ul class="list-group">
+						<li class="list-group-item"><a href="/adminImportData">导入数据</a></li>
+			            <li class="list-group-item"><a href="/admindataindex">查看灾情信息</a></li>
+            			<li class="list-group-item"><a href="/adminShowQuest">请求管理</a></li>
+            			<li class="list-group-item"><a href="/adminUserManage">用户管理</a></li>
+					</ul>
 
                 </div>
                 <!--/.sidebar-offcanvas-->
@@ -324,7 +149,7 @@
 
 <footer class="navbar-fixed-bottom">
     <div class="container">
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2020 SPM, 17组.</p>
     </div>
 </footer>
 

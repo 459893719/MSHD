@@ -32,43 +32,10 @@ public class ClientController {
     
     OperateJsonFile op;
 
-    //客户端主页
-    @RequestMapping("/")
-    public String home(){
-        return "Client_index";
-    }
-    
-
-    //登录
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String loginForm(){
-        return "Client_Login";
-    }
-
-    @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public String isLogin(@RequestParam("username") String username,
-                        @RequestParam("password") String password, Model model){
-        if(password.equals("1") && username.equals("test")){
-            return "Client_index";
-        }
-        else
-            return "error";
-    }
     /*
     主页导航按钮
      */
 
-    //注销
-    @RequestMapping("/logout")
-    public String logout(){
-        return "Client_Login";
-    }
-
-    @RequestMapping("/dataindex")
-    public String dataindex(){
-        return "Client_InforIndex";
-    }
-    
     //导出数据
     @RequestMapping("/dataexport")
     public String exportData(){

@@ -28,20 +28,17 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" th:href="@{/}">多源异构灾情数据综合管理系统</a>
+			<a class="navbar-brand" th:href="@{dataexport}">多源异构灾情数据综合管理系统</a>
 		</div>
 
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li ><a th:href="@{/}">首页</a></li>
-				<li><a th:href="@{/dataindex}">查看灾情信息</a></li>
 				<li class="active"><a th:href="@{dataexport}">导出数据</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="/logout">注销</a></li>
-				<li><a href="#">用户</a></li>
-
+				<li class="active"><a href="#">客户端</a></li>
+				<li><a href="/"><small>切换到管理端</small></a></li>
 			</ul>
 
 		</div>
@@ -141,7 +138,7 @@
 </div>
    <footer class="navbar-fixed-bottom">
 		<div class="container">
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>&copy; 2020 SPM, 17组.</p>
 		</div>
       </footer>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,15 +31,29 @@ public class ServerController {
     //有五个Service
     @Autowired
     DisasterService disasterService;
-
+        
     OperateJsonFile op;
     
+    
+    
+    @RequestMapping(value = "/submit",method = RequestMethod.POST)
+    public String isLogin(@RequestParam("username") String username,
+                        @RequestParam("password") String password, Model model){
+        if(password.equals("1") && username.equals("test")){
+            return "Server_index";
+        }
+        else
+            return "error";
+    }
+    
+    
     //管理员主页
-    @RequestMapping("/admin")
+    @RequestMapping("/")
     public String adminHome(){
         return "Server_index";
     }
 
+    
     /*
     主页导航按钮
      */
@@ -48,11 +63,17 @@ public class ServerController {
     public String logout(){
         return "Server_Login";
     }
-
+    
+    //查看灾情信息首页
+    @RequestMapping("/admindataindex")
+    public String dataindex(){
+        return "Server_InforIndex";
+    }
+    
     //查看灾情信息
     @RequestMapping("/adminViewData")
     public String viewData(Model model){
-        return "Client_showInfor";
+        return "Server_showInfor";
     }
     List<User>  usrList=null;
     //用户管理
@@ -62,7 +83,14 @@ public class ServerController {
     	model.addAttribute("User", usrList);
         return "Server_UsrManage";
     }
+    // 上传文件页
+	@RequestMapping(value = "/adminShowQuest")
+	public String showquest() {
+		return "Server_showQuest";
+	}
 
+
+    
     //导入数据
     @RequestMapping("/adminImportData")
     public String exportData(){

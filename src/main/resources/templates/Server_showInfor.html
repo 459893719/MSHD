@@ -22,12 +22,6 @@
 			overflow: auto;
 		}
 
-		.containerstyle {
-			overflow:auto;
-			height:800px;
-			background-color:rgba(255, 255, 255, 1);
-		}
-
 		.leftMenu {
 			margin: 10px;
 			margin-top: 5px;
@@ -65,6 +59,77 @@
 </head>
 
 <body>
+	<!--模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+            </div>
+            <div class="modal-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">灾情编号</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterID">123123123123</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">上报日期</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterDate">2020-02-01 00:00:00</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">地点</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterLocation">北京市 郑各庄村 北京邮电大学</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">类型</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterType">I: 中心控制室</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">破坏等级</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterLevel">IV: 严重破坏</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">典型照片</label>
+						<div class="col-sm-10" id="disasterPicture">
+							<img th:src="@{/static/test.jpg}" alt="图片">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">灾情描述</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterDiscription">
+								  发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
+							</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">上报单位</label>
+						<div class="col-sm-10">
+						  	<p class="form-control-static" id="disasterReportingUnit">北京市公安局</p>
+						</div>
+					</div>
+				</form>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 	<!-- 导航栏 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
@@ -79,21 +144,22 @@
 				<a class="navbar-brand" th:href="@{/}">多源异构灾情数据综合管理系统</a>
 			</div>
 
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a th:href="@{/}">首页</a></li>
-					<li class="active"><a th:href="@{/dataindex}">查看灾情信息</a></li>
-					<li><a th:href="@{/dataexport}">导出数据</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="Client_Login.html">注销</a></li>
-					<li><a href="#">用户</a></li>
-
-				</ul>
-
-			</div>
-			<!--/.nav-collapse -->
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li ><a href="/adminImportData">导入数据</a></li>
+            <li  class="active"><a href="/admindataindex">查看灾情信息</a></li>
+            <li><a href="/adminShowQuest">请求管理</a></li>
+            <li><a href="/adminUserManage">用户管理</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/adminLogout">管理员</a></li>
+            <li><a href="/dataexport"><small>切换到客户端</small></a></li>
+          
+          </ul>
+          
+        </div><!--/.nav-collapse -->
 		</div>
 	</nav>
 
@@ -103,19 +169,35 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<!-- 灾情信息表格 -->
-					<div class="col-md-9 column containerstyle">
+					<div class="col-md-9 column"
+						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1)">
 						<blockquote class="page-header" style="border-left:5px solid #FF3030">
 							<p>
-								查看信息
+								灾情信息
 							</p>
 						</blockquote>
-						<div class="jumbotron text-center">
-							<h2>请选择要查看的灾情信息类型  </h2>
-							<h1><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></h1>
-						</div>
-						
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>上报日期</th>
+									<th>上报单位</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="d : ${disaster}">
+									<th th:text="${d.id}"/>
+									<th th:text="${d.date}"/>
+									<th th:text="${d.reporting_unit}"/>
+									<th><button class="btn btn-primary"  data-target="#myModal" th:onclick='query([[${d.id}]])'>
+										详细信息
+									</button></th>
+								</tr>
+			
+							</tbody>
+						</table>
 					</div>
-					
 					<!-- 灾情分类菜单 -->
 					<div class="col-md-3 column"
 						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
@@ -139,7 +221,7 @@
 									aria-labelledby="collapseListGroupHeading1">
 									<div class="list-group">
 
-										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
+										<a href="#" class="list-group-item">死亡</a>
 										<a href="#" class="list-group-item">受伤</a>
 										<a href="#" class="list-group-item">失踪</a>
 
@@ -160,7 +242,7 @@
 									aria-labelledby="collapseListGroupHeading2">
 									<div class="list-group">
 
-										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
+										<a href="#" class="list-group-item">土木</a>
 										<a href="#" class="list-group-item">砖木</a>
 										<a href="#" class="list-group-item">砖混</a>
 										<a href="#" class="list-group-item">框架</a>
@@ -187,7 +269,7 @@
 										<a href="#" class="list-group-item">输油</a>
 										<a href="#" class="list-group-item">燃气</a>
 										<a href="#" class="list-group-item">电力</a>
-										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
+										<a th:href="@{/showInforTest/202}" class="list-group-item">通信</a>
 										<a href="#" class="list-group-item">水利</a>
 
 
@@ -206,7 +288,7 @@
 									aria-labelledby="collapseListGroupHeading4">
 									<div class="list-group">
 
-										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
+										<a href="#" class="list-group-item">崩塌</a>
 										<a href="#" class="list-group-item">滑坡</a>
 										<a href="#" class="list-group-item">泥石流</a>
 										<a href="#" class="list-group-item">岩溶塌陷</a>
@@ -231,7 +313,7 @@
 									<div class="list-group">
 
 										<a href="#" class="list-group-item">基本</a>
-										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
+										<a href="#" class="list-group-item">灾情预测</a>
 
 
 									</div>
@@ -240,7 +322,9 @@
 						</div>
 
 					</div>
+					<!--/.sidebar-offcanvas-->
 				</div>
+				<!--/row-->
 			</div>
 		</div>
 	</div>
@@ -250,7 +334,7 @@
 
 	<footer class="navbar-fixed-bottom">
 		<div class="container">
-			<p>&copy; 2016 Company, Inc.</p>
+			<p>&copy;2020 SPM, 17组.</p>
 		</div>
 	</footer>
 
@@ -270,6 +354,45 @@
 				$(this).find("span").toggleClass("glyphicon-chevron-up");
 			});
 		});
+
+		//查询单个
+		function query(id) {
+
+			console.log(id)
+			$.ajax({
+				url : "/CommDisaster/query",
+				async : true,
+				type : "POST",
+				data : {
+					//"type" : "query",
+					"id" : id
+				},
+				// 成功后开启模态框
+				success : showQuery,
+				error : function() {
+					alert("查看信息失败");
+				},
+				dataType : "json"
+			});
+		}
+
+		// 查询成功后向模态框插入数据并开启模态框。data是返回的JSON对象
+		function showQuery(data) {
+			
+			//将data中的每个属性放到modal中
+			$("#disasterID").text(data.id);
+			$("#disasterDate").text(data.date);
+			$("#disasterLocation").text(data.location);
+			$("#disasterType").text(data.type);
+			$("#disasterLevel").text(data.grade);
+			$("#disasterPicture").text(data.picture);
+			$("#disasterDiscription").text(data.note);
+			$("#disasterReportingUnit").text(data.reporting_unit);
+			
+
+			// 显示模态框
+			$('#myModal').modal('show');
+		}
 	</script>
 </body>
 
