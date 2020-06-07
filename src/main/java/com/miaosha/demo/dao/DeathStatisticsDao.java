@@ -12,8 +12,8 @@ import com.miaosha.demo.domain.DeathStatistics;
 
 
 public interface DeathStatisticsDao {
-    @Insert("INSERT INTO death_statistics(`key`, `id`, `location`, `date`, `number`, `reporting_unit`) VALUES " +
-            "(#{ds.key},#{ds.id},#{ds.location},#{ds.date}," +
+    @Insert("INSERT INTO death_statistics(`id`, `location`, `date`, `number`, `reporting_unit`) VALUES " +
+            "(#{ds.id},#{ds.location},#{ds.date}," +
             "#{ds.number},#{ds.reporting_unit})")
     public void Insert(@Param("ds") DeathStatistics ds);
 
@@ -29,16 +29,29 @@ public interface DeathStatisticsDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO death_statistics(`key`, `id`, `location`, `date`, `number`, `reporting_unit`) VALUES",
+     "INSERT INTO death_statistics(`id`, `location`, `date`, `number`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
-     "(#{item.key}, #{item.id}, #{item.location}, #{item.date}, #{item.number}, #{item.reporting_unit})",
+     "(#{item.id}, #{item.location}, #{item.date}, #{item.number}, #{item.reporting_unit})",
      "</foreach>",
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<DeathStatistics> list);
     
+    @Insert({
+        "<script>",
+        "INSERT INTO death_statistics_b(`id`, `location`, `date`, `number`, `reporting_unit`) VALUES",
+        "<foreach collection='list' item='item' index='index' separator=','>",
+        "(#{item.id}, #{item.location}, #{item.date}, #{item.number}, #{item.reporting_unit})",
+        "</foreach>",
+        "</script>"
+       })
+    public boolean beifen(@Param(value = "list") List<DeathStatistics> list);
+    
     @Delete("delete from death_statistics where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
+    
+    @Delete("delete from death_statistics")
+    public void deleteAll();    
     
     @Update("update death_statistics SET id=#{ds.id},location=#{ds.location},date=#{ds.date},number=#{ds.number},reporting_unit=#{ds.reporting_unit} where `key` = #{ds.key} ")
     public void updateByKey(@Param("ds") DeathStatistics ds);

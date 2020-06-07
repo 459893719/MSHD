@@ -109,14 +109,20 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>灾情类型</th>
-                            <th>URL</th>
+                            <th style='vertical-align: middle;text-align: center;'>申请单位</th>
+                            <th style='vertical-align: middle;text-align: center;'>灾情类型</th>
+                            <th style='vertical-align: middle;text-align: center;'>URL</th>
+                            <th style='vertical-align: middle;text-align: center;'>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="quest : ${quests}">
+                            <th th:text="${quest.request_unit}"style='vertical-align: middle;text-align: center;'>123</th>
 							<th th:text="${quest.disaster_type}"style='vertical-align: middle;text-align: center;'>123</th>
 							<th th:text="${quest.o_url}"style='vertical-align: middle;text-align: center;'>123</th>
+                            <th style='vertical-align: middle;text-align: center;'><button class="btn btn-primary"   th:onclick='fasong([[${quest.key}]])'>
+                                发送
+                            </button></th>
                         </tr>
                         </tbody>
                     </table>
@@ -169,6 +175,27 @@
             $(this).find("span").toggleClass("glyphicon-chevron-up");
         });
     });
+    //发送
+    function fasong(key) {
+
+        console.log(key)
+        $.ajax({
+            url : "/showQuest",
+            async : true,
+            type : "PUT",
+            data : {"key" : key},
+            // 成功后开启模态框
+            success : function() {
+                alert("发送成功");
+                window.location.reload();
+            },
+            error : function() {
+                alert("发送成功");
+                window.location.reload();
+            },
+            dataType : "json"
+        });
+    }
 </script>
 </body>
 

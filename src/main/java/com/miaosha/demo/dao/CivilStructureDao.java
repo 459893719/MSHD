@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Update;
 import com.miaosha.demo.domain.CivilStructure;
 
 public interface CivilStructureDao {
-    @Insert("INSERT INTO civil_structure(`key`, `id`, `date`, `location`, `basically_intact_square`, `damaged_square`, `destroyed_square`,`note`, `reporting_unit`) VALUES " +
-            "(#{cs.key},#{cs.id},#{cs.date},#{cs.location},#{cs.basically_intact_square},#{cs.damaged_square}," +
+    @Insert("INSERT INTO civil_structure(`id`, `date`, `location`, `basically_intact_square`, `damaged_square`, `destroyed_square`,`note`, `reporting_unit`) VALUES " +
+            "(#{cs.id},#{cs.date},#{cs.location},#{cs.basically_intact_square},#{cs.damaged_square}," +
             "#{cs.destroyed_square},#{cs.note},#{cs.reporting_unit})")
     public void Insert(@Param("cs") CivilStructure cs);
 
@@ -34,11 +34,24 @@ public interface CivilStructureDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO civil_structure(`key`, `id`, `date`, `location`, `basically_intact_square`, `damaged_square`, `destroyed_square`,`note`, `reporting_unit`) VALUES",
+     "INSERT INTO civil_structure(`id`, `date`, `location`, `basically_intact_square`, `damaged_square`, `destroyed_square`,`note`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
-     "(#{item.key},#{item.id}, #{item.date}, #{item.location}, #{item.basically_intact_square}, #{item.damaged_square}, #{item.destroyed_square}, #{item.note},#{item.reporting_unit})",
+     "(#{item.id}, #{item.date}, #{item.location}, #{item.basically_intact_square}, #{item.damaged_square}, #{item.destroyed_square}, #{item.note},#{item.reporting_unit})",
      "</foreach>",
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<CivilStructure> list);
+    
+    @Insert({
+        "<script>",
+        "INSERT INTO civil_structure_b(`id`, `date`, `location`, `basically_intact_square`, `damaged_square`, `destroyed_square`,`note`, `reporting_unit`) VALUES",
+        "<foreach collection='list' item='item' index='index' separator=','>",
+        "(#{item.id}, #{item.date}, #{item.location}, #{item.basically_intact_square}, #{item.damaged_square}, #{item.destroyed_square}, #{item.note},#{item.reporting_unit})",
+        "</foreach>",
+        "</script>"
+       })
+    public boolean beifen(@Param(value = "list") List<CivilStructure> list);
+    
+    @Delete("delete from civil_structure")
+    public void deleteAll();
 }

@@ -2,38 +2,57 @@ package com.miaosha.demo.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.miaosha.demo.dao.CollapseRecordDao;
 import com.miaosha.demo.dao.DeathStatisticsDao;
+import com.miaosha.demo.domain.CollapseRecord;
 import com.miaosha.demo.domain.DeathStatistics;
 
 @Service
 public class DeathStatisticsService {
-	@Autowired
+	
+	static
 	DeathStatisticsDao dsdao;
 	
-	public List<DeathStatistics> selectAll() {
+	@Autowired
+	DeathStatisticsDao ddd;
+	
+    @PostConstruct
+    public void init() {
+    	dsdao = ddd;
+    }
+    
+	public static List<DeathStatistics> selectAll() {
         return  dsdao.selectAll();
     }
 
-    public boolean insertByJson(List<DeathStatistics> list){
+    public static boolean insertByJson(List<DeathStatistics> list){
         return dsdao.insertForeach(list);
     }
 
-    public void insertOne(DeathStatistics dr){
+    public static void insertOne(DeathStatistics dr){
     	dsdao.Insert(dr);
     }
     
-    public List<DeathStatistics> selectByKey(String key) {return dsdao.selectByKey(key);}
+    public static List<DeathStatistics> selectByKey(String key) {return dsdao.selectByKey(key);}
 
-    public List<DeathStatistics> selectByUnit(String reporting_unit){return dsdao.selectByUnit(reporting_unit);}
+    public static List<DeathStatistics> selectByUnit(String reporting_unit){return dsdao.selectByUnit(reporting_unit);}
     
-    public void deleteByKey(String key) {
+    public static void deleteByKey(String key) {
     	dsdao.deleteByKey(key);
     }
     
-    public void updateByKey(DeathStatistics ds) {
+    public static void updateByKey(DeathStatistics ds) {
     	dsdao.updateByKey(ds);
+    }
+    
+    public static void beifen() {
+    	List<DeathStatistics> list = dsdao.selectAll();
+    	dsdao.beifen(list);
+    	dsdao.deleteAll();
     }
 }

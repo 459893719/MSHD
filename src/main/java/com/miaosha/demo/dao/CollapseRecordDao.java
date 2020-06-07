@@ -12,8 +12,8 @@ import com.miaosha.demo.domain.CivilStructure;
 import com.miaosha.demo.domain.CollapseRecord;
 
 public interface CollapseRecordDao {
-    @Insert("INSERT INTO collapse_record(`key`, `id`, `location`, `date`, `type`, `status`, `note`, `picture`, `reporting_unit`) VALUES " +
-            "(#{cr.key},#{cr.id},#{cr.location},#{cr.date}," +
+    @Insert("INSERT INTO collapse_record(`id`, `location`, `date`, `type`, `status`, `note`, `picture`, `reporting_unit`) VALUES " +
+            "(#{cr.id},#{cr.location},#{cr.date}," +
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") CollapseRecord cr);
 
@@ -31,16 +31,29 @@ public interface CollapseRecordDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO collapse_record(`key`, `id`, `location`, `date`, `type`, `status`, `note`, `picture`, `reporting_unit`) VALUES",
+     "INSERT INTO collapse_record(`id`, `location`, `date`, `type`, `status`, `note`, `picture`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
-     "(#{item.key}, #{item.id}, #{item.location}, #{item.date}, #{item.type}, #{item.status}, #{item.note}, #{item.picture}, #{item.reporting_unit})",
+     "(#{item.id}, #{item.location}, #{item.date}, #{item.type}, #{item.status}, #{item.note}, #{item.picture}, #{item.reporting_unit})",
      "</foreach>",
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<CollapseRecord> list);
     
+    @Insert({
+        "<script>",
+        "INSERT INTO collapse_record_b(`id`, `location`, `date`, `type`, `status`, `note`, `picture`, `reporting_unit`) VALUES",
+        "<foreach collection='list' item='item' index='index' separator=','>",
+        "(#{item.id}, #{item.location}, #{item.date}, #{item.type}, #{item.status}, #{item.note}, #{item.picture}, #{item.reporting_unit})",
+        "</foreach>",
+        "</script>"
+       })
+    public boolean beifen(@Param(value = "list") List<CollapseRecord> list);
+    
     @Delete("delete from collapse_record where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
+    
+    @Delete("delete from collapse_record")
+    public void deleteAll();    
     
     @Update("update collapse_record SET id = #{cr.id},location=#{cr.location},date=#{cr.date},type=#{cr.type},status=#{cr.status},note=#{cr.note},picture=#{cr.picture},reporting_unit=#{cr.reporting_unit} where `key` = #{cr.key} ")
     public void updateByKey(@Param("cr") CollapseRecord cr);

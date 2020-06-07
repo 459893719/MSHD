@@ -2,40 +2,57 @@ package com.miaosha.demo.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.miaosha.demo.dao.CollapseRecordDao;
+import com.miaosha.demo.domain.CivilStructure;
 import com.miaosha.demo.domain.CollapseRecord;
 
 @Service
 public class CollapseRecordService {
-	@Autowired
+	static
 	CollapseRecordDao crdao;
 	
-    public List<CollapseRecord> selectAll() {
+	@Autowired
+	CollapseRecordDao ddd;
+	
+    @PostConstruct
+    public void init() {
+    	crdao = ddd;
+    }
+    
+    public static List<CollapseRecord> selectAll() {
         return  crdao.selectAll();
     }
 
-    public boolean insertByJson(List<CollapseRecord> list){
+    public static boolean insertByJson(List<CollapseRecord> list){
         return crdao.insertForeach(list);
     }
 
-    public void insertOne(CollapseRecord cr){
+    public static void insertOne(CollapseRecord cr){
     	crdao.Insert(cr);
     }
 
-    public List<CollapseRecord> selectByType(String type){return crdao.selectByType(type);}
+    public static List<CollapseRecord> selectByType(String type){return crdao.selectByType(type);}
     
-    public List<CollapseRecord> selectByKey(String key) {return crdao.selectByKey(key);}
+    public static List<CollapseRecord> selectByKey(String key) {return crdao.selectByKey(key);}
 
-    public List<CollapseRecord> selectByUnit(String reporting_unit){return crdao.selectByUnit(reporting_unit);}
+    public static List<CollapseRecord> selectByUnit(String reporting_unit){return crdao.selectByUnit(reporting_unit);}
     
-    public void deleteByKey(String key) {
+    public static void deleteByKey(String key) {
     	crdao.deleteByKey(key);
     }
     
-    public void updateByKey(CollapseRecord cr) {
+    public static void updateByKey(CollapseRecord cr) {
     	crdao.updateByKey(cr);
+    }
+    
+    public static void beifen() {
+    	List<CollapseRecord> list = crdao.selectAll();
+    	crdao.beifen(list);
+    	crdao.deleteAll();
     }
 }

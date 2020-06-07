@@ -106,8 +106,8 @@
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
-							<div class="col-sm-9" id="crPicture">
-								<img th:src="@{/static/test.jpg}" alt="图片">
+							<div class="col-sm-9" >
+								<img th:src="@{/image/collapserecord.jpg}" class="img-thumbnail" alt="图片">
 							</div>
 						</div>
 						<div class="form-group">
@@ -179,8 +179,8 @@
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
-							<div class="col-sm-9" id="crPicture2">
-								<img th:src="@{/static/test.jpg}" alt="图片">
+							<div class="col-sm-9" >
+								<img th:src="@{/image/collapserecord.jpg}" class="img-thumbnail" alt="图片">
 							</div>
 						</div>
 						<div class="form-group">
@@ -249,7 +249,7 @@
 						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1)">
 						<blockquote class="page-header" style="border-left:5px solid #FF3030">
 							<p>
-								灾情信息
+								次生灾害 - 崩塌
 							</p>
 						</blockquote>
 						<table class="table table-striped">
@@ -291,7 +291,7 @@
 							</tbody>
 						</table>
 					</div>
-					<!-- 灾情分类菜单 -->
+					<!-- 灾情分类菜单-->
 					<div class="col-md-3 column"
 						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
 						<blockquote class="page-header" style="border-left:5px solid #FF3030">
@@ -313,8 +313,8 @@
 									<div class="list-group">
 
 										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
-										<a href="#" class="list-group-item">受伤</a>
-										<a href="#" class="list-group-item">失踪</a>
+										<a href="/Shoushang/showall" class="list-group-item">受伤</a>
+										<a href="/Shizong/showall" class="list-group-item">失踪</a>
 
 
 									</div>
@@ -334,10 +334,10 @@
 									<div class="list-group">
 
 										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
-										<a href="#" class="list-group-item">砖木</a>
-										<a href="#" class="list-group-item">砖混</a>
-										<a href="#" class="list-group-item">框架</a>
-										<a href="#" class="list-group-item">其他</a>
+										<a href="/Zhuanmu/showall" class="list-group-item">砖木</a>
+										<a href="/Zhuanhun/showall" class="list-group-item">砖混</a>
+										<a href="/Kuangjia/showall" class="list-group-item">框架</a>
+										<a href="/FangwuQita/showall" class="list-group-item">其他</a>
 
 
 									</div>
@@ -355,13 +355,13 @@
 									aria-labelledby="collapseListGroupHeading3">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">交通</a>
-										<a href="#" class="list-group-item">供水</a>
-										<a href="#" class="list-group-item">输油</a>
-										<a href="#" class="list-group-item">燃气</a>
-										<a href="#" class="list-group-item">电力</a>
+										<a href="/Jiaotong/showall" class="list-group-item">交通</a>
+										<a href="/Gongshui/showall" class="list-group-item">供水</a>
+										<a href="/Shuyou/showall" class="list-group-item">输油</a>
+										<a href="/Ranqi/showall" class="list-group-item">燃气</a>
+										<a href="/Dianli/showall" class="list-group-item">电力</a>
 										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
-										<a href="#" class="list-group-item">水利</a>
+										<a href="/Shuili/showall" class="list-group-item">水利</a>
 
 
 									</div>
@@ -380,12 +380,12 @@
 									<div class="list-group">
 
 										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
-										<a href="#" class="list-group-item">滑坡</a>
-										<a href="#" class="list-group-item">泥石流</a>
-										<a href="#" class="list-group-item">岩溶塌陷</a>
-										<a href="#" class="list-group-item">地裂缝</a>
-										<a href="#" class="list-group-item">地面沉降</a>
-										<a href="#" class="list-group-item">其他</a>
+										<a href="/Huapo/showall" class="list-group-item">滑坡</a>
+										<a href="/Nishiliu/showall" class="list-group-item">泥石流</a>
+										<a href="/Yanrongtanta/showall" class="list-group-item">岩溶塌陷</a>
+										<a href="/Diliefeng/showall" class="list-group-item">地裂缝</a>
+										<a href="/Dimianchenjiang/showall" class="list-group-item">地面沉降</a>
+										<a href="/CishengzaihaiQita/showall" class="list-group-item">其他</a>
 
 
 									</div>
@@ -403,7 +403,7 @@
 									aria-labelledby="collapseListGroupHeading5">
 									<div class="list-group">
 
-										<a href="#" class="list-group-item">基本</a>
+										<a href="/ZhenqingJiben/showall" class="list-group-item">基本</a>
 										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
 
 
@@ -413,13 +413,11 @@
 						</div>
 
 					</div>
-					<!--/.sidebar-offcanvas-->
+
 				</div>
 				<!--/row-->
 			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 	<hr>
 
@@ -450,9 +448,9 @@
 		function query(id) {
 			//console.log(id)
 			$.ajax({
-				url: "/CollapseRecord/query", //query请求的URL，待修改
+				url: "/CollapseRecord", //query请求的URL，待修改
 				async: true,
-				type: "POST",
+				type: "GET",
 				data: {
 
 					"id": id
@@ -511,7 +509,7 @@
 		//删除一行数据
 		function deleterow(id) {
 			$.ajax({
-				url: "/CollapseRecord/delete", //query请求的URL，待修改
+				url: "/CollapseRecord", //query请求的URL，待修改
 				async: true,
 				type: "DELETE",
 				data: {
@@ -531,9 +529,9 @@
 
 		function update(id) {
 			$.ajax({
-				url: "/CollapseRecord/query", //query请求的URL，待修改
+				url: "/CollapseRecord", //query请求的URL，待修改
 				async: true,
-				type: "POST",
+				type: "GET",
 				data: {
 
 					"id": id
@@ -578,9 +576,9 @@
 			data["reporting_unit"] = $("#crReportingUnit2").val();
 
 			$.ajax({
-				url:'/CollapseRecord/update',
+				url:'/CollapseRecord',
 				async: true,
-				type:'POST',
+				type:'PUT',
 				dataType:'json',
 				contentType:'application/json;charset=UTF-8',
 				data:JSON.stringify(data),

@@ -31,4 +31,7 @@ public interface UserDao {
     
     @Select("select * from t_user where id=#{id}")
     public List<User> selectById(@Param("id") int id);
+    
+    @Select("select * from t_user where `name`= #{name}")
+    public List<User> selectByUsername(@Param("name") String name);
 }

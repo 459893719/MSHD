@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>查看灾情信息</title>
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		body {
+			min-height: 800px;
+			padding-top: 70px;
+			background-color: rgba(242, 242, 242, 1);
+		}
+
+		.panel-group {
+			max-height: 2000px;
+			overflow: auto;
+		}
+
+		.leftMenu {
+			margin: 10px;
+			margin-top: 5px;
+		}
+
+		.leftMenu .panel-heading {
+			font-size: 14px;
+			padding-left: 20px;
+			height: 36px;
+			line-height: 36px;
+			color: white;
+			position: relative;
+			cursor: pointer;
+		}
+
+		/*转成手形图标*/
+		.leftMenu .panel-heading span {
+			position: absolute;
+			right: 10px;
+			top: 12px;
+		}
+
+		.leftMenu .menu-item-left {
+			padding: 2px;
+			background: transparent;
+			border: 1px solid transparent;
+			border-radius: 6px;
+		}
+
+		.leftMenu .menu-item-left:hover {
+			background: #C4E3F3;
+			border: 1px solid #1E90FF;
+		}
+
+		.mybutton .btn {
+			margin-right: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--模态框-->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpID">123123123123</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpDate">2020-02-01 00:00:00</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpLocation">北京市 郑各庄村 北京邮电大学</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">经度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpLongitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">纬度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpLatitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">深度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpDepth"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">震级</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpMagnitude"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">烈度</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpIntensity"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpType"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" >
+								<img th:src="@{/image/disasterprediction.png}" class="img-thumbnail" alt="图片">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">破坏情况描述</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpDiscription">
+									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
+								</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<p class="form-control-static" id="dpReportingUnit">北京市公安局</p>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--模态框-->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel2">详细信息</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<input type="text" class="form-control" id="dpKey2" style="display: none;">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">灾情编号</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpID2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报日期</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpDate2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">地点</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLocation2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">经度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLongitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">纬度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpLatitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">深度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpDepth2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">震级</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpMagnitude2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">烈度</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpIntensity2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">类型</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpType2" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">典型照片</label>
+							<div class="col-sm-9" id="dpPicture2">
+								<img th:src="@{/static/test.jpg}" alt="图片">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">破坏情况描述</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" rows="3" id="dpDiscription2"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">上报单位</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="dpReportingUnit2" >
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        			<button type="button" class="btn btn-primary" onclick='updateData()'>提交更改</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 导航栏 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">多源异构灾情数据综合管理系统</a>
+			</div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li ><a href="/adminImportData">导入数据</a></li>
+            <li  class="active"><a href="/admindataindex">查看灾情信息</a></li>
+            <li><a href="/adminShowQuest">请求管理</a></li>
+            <li><a href="/adminUserManage">用户管理</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/adminLogout">管理员</a></li>
+            <li><a href="/dataexport"><small>切换到客户端</small></a></li>
+          
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<!-- 灾情信息表格 -->
+					<div class="col-md-9 column"
+						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1)">
+						<blockquote class="page-header" style="border-left:5px solid #FF3030">
+							<p>
+								震情 - 基本
+							</p>
+						</blockquote>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="text-center">编号</th>
+									<th class="text-center">上报日期</th>
+									<th class="text-center">上报单位</th>
+									<th class="text-center">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="dp : ${dplist}">
+									<th th:text="${dp.id}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.date}" style='vertical-align: middle;text-align: center;'>123</th>
+									<th th:text="${dp.reporting_unit}"
+										style='vertical-align: middle;text-align: center;'>123</th>
+									<th style='vertical-align: middle;text-align: center;'>
+										<div class="mybutton">
+											<button class="btn btn-primary" data-target="#myModal"
+												th:onclick='query([[${dp.key}]])'>
+												<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+												详细信息
+											</button>
+											<button class="btn btn-success" data-target="#myModal2"
+												th:onclick='update([[${dp.key}]])'>
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+												编辑
+											</button>
+											<button class="btn btn-danger" th:onclick='deleterow([[${dp.key}]])'>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												删除
+											</button>
+
+										</div>
+									</th>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<!-- 灾情分类菜单-->
+					<div class="col-md-3 column"
+						style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee">
+						<blockquote class="page-header" style="border-left:5px solid #FF3030">
+							<p>
+								灾情信息分类
+							</p>
+						</blockquote>
+						<div class="panel-group table-responsive" role="tablist">
+							<div class="panel panel-primary leftMenu">
+								<div class="panel-heading" id="collapseListGroupHeading1" data-toggle="collapse"
+									data-target="#collapseListGroup1" role="tab">
+									<h4 class="panel-title">
+										人员伤亡及失踪
+										<span class="glyphicon glyphicon-chevron-up right"></span>
+									</h4>
+								</div>
+								<div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="collapseListGroupHeading1">
+									<div class="list-group">
+
+										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
+										<a href="/Shoushang/showall" class="list-group-item">受伤</a>
+										<a href="/Shizong/showall" class="list-group-item">失踪</a>
+
+
+									</div>
+								</div>
+							</div>
+							<!--panel end-->
+							<div class="panel panel-primary leftMenu">
+								<div class="panel-heading" id="collapseListGroupHeading2" data-toggle="collapse"
+									data-target="#collapseListGroup2" role="tab">
+									<h4 class="panel-title">
+										房屋破坏
+										<span class="glyphicon glyphicon-chevron-up right"></span>
+									</h4>
+								</div>
+								<div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="collapseListGroupHeading2">
+									<div class="list-group">
+
+										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
+										<a href="/Zhuanmu/showall" class="list-group-item">砖木</a>
+										<a href="/Zhuanhun/showall" class="list-group-item">砖混</a>
+										<a href="/Kuangjia/showall" class="list-group-item">框架</a>
+										<a href="/FangwuQita/showall" class="list-group-item">其他</a>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-primary leftMenu">
+								<div class="panel-heading" id="collapseListGroupHeading3" data-toggle="collapse"
+									data-target="#collapseListGroup3" role="tab">
+									<h4 class="panel-title">
+										生命线工程灾情
+										<span class="glyphicon glyphicon-chevron-up right"></span>
+									</h4>
+								</div>
+								<div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="collapseListGroupHeading3">
+									<div class="list-group">
+
+										<a href="/Jiaotong/showall" class="list-group-item">交通</a>
+										<a href="/Gongshui/showall" class="list-group-item">供水</a>
+										<a href="/Shuyou/showall" class="list-group-item">输油</a>
+										<a href="/Ranqi/showall" class="list-group-item">燃气</a>
+										<a href="/Dianli/showall" class="list-group-item">电力</a>
+										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
+										<a href="/Shuili/showall" class="list-group-item">水利</a>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-primary leftMenu">
+								<div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse"
+									data-target="#collapseListGroup4" role="tab">
+									<h4 class="panel-title">
+										次生灾害
+										<span class="glyphicon glyphicon-chevron-up right"></span>
+									</h4>
+								</div>
+								<div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="collapseListGroupHeading4">
+									<div class="list-group">
+
+										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
+										<a href="/Huapo/showall" class="list-group-item">滑坡</a>
+										<a href="/Nishiliu/showall" class="list-group-item">泥石流</a>
+										<a href="/Yanrongtanta/showall" class="list-group-item">岩溶塌陷</a>
+										<a href="/Diliefeng/showall" class="list-group-item">地裂缝</a>
+										<a href="/Dimianchenjiang/showall" class="list-group-item">地面沉降</a>
+										<a href="/CishengzaihaiQita/showall" class="list-group-item">其他</a>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-primary leftMenu">
+								<div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse"
+									data-target="#collapseListGroup5" role="tab">
+									<h4 class="panel-title">
+										震情
+										<span class="glyphicon glyphicon-chevron-up right"></span>
+									</h4>
+								</div>
+								<div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="collapseListGroupHeading5">
+									<div class="list-group">
+
+										<a href="/ZhenqingJiben/showall" class="list-group-item">基本</a>
+										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<!--/row-->
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<footer class="navbar-fixed-bottom">
+		<div class="container">
+			<p>&copy; 2020 SPM, 17组.</p>
+		</div>
+	</footer>
+
+	</div>
+	<!--/.container-->
+
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+	<script>
+		$(function () {
+			$(".panel-heading").click(function (e) {
+				/*切换折叠指示图标*/
+				$(this).find("span").toggleClass("glyphicon-chevron-down");
+				$(this).find("span").toggleClass("glyphicon-chevron-up");
+			});
+		});
+
+		//查询单个
+		function query(id) {
+			//console.log(id)
+			$.ajax({
+				url: "/ZhenqingJiben", //query请求的URL，待修改
+				async: true,
+				type: "GET",
+				data: {
+
+					"id": id
+				},
+				// 成功后开启模态框
+				success: showQuery,
+				error: function () {
+					alert("查看信息失败");
+				},
+				dataType: "json"
+			});
+		}
+
+		// 查询成功后向模态框插入数据并开启模态框。data是返回的JSON对象
+		function showQuery(data) {
+			//对type和grade属性做进一步改动
+			var type = parseInt(data.type)
+			var typeprint;
+			switch (type) {
+				case 1: typeprint = "天然地震";
+					break;
+				case 2: typeprint = "人为破坏引发";
+					break;
+				case 3: typeprint = "海啸引发";
+					break;
+				case 4: typeprint = "火山引发";
+					break;
+				case 5: typeprint = "其他";
+					break;
+			}
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
+			$("#dpID").text(data.id);
+			$("#dpDate").text(data.date);
+			$("#dpLocation").text(data.location);
+			$("#dpLongitude").text(data.longitude);
+			$("#dpLatitude").text(data.latitude);
+			$("#dpDepth").text(data.depth);
+			$("#dpMagnitude").text(data.magnitude);
+			$("#dpIntensity").text(data.intensity);
+			$("#dpType").text(typeprint);
+			$("#dpPicture").text(data.picture);
+			$("#dpDiscription").text(data.note);
+			$("#dpReportingUnit").text(data.reporting_unit);
+
+
+			// 显示模态框
+			$('#myModal').modal('show');
+		}
+
+		//删除一行数据
+		function deleterow(id) {
+			$.ajax({
+				url: "/ZhenqingJiben", //query请求的URL，待修改
+				async: true,
+				type: "DELETE",
+				data: {
+					"id": id
+				},
+				// 成功后开启模态框
+				success: function () {
+					alert("删除成功！");
+					window.location.reload();
+				},
+				error: function () {
+					alert("删除失败");
+					window.location.reload();
+				},
+			});
+		}
+
+		function update(id) {
+			$.ajax({
+				url: "/ZhenqingJiben", //query请求的URL，待修改
+				async: true,
+				type: "GET",
+				data: {
+
+					"id": id
+				},
+				// 成功后开启模态框
+				success: showUpdateModal,
+				error: function () {
+					alert("查看信息失败");
+				},
+				dataType: "json"
+			});
+		}
+
+		function showUpdateModal(data) {
+		
+
+			//将data中的每个属性放到modal中，data对象的属性名待修改
+			$("#dpKey2").val(data.key);
+			$("#dpID2").val(data.id);
+			$("#dpDate2").val(data.date);
+			$("#dpLocation2").val(data.location);
+			$("#dpLongitude2").val(data.longitude);
+			$("#dpLatitude2").val(data.latitude);
+			$("#dpDepth2").val(data.depth);
+			$("#dpMagnitude2").val(data.magnitude);
+			$("#dpIntensity2").val(data.intensity);
+			$("#dpType2").val(data.type);
+			$("#dpPicture2").text(data.picture);
+			$("#dpDiscription2").val(data.note);
+			$("#dpReportingUnit2").val(data.reporting_unit);
+
+			// 显示模态框
+			$('#myModal2').modal('show');
+		}
+
+		function updateData(){
+			//将模态框中的数据拿出来，封装成对象传给controller
+			var data={}
+			data["key"] = $("#dpKey2").val();
+			data["id"] = $("#dpID2").val();
+			data["date"] = $("#dpDate2").val();
+			data["location"] = $("#dpLocation2").val();
+			data["longitude"] = $("#dpLongitude2").val();
+			data["latitude"] = $("#dpLatitude2").val();
+			data["depth"] = $("#dpDepth2").val();
+			data["magnitude"] = $("#dpMagnitude2").val();
+			data["intensity"] = $("#dpIntensity2").val();
+			data["type"] = $("#dpType2").val();
+			data["picture"] = $("#dpPicture2").text();
+			data["note"] = $("#dpDiscription2").val();
+			data["reporting_unit"] = $("#dpReportingUnit2").val();
+
+			$.ajax({
+				url:'/ZhenqingJiben',
+				async: true,
+				type:'PUT',
+				dataType:'json',
+				contentType:'application/json;charset=UTF-8',
+				data:JSON.stringify(data),
+				success:function(data,status){
+					alert("修改成功！");
+
+					window.location.reload();
+				},
+				error:function(data,status){
+					alert("修改成功！");
+					window.location.reload();
+				},
+			});
+
+		}
+	</script>
+</body>
+
+</html>

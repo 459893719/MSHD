@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UsrMangerController {
 
-    @Autowired
-    UserService usrService;
-
     @RequestMapping(value = "/adminUserManage/addUser",method = RequestMethod.POST)
     public String addUser(@RequestParam("userid") String idstr,@RequestParam("username") String name, @RequestParam("userpwd") String pwd){
     	if(idstr==""||name==""||pwd=="") {
@@ -28,7 +25,7 @@ public class UsrMangerController {
     	}
     	int id= Integer.parseInt(idstr);
     	User user = new User(id,name,pwd);
-    	usrService.insertUser(user);
+    	UserService.insertUser(user);
         return "redirect:/adminUserManage";
     }
   
@@ -36,13 +33,13 @@ public class UsrMangerController {
     public String searchUser(@RequestParam("searchUser") String idstr,Model model){
     List<User>  usrList=null;
     	if(idstr=="") {
-    		usrList=usrService.selectAll();
+    		usrList=UserService.selectAll();
     		model.addAttribute("User", usrList);
     		return "redirect:/adminUserManage";
     	}
      	
     	int id= Integer.parseInt(idstr);
-    	usrList=usrService.getById(id);
+    	usrList=UserService.getById(id);
     	
 		model.addAttribute("User", usrList);
 		return "redirect:/adminUserManage";
@@ -55,7 +52,7 @@ public class UsrMangerController {
     	}
     	int id= Integer.parseInt(idstr);
     	User user = new User(id,name,pwd);
-    	usrService.modifyById(id, user);
+    	UserService.modifyById(id, user);
     	return "redirect:/adminUserManage";
     }
     @RequestMapping(value = "/adminUserManage/delete")
@@ -63,7 +60,7 @@ public class UsrMangerController {
     	String idstr= request.getParameter("userID");
     	int id= Integer.parseInt(idstr);
  //   	System.out.println(id);
-    	usrService.deleteById(id);
+    	UserService.deleteById(id);
         return "redirect:/adminUserManage";
     }
 

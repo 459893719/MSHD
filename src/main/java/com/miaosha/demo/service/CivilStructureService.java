@@ -2,6 +2,8 @@ package com.miaosha.demo.service;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,30 +13,44 @@ import com.miaosha.demo.domain.CivilStructure;
 @Service
 public class CivilStructureService {
 	@Autowired
+	CivilStructureDao ddd;
+	
+	static
 	CivilStructureDao csdao;
 	
-    public List<CivilStructure> selectAll() {
+    @PostConstruct
+    public void init() {
+    	csdao = ddd;
+    }
+    
+    public static List<CivilStructure> selectAll() {
         return  csdao.selectAll();
     }
 
-    public boolean insertByJson(List<CivilStructure> list){
+    public static boolean insertByJson(List<CivilStructure> list){
         return csdao.insertForeach(list);
     }
 
-    public void insertOne(CivilStructure cs){
+    public static void insertOne(CivilStructure cs){
         csdao.Insert(cs);
     }
     
-    public void deleteByKey(String key) {
+    public static void deleteByKey(String key) {
     	csdao.deleteByKey(key);
     }
     
-    public void updateByKey(CivilStructure cs) {
+    public static void updateByKey(CivilStructure cs) {
     	csdao.updateByKey(cs);
     }
     
-    public List<CivilStructure> selectByKey(String key) {return csdao.selectByKey(key);}
+    public static List<CivilStructure> selectByKey(String key) {return csdao.selectByKey(key);}
 
-    public List<CivilStructure> selectByUnit(String reporting_unit){return csdao.selectByUnit(reporting_unit);}
+    public static List<CivilStructure> selectByUnit(String reporting_unit){return csdao.selectByUnit(reporting_unit);}
+    
+    public static void beifen() {
+    	List<CivilStructure> list = csdao.selectAll();
+    	csdao.beifen(list);
+    	csdao.deleteAll();
+    }
 
 }

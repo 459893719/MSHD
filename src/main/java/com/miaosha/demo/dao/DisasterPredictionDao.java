@@ -13,8 +13,8 @@ import com.miaosha.demo.domain.DisasterPrediction;
 import com.miaosha.demo.domain.DisasterRequest;
 
 public interface DisasterPredictionDao {
-    @Insert("INSERT INTO disaster_prediction(`key`, `id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES " +
-            "(#{item.key}, #{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})")
+    @Insert("INSERT INTO disaster_prediction(`id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES " +
+            "(#{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})")
     public void Insert(@Param("item") DisasterPrediction item);
 
     @Select("select * from disaster_prediction")
@@ -31,16 +31,29 @@ public interface DisasterPredictionDao {
     
     @Insert({
      "<script>",
-     "INSERT INTO disaster_prediction(`key`, `id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES",
+     "INSERT INTO disaster_prediction(`id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES",
      "<foreach collection='list' item='item' index='index' separator=','>",
-     "(#{item.key}, #{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})",
+     "(#{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})",
      "</foreach>",
      "</script>"
     })
     public boolean insertForeach(@Param(value = "list") List<DisasterPrediction> list);
     
+    @Insert({
+        "<script>",
+        "INSERT INTO disaster_prediction_b(`id`, `date`, `location`, `longitude`, `latitude`, `depth`, `magnitude`, `intensity`, `type`, `picture`, `note`, `reporting_unit`) VALUES",
+        "<foreach collection='list' item='item' index='index' separator=','>",
+        "(#{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})",
+        "</foreach>",
+        "</script>"
+       })
+    public boolean beifen(@Param(value = "list") List<DisasterPrediction> list);
+    
     @Delete("delete from disaster_prediction where `key` = #{key}")
     public void deleteByKey(@Param("key") String key);
+    
+    @Delete("delete from disaster_prediction")
+    public void deleteAll();   
     
     @Update("update disaster_prediction SET id=#{item.id}, date=#{item.date}, location=#{item.location}, longitude=#{item.longitude}, latitude=#{item.latitude}, depth=#{item.depth}, "
     		+ "magnitude=#{item.magnitude}, intensity=#{item.intensity}, type=#{item.type}, picture=#{item.picture}, note=#{item.note}, reporting_unit=#{item.reporting_unit} where `key` = #{item.key} ")

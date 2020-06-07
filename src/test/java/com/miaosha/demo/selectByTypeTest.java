@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import com.miaosha.demo.dao.DisasterDao;
 import com.miaosha.demo.dao.DisasterRequestDao;
+import com.miaosha.demo.dao.UserDao;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.service.DisasterService;
 import org.junit.Test;
@@ -39,9 +40,10 @@ public class selectByTypeTest {
     
     DisasterDao dd;
     DisasterRequestDao dr;
+    UserDao d;
     @Test
     public void t() {
-    	dr.selectAll();
+    	//d.selectByUsername("2017211960");
     }
     
     
