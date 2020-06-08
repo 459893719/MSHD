@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -95,17 +96,61 @@ public class ServerController {
         return "Server_UsrManage";
     }
     
+    private  static final HashMap<String,String> mapType = new HashMap<>();
+    static  
+    {  
+    	mapType.put("111", "人员伤亡及失踪:死亡");
+    	mapType.put("112", "人员伤亡及失踪:受伤");
+    	mapType.put("113", "人员伤亡及失踪:失踪");
+    	mapType.put("221", "房屋破坏:土木");
+    	mapType.put("222", "房屋破坏:砖木");
+    	mapType.put("223", "房屋破坏:砖混");
+    	mapType.put("224", "房屋破坏:框架");
+    	mapType.put("225", "房屋破坏:其他");
+    	mapType.put("331", "生命线工程灾情:交通");
+    	mapType.put("332", "生命线工程灾情:供水");
+    	mapType.put("333", "生命线工程灾情:输油");
+    	mapType.put("334", "生命线工程灾情:燃气");
+    	mapType.put("335", "生命线工程灾情:电力");
+    	mapType.put("336", "生命线工程灾情:通信");
+    	mapType.put("337", "生命线工程灾情:水利");
+    	mapType.put("441", "次生灾害:崩塌");
+    	mapType.put("442", "次生灾害:滑坡");
+    	mapType.put("443", "次生灾害:泥石流");
+    	mapType.put("444", "次生灾害:岩溶塌陷");
+    	mapType.put("445", "次生灾害:地裂缝");
+    	mapType.put("446", "次生灾害:地面沉降");
+    	mapType.put("447", "次生灾害:其他");
+    	mapType.put("551", "震情:基本震情");
+    	mapType.put("552", "震情:灾情预测 ");
+    	
+    }
     
     // 展示请求页
     @RequestMapping(value = "/adminShowQuest")
     public String showQuest(Model model){
     	List<DisasterRequest> drlist;
     	drlist = DisasterRequestService.selectNotSend();
+    	for(DisasterRequest d:drlist) {
+    		d.setDisaster_type(mapType.get(d.getDisaster_type()));
+    	}
         model.addAttribute("quests",drlist);
         return "Server_showQuest";
     }
     
-    //下载文件
+    // 展示已完成请求页
+    @RequestMapping(value = "/adminShowFinishedQuest")
+    public String showFinishedQuest(Model model){
+    	List<DisasterRequest> drlist;
+    	drlist = DisasterRequestService.selectSended();
+    	for(DisasterRequest d:drlist) {
+    		d.setDisaster_type(mapType.get(d.getDisaster_type()));
+    	}
+        model.addAttribute("sendedquests",drlist);
+        return "Server_showFinishedQuest";
+    }
+    
+  //下载文件
     @RequestMapping(value = "/showQuest", method = RequestMethod.PUT)
     @ResponseBody
     //ResponseEntity<byte[]>
@@ -118,74 +163,204 @@ public class ServerController {
         byte [] body = null;
         String str = "";
         switch (disasterOptions){
-            case ("1"):
-            case ("11"):
-            case ("12"):
-            case ("13"):
+            case ("111"):
                 List<DeathStatistics> deathStatistics = DeathStatisticsService.selectAll();
                 try {
                     op.export_deathStatistics(deathStatistics, url + "/death_statistics.json");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                str= JSON.toJSONString(deathStatistics);
                 break;
-            case ("2"):
-            case ("21"):
-            case ("22"):
-            case ("23"):
-            case ("24"):
-            case ("25"):
+
+            case ("112"):
+                List<Shoushang> shoushangList = ShoushangService.selectAll();
+                try {
+                    op.export_Shoushang(shoushangList, url + "/Shoushang.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("113"):
+                List<Shizong> ShizongList = ShizongService.selectAll();
+                try {
+                    op.export_Shizong(ShizongList, url + "/Shizong.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ("221"):
                 List<CivilStructure> civilStructures = CivilStructureService.selectAll();
                 try {
                     op.export_civilStructure(civilStructures, url + "/civil_structure.json");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                str= JSON.toJSONString(civilStructures);
                 break;
-            case ("3"):
-            case ("31"):
-            case ("32"):
-            case ("33"):
-            case ("34"):
-            case ("35"):
-            case ("36"):
-            case ("37"):
+            case ("222"):
+                List<Zhuanmu> Zhuanmus = ZhuanmuService.selectAll();
+                try {
+                    op.export_Zhuanmu(Zhuanmus, url + "/Zhuanmu.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("223"):
+                List<Zhuanhun> Zhuanhuns = ZhuanhunService.selectAll();
+                try {
+                    op.export_Zhuanhun(Zhuanhuns, url + "/Zhuanhun.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("224"):
+                List<Kuangjia> Kuangjias = KuangjiaService.selectAll();
+                try {
+                    op.export_Kuangjia(Kuangjias, url + "/Kuangjia.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("225"):
+                List<FangwuQita> FangwuQitas = FangwuQitaService.selectAll();
+                try {
+                    op.export_FangwuQita(FangwuQitas, url + "/FangwuQita.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case ("331"):
+                List<Jiaotong> Jiaotongs = JiaotongService.selectAll();
+                try {
+                    op.export_Jiaotong(Jiaotongs, url + "/Jiaotong.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("332"):
+                List<Gongshui> Gongshuis = GongshuiService.selectAll();
+                try {
+                    op.export_Gongshui(Gongshuis, url + "/Gongshui.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("333"):
+                List<Shuyou> Shuyous = ShuyouService.selectAll();
+                try {
+                    op.export_Shuyou(Shuyous, url + "/Shuyou.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("334"):
+                List<Ranqi> Ranqis = RanqiService.selectAll();
+                try {
+                    op.export_Ranqi(Ranqis, url + "/Ranqi.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("335"):
+                List<Dianli> Dianlis = DianliService.selectAll();
+                try {
+                    op.export_Dianli(Dianlis, url + "/Dianli.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("336"):
                 List<Disaster> disasters  = disasterService.selectAll();
                 try {
                     op.export_disaster(disasters, url + "/comm_disaster.json");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                str= JSON.toJSONString(disasters);
                 break;
-            case ("4"):
-            case ("41"):
-            case ("42"):
-            case ("43"):
-            case ("44"):
-            case ("45"):
-            case ("46"):
-            case ("47"):
+            case ("337"):
+                List<Shuili> ShuiliList = ShuiliService.selectAll();
+                try {
+                    op.export_Shuili(ShuiliList, url + "/Shuili.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+
+            case ("441"):
                 List<CollapseRecord> collapseRecords = CollapseRecordService.selectAll();
                 try {
                     op.export_collapseRecord(collapseRecords, url + "/collapse_record.json");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                str= JSON.toJSONString(collapseRecords);
                 break;
-            case ("5"):
-            case ("51"):
-            case ("52"):
+            case ("442"):
+                List<Huapo> HuapoList = HuapoService.selectAll();
+                try {
+                    op.export_Huapo(HuapoList, url + "/Huapo.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("443"):
+                List<Nishiliu> NishiliuList = NishiliuService.selectAll();
+                try {
+                    op.export_Nishiliu(NishiliuList, url + "/Nishiliu.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("444"):
+                List<Yanrongtanta> YanrongtantaList = YanrongtantaService.selectAll();
+                try {
+                    op.export_Yanrongtanta(YanrongtantaList, url + "/Yanrongtanta.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("445"):
+                List<Diliefeng> DiliefengList = DiliefengService.selectAll();
+                try {
+                    op.export_Diliefeng(DiliefengList, url + "/Diliefeng.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("446"):
+                List<Dimianchenjiang> DimianchenjiangList = DimianchenjiangService.selectAll();
+                try {
+                    op.export_Dimianchenjiang(DimianchenjiangList, url + "/Dimianchenjiang.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("447"):
+                List<CishengzaihaiQita> CishengzaihaiQitaList = CishengzaihaiQitaService.selectAll();
+                try {
+                    op.export_CishengzaihaiQita(CishengzaihaiQitaList, url + "/CishengzaihaiQita.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+
+            case ("551"):
+                List<ZhenqingJiben> ZhenqingJibenList = ZhenqingJibenService.selectAll();
+                try {
+                    op.export_ZhenqingJiben(ZhenqingJibenList, url + "/ZhenqingJiben.json");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case ("552"):
                 List<DisasterPrediction> disasterPredictions = DisasterPredictionService.selectAll();
                 try {
                     op.export_disasterPrediction(disasterPredictions, url + "/disaster_prediction.json");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                str= JSON.toJSONString(disasterPredictions);
                 break;
             default:
                 break;

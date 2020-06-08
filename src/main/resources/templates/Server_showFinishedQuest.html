@@ -103,7 +103,7 @@
                      style="overflow:auto;height:800px;background-color:rgba(255, 255, 255, 1)">
                     <blockquote class="page-header" style="border-left:5px solid #FF3030">
                         <p>
-                            待处理的请求信息
+                            已处理的请求信息
                         </p>
                     </blockquote>
                     <table class="table table-striped">
@@ -112,21 +112,17 @@
                             <th style='vertical-align: middle;text-align: center;'>申请单位</th>
                             <th style='vertical-align: middle;text-align: center;'>灾情类型</th>
                             <th style='vertical-align: middle;text-align: center;'>URL</th>
-                            <th style='vertical-align: middle;text-align: center;'>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="quest : ${quests}">
+                        <tr th:each="quest : ${sendedquests}">
                             <th th:text="${quest.request_unit}"style='vertical-align: middle;text-align: center;'>123</th>
 							<th th:text="${quest.disaster_type}"style='vertical-align: middle;text-align: center;'>123</th>
 							<th th:text="${quest.o_url}"style='vertical-align: middle;text-align: center;'>123</th>
-                            <th style='vertical-align: middle;text-align: center;'><button class="btn btn-primary"   th:onclick='fasong([[${quest.key}]])'>
-                                发送
-                            </button></th>
                         </tr>
                         </tbody>
                     </table>
-                    <a href="/adminShowFinishedQuest"><button class="btn btn-default " >已完成的请求</button>
+                    <a href="/adminShowQuest"><button class="btn btn-default " >未完成的请求</button>
 					</a>
                     
                 </div>

@@ -744,9 +744,37 @@ public class OperateJsonFile {
         writer.close();
     }
 
+
+
     //导出到output文件
-    public void export_disaster(List<Disaster> list, String fileName) throws Exception{
-        String path = "F:/" + fileName;
+    public void export_deathStatistics(List<DeathStatistics> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Shoushang(List<Shoushang> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Shizong(List<Shizong> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
         File file = new File(path);
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdirs();
@@ -759,6 +787,149 @@ public class OperateJsonFile {
     }
 
     public void export_civilStructure(List<CivilStructure> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Zhuanmu(List<Zhuanmu> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Zhuanhun(List<Zhuanhun> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Kuangjia(List<Kuangjia> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_FangwuQita(List<FangwuQita> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Jiaotong(List<Jiaotong> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Gongshui(List<Gongshui> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Shuyou(List<Shuyou> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Ranqi(List<Ranqi> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Dianli(List<Dianli> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_disaster(List<Disaster> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Shuili(List<Shuili> list, String fileName) throws Exception{
         String path = "/home/jar/resource/output/" + fileName;
         File file = new File(path);
         if(!file.getParentFile().exists()){
@@ -784,7 +955,86 @@ public class OperateJsonFile {
         writer.close();
     }
 
-    public void export_deathStatistics(List<DeathStatistics> list, String fileName) throws Exception{
+
+    public void export_Huapo(List<Huapo> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Nishiliu(List<Nishiliu> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Yanrongtanta(List<Yanrongtanta> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Diliefeng(List<Diliefeng> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_Dimianchenjiang(List<Dimianchenjiang> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_CishengzaihaiQita(List<CishengzaihaiQita> list, String fileName) throws Exception{
+        String path = "/home/jar/resource/output/" + fileName;
+        File file = new File(path);
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+        }
+        String jsons = JSON.toJSONString(list);
+        Writer writer = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+        writer.write(jsons);
+        writer.flush();
+        writer.close();
+    }
+
+    public void export_ZhenqingJiben(List<ZhenqingJiben> list, String fileName) throws Exception{
         String path = "/home/jar/resource/output/" + fileName;
         File file = new File(path);
         if(!file.getParentFile().exists()){

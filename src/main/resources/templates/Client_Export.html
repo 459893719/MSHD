@@ -2,7 +2,7 @@
 <html  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8"> 
-	<title>导出数据</title>
+	<title>多源异构灾情数据综合管理系统客户端  - 导出数据</title>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -63,9 +63,9 @@
 							<tr>
 								<th>人员伤亡及失踪</th>
 								<th>
-									<input type="radio" name="disasterOptions" id="optionsRadios11" value="11" checked> 死亡
-									<input type="radio" name="disasterOptions" id="optionsRadios12" value="12" > 受伤
-									<input type="radio" name="disasterOptions" id="optionsRadios13" value="13" > 失踪
+									<input type="radio" name="disasterOptions" id="optionsRadios11" value="111" checked> 死亡
+									<input type="radio" name="disasterOptions" id="optionsRadios12" value="112" > 受伤
+									<input type="radio" name="disasterOptions" id="optionsRadios13" value="113" > 失踪
 								</th>
 							</tr>
 							</thead>
@@ -73,42 +73,42 @@
 							<tr>
 								<th>房屋破坏</th>
 								<th>
-									<input type="radio" name="disasterOptions" id="optionsRadios21" value="21" > 土木
-									<input type="radio" name="disasterOptions" id="optionsRadios22" value="22" > 砖木
-									<input type="radio" name="disasterOptions" id="optionsRadios23" value="23" > 砖混
-									<input type="radio" name="disasterOptions" id="optionsRadios24" value="24" > 框架
-									<input type="radio" name="disasterOptions" id="optionsRadios25" value="25" > 其他
+									<input type="radio" name="disasterOptions" id="optionsRadios21" value="221" > 土木
+									<input type="radio" name="disasterOptions" id="optionsRadios22" value="222" > 砖木
+									<input type="radio" name="disasterOptions" id="optionsRadios23" value="223" > 砖混
+									<input type="radio" name="disasterOptions" id="optionsRadios24" value="224" > 框架
+									<input type="radio" name="disasterOptions" id="optionsRadios25" value="225" > 其他
 								</th>
 							</tr>
 							<tr>
 								<th>生命线工程灾情</th>
 								<th>
-									<input type="radio" name="disasterOptions" id="optionsRadios31" value="31" > 交通
-									<input type="radio" name="disasterOptions" id="optionsRadios32" value="32" > 供水
-									<input type="radio" name="disasterOptions" id="optionsRadios33" value="33" > 输油
-									<input type="radio" name="disasterOptions" id="optionsRadios34" value="34" > 燃气
-									<input type="radio" name="disasterOptions" id="optionsRadios35" value="35" > 电力
-									<input type="radio" name="disasterOptions" id="optionsRadios36" value="36" > 通信
-									<input type="radio" name="disasterOptions" id="optionsRadios37" value="37" > 水利
+									<input type="radio" name="disasterOptions" id="optionsRadios31" value="331" > 交通
+									<input type="radio" name="disasterOptions" id="optionsRadios32" value="332" > 供水
+									<input type="radio" name="disasterOptions" id="optionsRadios33" value="333" > 输油
+									<input type="radio" name="disasterOptions" id="optionsRadios34" value="334" > 燃气
+									<input type="radio" name="disasterOptions" id="optionsRadios35" value="335" > 电力
+									<input type="radio" name="disasterOptions" id="optionsRadios36" value="336" > 通信
+									<input type="radio" name="disasterOptions" id="optionsRadios37" value="337" > 水利
 								</th>
 							</tr>
 							<tr>
 								<th>次生灾害</th>
 								<th>
-									<input type="radio" name="disasterOptions" id="optionsRadios41" value="41" > 崩塌
-									<input type="radio" name="disasterOptions" id="optionsRadios42" value="42" > 滑坡
-									<input type="radio" name="disasterOptions" id="optionsRadios43" value="43" > 泥石流
-									<input type="radio" name="disasterOptions" id="optionsRadios44" value="44" > 岩溶塌陷
-									<input type="radio" name="disasterOptions" id="optionsRadios45" value="45" > 地裂缝
-									<input type="radio" name="disasterOptions" id="optionsRadios46" value="46" > 地面沉降
-									<input type="radio" name="disasterOptions" id="optionsRadios47" value="47" > 其他
+									<input type="radio" name="disasterOptions" id="optionsRadios41" value="441" > 崩塌
+									<input type="radio" name="disasterOptions" id="optionsRadios42" value="442" > 滑坡
+									<input type="radio" name="disasterOptions" id="optionsRadios43" value="443" > 泥石流
+									<input type="radio" name="disasterOptions" id="optionsRadios44" value="444" > 岩溶塌陷
+									<input type="radio" name="disasterOptions" id="optionsRadios45" value="445" > 地裂缝
+									<input type="radio" name="disasterOptions" id="optionsRadios46" value="446" > 地面沉降
+									<input type="radio" name="disasterOptions" id="optionsRadios47" value="447" > 其他
 								</th>
 							</tr>
 							<tr>
 								<th>震情</th>
 								<th>
-									<input type="radio" name="disasterOptions" id="optionsRadios51" value="51" > 基本
-									<input type="radio" name="disasterOptions" id="optionsRadios52" value="52" > 灾情预测
+									<input type="radio" name="disasterOptions" id="optionsRadios51" value="551" > 基本
+									<input type="radio" name="disasterOptions" id="optionsRadios52" value="552" > 灾情预测
 								</th>
 							</tr>
 							</tbody>
@@ -117,19 +117,18 @@
 					<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
 						<blockquote  class="page-header" style="border-left:5px solid #FF3030">
 							<p>
-								导出
+								发送导出请求
 							</p>
 						</blockquote>
 						<div class="form-group">
-							<label for="">选择导出格式</label>
-							<select class="form-control">
-								<option>Json</option>
-								<option>XML</option>
-							</select>
+							<label for="">请求单位</label>
+							<input type="text" name="request_unit" class="form-control">
+						</div>
+						<div class="form-group">
 							<label for="">URL</label>
 							<input type="text" name="url" class="form-control">
 						</div>
-						<button type="submit" class="btn btn-default" >导出</button>
+						<button type="submit" class="btn btn-default" >发送</button>
 					</div>
 				</div>
 			</form>
