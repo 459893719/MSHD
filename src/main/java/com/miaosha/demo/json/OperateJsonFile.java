@@ -12,16 +12,20 @@ import java.util.List;
 public class OperateJsonFile {
 
 	// 字典缓存
-    @SuppressWarnings("resource")
+    
 	public HashMap<String,String[]>  initMap(){
     	HashMap<String,String[]> mapInfo = new HashMap<>();
     	try {
-			  File file = new File((System.getProperty("user.dir")+"\\src\\main\\java\\com\\miaosha\\demo\\json\\dictionary.txt"));
+			  //File file = new File((System.getProperty("user.dir")+"\\src\\main\\java\\com\\miaosha\\demo\\json\\dictionary.txt"));
+              File file = new File("/home/jar/resource/dictionary.txt");
+    		  //File file = new File("F:/datasource/dictionary.txt");
 			  BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 			  String strLine = null;
 	          
 			  while(null != (strLine = bufferedReader.readLine())){
+
 	        	  String[] split=strLine.split(" ");
+	        	  //System.out.println("id:"+split[0]+"  hash:"+split[0].hashCode()+" length:"+split[0].length());
 	              mapInfo.put(split[0],Arrays.copyOfRange(split, 1, 6));
 			  }
 		  }catch(Exception e){
@@ -33,7 +37,8 @@ public class OperateJsonFile {
     //读文件
     public List<DeathStatistics> read_deathStatisticsList(String fileName) throws Exception{
         List<DeathStatistics> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
+        // String path = "F:/datasource/"+fileName;
         //String path = OperateJsonFile.class.getClassLoader().getResource(fileName).getPath();
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
@@ -45,9 +50,12 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
-        
+
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
-        	String id = list.get(i).getId().substring(0,12);
+        	  String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
           	  String[] location=mapInfo.get(id);
           	  if(location!=null)
@@ -73,6 +81,10 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -88,7 +100,7 @@ public class OperateJsonFile {
 
     public List<Shizong> read_ShizongList(String fileName) throws Exception{
         List<Shizong> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         //String path = OperateJsonFile.class.getClassLoader().getResource(fileName).getPath();
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
@@ -100,6 +112,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -115,7 +130,7 @@ public class OperateJsonFile {
 
     public List<CivilStructure> read_civilStructureList(String fileName) throws Exception{
         List<CivilStructure> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, CivilStructure.class);
@@ -126,6 +141,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -152,6 +170,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -178,6 +199,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -204,6 +228,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -230,6 +257,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -256,6 +286,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -282,6 +315,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -308,6 +344,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -334,6 +373,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -360,6 +402,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -386,6 +431,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -412,6 +460,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -427,7 +478,7 @@ public class OperateJsonFile {
 
     public List<CollapseRecord> read_collapseRecordList(String fileName) throws Exception{
         List<CollapseRecord> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, CollapseRecord.class);
@@ -438,6 +489,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -453,7 +507,7 @@ public class OperateJsonFile {
 
     public List<Huapo> read_HuapoList(String fileName) throws Exception{
         List<Huapo> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, Huapo.class);
@@ -464,6 +518,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -479,7 +536,7 @@ public class OperateJsonFile {
 
     public List<Nishiliu> read_NishiliuList(String fileName) throws Exception{
         List<Nishiliu> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, Nishiliu.class);
@@ -490,6 +547,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -505,7 +565,7 @@ public class OperateJsonFile {
 
     public List<Yanrongtanta> read_YanrongtantaList(String fileName) throws Exception{
         List<Yanrongtanta> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, Yanrongtanta.class);
@@ -516,6 +576,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -531,7 +594,7 @@ public class OperateJsonFile {
 
     public List<Diliefeng> read_DiliefengList(String fileName) throws Exception{
         List<Diliefeng> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, Diliefeng.class);
@@ -542,6 +605,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -557,7 +623,7 @@ public class OperateJsonFile {
 
     public List<Dimianchenjiang> read_DimianchenjiangList(String fileName) throws Exception{
         List<Dimianchenjiang> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, Dimianchenjiang.class);
@@ -568,6 +634,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -583,7 +652,7 @@ public class OperateJsonFile {
 
     public List<CishengzaihaiQita> read_CishengzaihaiQitaList(String fileName) throws Exception{
         List<CishengzaihaiQita> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, CishengzaihaiQita.class);
@@ -594,6 +663,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -609,7 +681,7 @@ public class OperateJsonFile {
 
     public List<ZhenqingJiben> read_ZhenqingJibenList(String fileName) throws Exception{
         List<ZhenqingJiben> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, ZhenqingJiben.class);
@@ -620,6 +692,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();
@@ -635,7 +710,7 @@ public class OperateJsonFile {
 
     public List<DisasterPrediction> read_disasterPredictionList(String fileName) throws Exception{
         List<DisasterPrediction> list = null;
-        String path = "/home/jar/resource/input/" + fileName;
+        String path = "/home/jar/resource/input/data/" + fileName;
         InputStream inputStream = new FileInputStream(path);
         String text = IOUtils.toString(inputStream,"utf8");
         list = JSONObject.parseArray(text, DisasterPrediction.class);
@@ -646,6 +721,9 @@ public class OperateJsonFile {
         writer.write("");
         writer.flush();
         writer.close();
+        if(list == null){
+            return list;
+        }
         for(int i=0;i<list.size();i++) {
         	String id = list.get(i).getId().substring(0,12);
         	  HashMap<String,String[]> mapInfo=initMap();

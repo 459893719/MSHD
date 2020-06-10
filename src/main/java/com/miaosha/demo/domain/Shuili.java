@@ -97,7 +97,7 @@ public class Shuili {
 
     @Override
 	public String toString() {
-		return "Disaster [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location + ", type=" + type
+		return "Shuili [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location + ", type=" + type
 				+ ", grade=" + grade + ", picture=" + picture + ", note=" + note + ", reporting_unit=" + reporting_unit
 				+ "]";
 	}

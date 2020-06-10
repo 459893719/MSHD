@@ -53,6 +53,8 @@ public class DiliefengService {
     
     public static void beifen() {
     	List<Diliefeng> list = crdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	crdao.beifen(list);
     	crdao.deleteAll();
     }

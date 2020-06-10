@@ -54,6 +54,8 @@ public class CishengzaihaiQitaService {
     
     public static void beifen() {
     	List<CishengzaihaiQita> list = crdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	crdao.beifen(list);
     	crdao.deleteAll();
     }

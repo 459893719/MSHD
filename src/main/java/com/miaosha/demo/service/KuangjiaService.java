@@ -51,6 +51,8 @@ public class KuangjiaService {
     
     public static void beifen() {
     	List<Kuangjia> list = csdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	csdao.beifen(list);
     	csdao.deleteAll();
     }

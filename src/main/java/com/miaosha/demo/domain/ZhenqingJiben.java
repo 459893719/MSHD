@@ -34,7 +34,7 @@ public class ZhenqingJiben {
 	}
 	@Override
 	public String toString() {
-		return "DisasterPrediction [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location
+		return "ZhenqingJiben [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location
 				+ ", longitude=" + longitude + ", latitude=" + latitude + ", depth=" + depth + ", magnitude="
 				+ magnitude + ", intensity=" + intensity + ", type=" + type + ", picture=" + picture + ", note=" + note
 				+ ", reporting_unit=" + reporting_unit + "]";

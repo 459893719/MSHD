@@ -20,7 +20,7 @@ public class DatashowController {
       
  // 人员伤亡及失踪 ——————————————————————————————————————————————————————————————————————
     // death_statistics表 
-    @RequestMapping(value = "/DeathStatistics/showall")
+    @RequestMapping(value = "/DeathStatistics", method = RequestMethod.GET)
     public String dsShow(Model model){
     	List<DeathStatistics> dslist = null;
     	dslist = DeathStatisticsService.selectAll();
@@ -28,7 +28,7 @@ public class DatashowController {
         return "showinfor/DeathStatistics";
     }
     
-    @RequestMapping(value = "/DeathStatistics", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeathStatistics", method = RequestMethod.POST)
     @ResponseBody
     public DeathStatistics dsquery(@RequestParam("id") String id) {
     	return DeathStatisticsService.selectByKey(id).get(0);
@@ -49,7 +49,7 @@ public class DatashowController {
     }
     
     // Shoushang表
-    @RequestMapping(value = "/Shoushang/showall")
+    @RequestMapping(value = "/Shoushang", method = RequestMethod.GET)
     public String ShoushangShow(Model model){
     	List<Shoushang> dslist = null;
     	dslist = ShoushangService.selectAll();
@@ -57,7 +57,7 @@ public class DatashowController {
         return "showinfor/Shoushang";
     }
     
-    @RequestMapping(value = "/Shoushang", method = RequestMethod.GET)
+    @RequestMapping(value = "/Shoushang", method = RequestMethod.POST)
     @ResponseBody
     public Shoushang Shoushangquery(@RequestParam("id") String id) {
     	
@@ -79,7 +79,7 @@ public class DatashowController {
     }
     
     // Shizong表
-    @RequestMapping(value = "/Shizong/showall")
+    @RequestMapping(value = "/Shizong", method = RequestMethod.GET)
     public String ShizongShow(Model model){
     	List<Shizong> dslist = null;
     	dslist = ShizongService.selectAll();
@@ -87,7 +87,7 @@ public class DatashowController {
         return "showinfor/Shizong";
     }
     
-    @RequestMapping(value = "/Shizong", method = RequestMethod.GET)
+    @RequestMapping(value = "/Shizong", method = RequestMethod.POST)
     @ResponseBody
     public Shizong Shizongquery(@RequestParam("id") String id) {
     	
@@ -112,7 +112,7 @@ public class DatashowController {
     
  // 房屋破坏 ——————————————————————————————————————————————————————————————————————
     // civil_structure表    
-    @RequestMapping(value = "/CivilStructure/showall")
+    @RequestMapping(value = "/CivilStructure", method = RequestMethod.GET)
     public String csShow(Model model){
         List<CivilStructure> cslist = null;
     	cslist = CivilStructureService.selectAll();
@@ -120,7 +120,7 @@ public class DatashowController {
         return "showinfor/CivilStructure";
     }
     
-    @RequestMapping(value = "/CivilStructure", method = RequestMethod.GET)
+    @RequestMapping(value = "/CivilStructure", method = RequestMethod.POST)
     @ResponseBody
     public CivilStructure csquery(@RequestParam("id") String id) {
     	return CivilStructureService.selectByKey(id).get(0);
@@ -141,7 +141,7 @@ public class DatashowController {
     }
     
     // Zhuanmu表    
-    @RequestMapping(value = "/Zhuanmu/showall")
+    @RequestMapping(value = "/Zhuanmu", method = RequestMethod.GET)
     public String ZhuanmuShow(Model model){
         List<Zhuanmu> cslist = null;
     	cslist = ZhuanmuService.selectAll();
@@ -149,7 +149,7 @@ public class DatashowController {
         return "showinfor/Zhuanmu";
     }
     
-    @RequestMapping(value = "/Zhuanmu", method = RequestMethod.GET)
+    @RequestMapping(value = "/Zhuanmu", method = RequestMethod.POST)
     @ResponseBody
     public Zhuanmu Zhuanmuquery(@RequestParam("id") String id) {
     	return ZhuanmuService.selectByKey(id).get(0);
@@ -170,7 +170,7 @@ public class DatashowController {
     }
     
     // Zhuanhun表    
-    @RequestMapping(value = "/Zhuanhun/showall")
+    @RequestMapping(value = "/Zhuanhun", method = RequestMethod.GET)
     public String ZhuanhunShow(Model model){
         List<Zhuanhun> cslist = null;
     	cslist = ZhuanhunService.selectAll();
@@ -178,7 +178,7 @@ public class DatashowController {
         return "showinfor/Zhuanhun";
     }
     
-    @RequestMapping(value = "/Zhuanhun", method = RequestMethod.GET)
+    @RequestMapping(value = "/Zhuanhun", method = RequestMethod.POST)
     @ResponseBody
     public Zhuanhun Zhuanhunquery(@RequestParam("id") String id) {
     	return ZhuanhunService.selectByKey(id).get(0);
@@ -199,7 +199,7 @@ public class DatashowController {
     }
     
     // Kuangjia表    
-    @RequestMapping(value = "/Kuangjia/showall")
+    @RequestMapping(value = "/Kuangjia", method = RequestMethod.GET)
     public String KuangjiaShow(Model model){
         List<Kuangjia> cslist = null;
     	cslist = KuangjiaService.selectAll();
@@ -207,7 +207,7 @@ public class DatashowController {
         return "showinfor/Kuangjia";
     }
     
-    @RequestMapping(value = "/Kuangjia", method = RequestMethod.GET)
+    @RequestMapping(value = "/Kuangjia", method = RequestMethod.POST)
     @ResponseBody
     public Kuangjia Kuangjiaquery(@RequestParam("id") String id) {
     	return KuangjiaService.selectByKey(id).get(0);
@@ -228,7 +228,7 @@ public class DatashowController {
     }
     
     // FangwuQita表    
-    @RequestMapping(value = "/FangwuQita/showall")
+    @RequestMapping(value = "/FangwuQita", method = RequestMethod.GET)
     public String FangwuQitaShow(Model model){
         List<FangwuQita> cslist = null;
     	cslist = FangwuQitaService.selectAll();
@@ -236,7 +236,7 @@ public class DatashowController {
         return "showinfor/FangwuQita";
     }
     
-    @RequestMapping(value = "/FangwuQita", method = RequestMethod.GET)
+    @RequestMapping(value = "/FangwuQita", method = RequestMethod.POST)
     @ResponseBody
     public CivilStructure FangwuQitaquery(@RequestParam("id") String id) {
     	return CivilStructureService.selectByKey(id).get(0);
@@ -261,7 +261,7 @@ public class DatashowController {
     
  // 生命线工程灾情 ——————————————————————————————————————————————————————————————————————
     // Jiaotong 表
-    @RequestMapping(value = "/Jiaotong/showall")
+    @RequestMapping(value = "/Jiaotong", method = RequestMethod.GET)
     public String JiaotongShow(Model model){
     	List<Jiaotong> disasterlist = null;
     	//disasterService.beifen();
@@ -270,7 +270,7 @@ public class DatashowController {
         return "showinfor/Jiaotong";
     }
 	
-    @RequestMapping(value = "/Jiaotong", method = RequestMethod.GET)
+    @RequestMapping(value = "/Jiaotong", method = RequestMethod.POST)
     @ResponseBody
     public Jiaotong Jiaotongquery(@RequestParam("id") String id) {
     	return JiaotongService.selectByKey(id).get(0);
@@ -291,7 +291,7 @@ public class DatashowController {
     }
     
     // Gongshui 表
-    @RequestMapping(value = "/Gongshui/showall")
+    @RequestMapping(value = "/Gongshui", method = RequestMethod.GET)
     public String GongshuiShow(Model model){
     	List<Gongshui> disasterlist = null;
     	//disasterService.beifen();
@@ -300,7 +300,7 @@ public class DatashowController {
         return "showinfor/Gongshui";
     }
 	
-    @RequestMapping(value = "/Gongshui", method = RequestMethod.GET)
+    @RequestMapping(value = "/Gongshui", method = RequestMethod.POST)
     @ResponseBody
     public Gongshui Gongshuiquery(@RequestParam("id") String id) {
     	return GongshuiService.selectByKey(id).get(0);
@@ -321,7 +321,7 @@ public class DatashowController {
     }
     
     // Shuyou 表
-    @RequestMapping(value = "/Shuyou/showall")
+    @RequestMapping(value = "/Shuyou", method = RequestMethod.GET)
     public String ShuyouShow(Model model){
     	List<Shuyou> disasterlist = null;
     	//disasterService.beifen();
@@ -330,7 +330,7 @@ public class DatashowController {
         return "showinfor/Shuyou";
     }
 	
-    @RequestMapping(value = "/Shuyou", method = RequestMethod.GET)
+    @RequestMapping(value = "/Shuyou", method = RequestMethod.POST)
     @ResponseBody
     public Shuyou Shuyouquery(@RequestParam("id") String id) {
     	return ShuyouService.selectByKey(id).get(0);
@@ -351,7 +351,7 @@ public class DatashowController {
     }
     
     // Ranqi 表
-    @RequestMapping(value = "/Ranqi/showall")
+    @RequestMapping(value = "/Ranqi", method = RequestMethod.GET)
     public String RanqiShow(Model model){
     	List<Ranqi> disasterlist = null;
     	//disasterService.beifen();
@@ -360,7 +360,7 @@ public class DatashowController {
         return "showinfor/Ranqi";
     }
 	
-    @RequestMapping(value = "/Ranqi", method = RequestMethod.GET)
+    @RequestMapping(value = "/Ranqi", method = RequestMethod.POST)
     @ResponseBody
     public Ranqi Ranqiquery(@RequestParam("id") String id) {
     	return RanqiService.selectByKey(id).get(0);
@@ -381,7 +381,7 @@ public class DatashowController {
     }
     
     // Dianli 表
-    @RequestMapping(value = "/Dianli/showall")
+    @RequestMapping(value = "/Dianli", method = RequestMethod.GET)
     public String DianliShow(Model model){
     	List<Dianli> disasterlist = null;
     	//disasterService.beifen();
@@ -390,7 +390,7 @@ public class DatashowController {
         return "showinfor/Dianli";
     }
 	
-    @RequestMapping(value = "/Dianli", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dianli", method = RequestMethod.POST)
     @ResponseBody
     public Dianli Dianliquery(@RequestParam("id") String id) {
     	return DianliService.selectByKey(id).get(0);
@@ -410,6 +410,7 @@ public class DatashowController {
         return "success";
     }
     
+    /*
     // comm_disaster 表
     @RequestMapping(value = "/CommDisaster/showall")
     public String dataShow(Model model){
@@ -419,8 +420,18 @@ public class DatashowController {
         model.addAttribute("disaster",disasterlist);
         return "showinfor/CommDisaster";
     }
-	
+    */
+    
     @RequestMapping(value = "/CommDisaster", method = RequestMethod.GET)
+    public String datahow(Model model){
+    	List<Disaster> disasterlist = null;
+    	//disasterService.beifen();
+        disasterlist = DisasterService.selectAll();
+        model.addAttribute("disaster",disasterlist);
+        return "showinfor/CommDisaster";
+    }
+	
+    @RequestMapping(value = "/CommDisaster", method = RequestMethod.POST)
     @ResponseBody
     public Disaster commdisasterquery(@RequestParam("id") String id) {
     	return DisasterService.selectByKey(id).get(0);
@@ -441,7 +452,7 @@ public class DatashowController {
     }
     
     // Shuili 表
-    @RequestMapping(value = "/Shuili/showall")
+    @RequestMapping(value = "/Shuili", method = RequestMethod.GET)
     public String ShuiliShow(Model model){
     	List<Shuili> disasterlist = null;
     	//disasterService.beifen();
@@ -450,7 +461,7 @@ public class DatashowController {
         return "showinfor/Shuili";
     }
 	
-    @RequestMapping(value = "/Shuili", method = RequestMethod.GET)
+    @RequestMapping(value = "/Shuili", method = RequestMethod.POST)
     @ResponseBody
     public Shuili Shuiliquery(@RequestParam("id") String id) {
     	return ShuiliService.selectByKey(id).get(0);
@@ -477,7 +488,7 @@ public class DatashowController {
  // 次生灾害 ——————————————————————————————————————————————————————————————————————
     // CollapseRecord
     
-    @RequestMapping(value = "/CollapseRecord/showall")
+    @RequestMapping(value = "/CollapseRecord", method = RequestMethod.GET)
     public String crShow(Model model){
     	List<CollapseRecord> crlist = null;
     	crlist = CollapseRecordService.selectAll();
@@ -485,7 +496,7 @@ public class DatashowController {
     	return "showinfor/CollapseRecord";
     }
     
-    @RequestMapping(value = "/CollapseRecord", method = RequestMethod.GET)
+    @RequestMapping(value = "/CollapseRecord", method = RequestMethod.POST)
     @ResponseBody
     public CollapseRecord crquery(@RequestParam("id") String id) {
     	return CollapseRecordService.selectByKey(id).get(0);
@@ -507,7 +518,7 @@ public class DatashowController {
     
     // Huapo
     
-    @RequestMapping(value = "/Huapo/showall")
+    @RequestMapping(value = "/Huapo", method = RequestMethod.GET)
     public String HuapoShow(Model model){
     	List<Huapo> crlist = null;
     	crlist = HuapoService.selectAll();
@@ -515,7 +526,7 @@ public class DatashowController {
     	return "showinfor/Huapo";
     }
     
-    @RequestMapping(value = "/Huapo", method = RequestMethod.GET)
+    @RequestMapping(value = "/Huapo", method = RequestMethod.POST)
     @ResponseBody
     public Huapo Huapoquery(@RequestParam("id") String id) {
     	return HuapoService.selectByKey(id).get(0);
@@ -537,7 +548,7 @@ public class DatashowController {
     
     // Nishiliu
     
-    @RequestMapping(value = "/Nishiliu/showall")
+    @RequestMapping(value = "/Nishiliu", method = RequestMethod.GET)
     public String NishiliuShow(Model model){
     	List<Nishiliu> crlist = null;
     	crlist = NishiliuService.selectAll();
@@ -545,7 +556,7 @@ public class DatashowController {
     	return "showinfor/Nishiliu";
     }
     
-    @RequestMapping(value = "/Nishiliu", method = RequestMethod.GET)
+    @RequestMapping(value = "/Nishiliu", method = RequestMethod.POST)
     @ResponseBody
     public Nishiliu Nishiliuquery(@RequestParam("id") String id) {
     	return NishiliuService.selectByKey(id).get(0);
@@ -567,7 +578,7 @@ public class DatashowController {
     
     // Yanrongtanta
     
-    @RequestMapping(value = "/Yanrongtanta/showall")
+    @RequestMapping(value = "/Yanrongtanta", method = RequestMethod.GET)
     public String YanrongtantaShow(Model model){
     	List<Yanrongtanta> crlist = null;
     	crlist = YanrongtantaService.selectAll();
@@ -575,7 +586,7 @@ public class DatashowController {
     	return "showinfor/Yanrongtanta";
     }
     
-    @RequestMapping(value = "/Yanrongtanta", method = RequestMethod.GET)
+    @RequestMapping(value = "/Yanrongtanta", method = RequestMethod.POST)
     @ResponseBody
     public Yanrongtanta Yanrongtantaquery(@RequestParam("id") String id) {
     	return YanrongtantaService.selectByKey(id).get(0);
@@ -597,7 +608,7 @@ public class DatashowController {
     
     // Diliefeng
     
-    @RequestMapping(value = "/Diliefeng/showall")
+    @RequestMapping(value = "/Diliefeng", method = RequestMethod.GET)
     public String DiliefengShow(Model model){
     	List<Diliefeng> crlist = null;
     	crlist = DiliefengService.selectAll();
@@ -605,7 +616,7 @@ public class DatashowController {
     	return "showinfor/Diliefeng";
     }
     
-    @RequestMapping(value = "/Diliefeng", method = RequestMethod.GET)
+    @RequestMapping(value = "/Diliefeng", method = RequestMethod.POST)
     @ResponseBody
     public Diliefeng Diliefengquery(@RequestParam("id") String id) {
     	return DiliefengService.selectByKey(id).get(0);
@@ -627,7 +638,7 @@ public class DatashowController {
     
     // Dimianchenjiang
     
-    @RequestMapping(value = "/Dimianchenjiang/showall")
+    @RequestMapping(value = "/Dimianchenjiang", method = RequestMethod.GET)
     public String DimianchenjiangShow(Model model){
     	List<Dimianchenjiang> crlist = null;
     	crlist = DimianchenjiangService.selectAll();
@@ -635,7 +646,7 @@ public class DatashowController {
     	return "showinfor/Dimianchenjiang";
     }
     
-    @RequestMapping(value = "/Dimianchenjiang", method = RequestMethod.GET)
+    @RequestMapping(value = "/Dimianchenjiang", method = RequestMethod.POST)
     @ResponseBody
     public Dimianchenjiang Dimianchenjiangquery(@RequestParam("id") String id) {
     	return DimianchenjiangService.selectByKey(id).get(0);
@@ -657,7 +668,7 @@ public class DatashowController {
     
     // CishengzaihaiQita
     
-    @RequestMapping(value = "/CishengzaihaiQita/showall")
+    @RequestMapping(value = "/CishengzaihaiQita", method = RequestMethod.GET)
     public String CishengzaihaiQitaShow(Model model){
     	List<CishengzaihaiQita> crlist = null;
     	crlist = CishengzaihaiQitaService.selectAll();
@@ -665,7 +676,7 @@ public class DatashowController {
     	return "showinfor/CishengzaihaiQita";
     }
     
-    @RequestMapping(value = "/CishengzaihaiQita", method = RequestMethod.GET)
+    @RequestMapping(value = "/CishengzaihaiQita", method = RequestMethod.POST)
     @ResponseBody
     public CishengzaihaiQita CishengzaihaiQitaquery(@RequestParam("id") String id) {
     	return CishengzaihaiQitaService.selectByKey(id).get(0);
@@ -690,7 +701,7 @@ public class DatashowController {
  // 震情 ——————————————————————————————————————————————————————————————————————
     // ZhenqingJiben
     
-    @RequestMapping(value = "/ZhenqingJiben/showall")
+    @RequestMapping(value = "/ZhenqingJiben", method = RequestMethod.GET)
     public String ZhenqingJibenShow(Model model){
         List<ZhenqingJiben> dplist = null;
     	dplist = ZhenqingJibenService.selectAll();
@@ -698,7 +709,7 @@ public class DatashowController {
     	return "showinfor/ZhenqingJiben";
     }
     
-    @RequestMapping(value = "/ZhenqingJiben", method = RequestMethod.GET)
+    @RequestMapping(value = "/ZhenqingJiben", method = RequestMethod.POST)
     @ResponseBody
     public ZhenqingJiben ZhenqingJibenquery(@RequestParam("id") String id) {
     	return ZhenqingJibenService.selectByKey(id).get(0);
@@ -720,7 +731,7 @@ public class DatashowController {
     
     // DisasterPrediction
     
-    @RequestMapping(value = "/DisasterPrediction/showall")
+    @RequestMapping(value = "/DisasterPrediction", method = RequestMethod.GET)
     public String dpShow(Model model){
         List<DisasterPrediction> dplist = null;
     	dplist = DisasterPredictionService.selectAll();
@@ -728,7 +739,7 @@ public class DatashowController {
     	return "showinfor/DisasterPrediction";
     }
     
-    @RequestMapping(value = "/DisasterPrediction", method = RequestMethod.GET)
+    @RequestMapping(value = "/DisasterPrediction", method = RequestMethod.POST)
     @ResponseBody
     public DisasterPrediction dpquery(@RequestParam("id") String id) {
     	return DisasterPredictionService.selectByKey(id).get(0);

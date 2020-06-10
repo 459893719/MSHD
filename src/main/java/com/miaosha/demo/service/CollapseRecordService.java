@@ -52,6 +52,8 @@ public class CollapseRecordService {
     
     public static void beifen() {
     	List<CollapseRecord> list = crdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	crdao.beifen(list);
     	crdao.deleteAll();
     }

@@ -25,7 +25,7 @@ public class Shoushang {
 	}
 	@Override
 	public String toString() {
-		return "DeathStatistics [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", number="
+		return "Shoushang [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", number="
 				+ number + ", reporting_unit=" + reporting_unit + "]";
 	}
 	public String getId() {

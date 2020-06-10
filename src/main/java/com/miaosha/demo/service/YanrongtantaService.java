@@ -54,6 +54,8 @@ public class YanrongtantaService {
     
     public static void beifen() {
     	List<Yanrongtanta> list = crdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	crdao.beifen(list);
     	crdao.deleteAll();
     }

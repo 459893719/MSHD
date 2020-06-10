@@ -58,6 +58,8 @@ public class ShuiliService {
     
     public static void beifen() {
     	List<Shuili> list = disasterDao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	disasterDao.beifen(list);
     	disasterDao.deleteAll();
     }

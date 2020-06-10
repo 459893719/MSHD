@@ -54,6 +54,8 @@ public class DisasterPredictionService {
     
     public static void beifen() {
     	List<DisasterPrediction> list = dpdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	dpdao.beifen(list);
     	dpdao.deleteAll();
     }

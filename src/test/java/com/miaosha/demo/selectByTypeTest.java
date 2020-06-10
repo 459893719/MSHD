@@ -7,6 +7,8 @@ import com.miaosha.demo.dao.DisasterRequestDao;
 import com.miaosha.demo.dao.UserDao;
 import com.miaosha.demo.domain.Disaster;
 import com.miaosha.demo.service.DisasterService;
+import com.miaosha.demo.service.ShuiliService;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +45,7 @@ public class selectByTypeTest {
     UserDao d;
     @Test
     public void t() {
-    	//d.selectByUsername("2017211960");
+    	ShuiliService.beifen();
     }
     
     

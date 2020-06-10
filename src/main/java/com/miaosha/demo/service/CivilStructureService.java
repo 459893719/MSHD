@@ -49,6 +49,8 @@ public class CivilStructureService {
     
     public static void beifen() {
     	List<CivilStructure> list = csdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	csdao.beifen(list);
     	csdao.deleteAll();
     }

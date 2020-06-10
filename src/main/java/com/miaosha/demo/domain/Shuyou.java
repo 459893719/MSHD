@@ -97,7 +97,7 @@ public class Shuyou {
 
     @Override
 	public String toString() {
-		return "Disaster [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location + ", type=" + type
+		return "Shuyou [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location + ", type=" + type
 				+ ", grade=" + grade + ", picture=" + picture + ", note=" + note + ", reporting_unit=" + reporting_unit
 				+ "]";
 	}

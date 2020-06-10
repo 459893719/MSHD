@@ -36,7 +36,7 @@ public class Kuangjia {
 
 	@Override
 	public String toString() {
-		return "CivilStructure [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location
+		return "Kuangjia [key=" + key + ", id=" + id + ", date=" + date + ", location=" + location
 				+ ", basically_intact_square=" + basically_intact_square + ", damaged_square=" + damaged_square
 				+ ", destroyed_square=" + destroyed_square + ", note=" + note + ", reporting_unit=" + reporting_unit
 				+ "]";

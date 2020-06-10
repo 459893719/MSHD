@@ -36,7 +36,7 @@ public class Huapo {
 
 	@Override
 	public String toString() {
-		return "CollapseRecord [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", type="
+		return "Huapo [key=" + key + ", id=" + id + ", location=" + location + ", date=" + date + ", type="
 				+ type + ", status=" + status + ", note=" + note + ", picture=" + picture + ", reporting_unit="
 				+ reporting_unit + "]";
 	}

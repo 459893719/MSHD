@@ -51,6 +51,8 @@ public class ShoushangService {
     
     public static void beifen() {
     	List<Shoushang> list = dsdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	dsdao.beifen(list);
     	dsdao.deleteAll();
     }

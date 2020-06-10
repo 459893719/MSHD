@@ -58,6 +58,8 @@ public class RanqiService {
     
     public static void beifen() {
     	List<Ranqi> list = disasterDao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	disasterDao.beifen(list);
     	disasterDao.deleteAll();
     }

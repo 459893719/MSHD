@@ -54,6 +54,8 @@ public class ZhenqingJibenService {
     
     public static void beifen() {
     	List<ZhenqingJiben> list = dpdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	dpdao.beifen(list);
     	dpdao.deleteAll();
     }

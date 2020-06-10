@@ -57,6 +57,8 @@ public class DisasterService {
     
     public static void beifen() {
     	List<Disaster> list = disasterDao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	disasterDao.beifen(list);
     	disasterDao.deleteAll();
     }

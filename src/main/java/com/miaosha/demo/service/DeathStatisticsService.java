@@ -52,6 +52,8 @@ public class DeathStatisticsService {
     
     public static void beifen() {
     	List<DeathStatistics> list = dsdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	dsdao.beifen(list);
     	dsdao.deleteAll();
     }

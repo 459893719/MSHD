@@ -54,6 +54,8 @@ public class NishiliuService {
     
     public static void beifen() {
     	List<Nishiliu> list = crdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	crdao.beifen(list);
     	crdao.deleteAll();
     }

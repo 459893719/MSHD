@@ -58,6 +58,8 @@ public class DianliService {
     
     public static void beifen() {
     	List<Dianli> list = disasterDao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	disasterDao.beifen(list);
     	disasterDao.deleteAll();
     }

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>查看灾情信息</title>
+	<title>多源异构灾情数据综合管理系统管理端  - 灾情信息</title>
 
 	<!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -217,20 +217,21 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统</a>
-			</div>
+		 <a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统 <small> 管理端</small> </a>
+     		</div>
 
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/adminindex">首页</a></li>
             <li ><a href="/adminImportData">导入数据</a></li>
-            <li  class="active"><a href="/admindataindex">查看灾情信息</a></li>
-            <li><a href="/adminShowQuest">请求管理</a></li>
+            <li  class="active"><a href="/admindataindex">灾情信息</a></li>
+            <li><a href="/QuestsQuest">请求管理</a></li>
             <li><a href="/adminUserManage">用户管理</a></li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/adminLogout">管理员</a></li>
+           <li class="active"><a>管理端</a></li>
+             <li><a  href="/adminLogout"><small>注销</small></a></li>
             <li><a href="/dataexport"><small>切换到客户端</small></a></li>
           
           </ul>
@@ -312,9 +313,9 @@
 									aria-labelledby="collapseListGroupHeading1">
 									<div class="list-group">
 
-										<a href="/DeathStatistics/showall" class="list-group-item">死亡</a>
-										<a href="/Shoushang/showall" class="list-group-item">受伤</a>
-										<a href="/Shizong/showall" class="list-group-item">失踪</a>
+										<a href="/DeathStatistics" class="list-group-item">死亡</a>
+										<a href="/Shoushang" class="list-group-item">受伤</a>
+										<a href="/Shizong" class="list-group-item">失踪</a>
 
 
 									</div>
@@ -333,11 +334,11 @@
 									aria-labelledby="collapseListGroupHeading2">
 									<div class="list-group">
 
-										<a href="/CivilStructure/showall" class="list-group-item">土木</a>
-										<a href="/Zhuanmu/showall" class="list-group-item">砖木</a>
-										<a href="/Zhuanhun/showall" class="list-group-item">砖混</a>
-										<a href="/Kuangjia/showall" class="list-group-item">框架</a>
-										<a href="/FangwuQita/showall" class="list-group-item">其他</a>
+										<a href="/CivilStructure" class="list-group-item">土木</a>
+										<a href="/Zhuanmu" class="list-group-item">砖木</a>
+										<a href="/Zhuanhun" class="list-group-item">砖混</a>
+										<a href="/Kuangjia" class="list-group-item">框架</a>
+										<a href="/FangwuQita" class="list-group-item">其他</a>
 
 
 									</div>
@@ -355,13 +356,13 @@
 									aria-labelledby="collapseListGroupHeading3">
 									<div class="list-group">
 
-										<a href="/Jiaotong/showall" class="list-group-item">交通</a>
-										<a href="/Gongshui/showall" class="list-group-item">供水</a>
-										<a href="/Shuyou/showall" class="list-group-item">输油</a>
-										<a href="/Ranqi/showall" class="list-group-item">燃气</a>
-										<a href="/Dianli/showall" class="list-group-item">电力</a>
-										<a href="/CommDisaster/showall" class="list-group-item">通信</a>
-										<a href="/Shuili/showall" class="list-group-item">水利</a>
+										<a href="/Jiaotong" class="list-group-item">交通</a>
+										<a href="/Gongshui" class="list-group-item">供水</a>
+										<a href="/Shuyou" class="list-group-item">输油</a>
+										<a href="/Ranqi" class="list-group-item">燃气</a>
+										<a href="/Dianli" class="list-group-item">电力</a>
+										<a href="/CommDisaster" class="list-group-item">通信</a>
+										<a href="/Shuili" class="list-group-item">水利</a>
 
 
 									</div>
@@ -379,13 +380,13 @@
 									aria-labelledby="collapseListGroupHeading4">
 									<div class="list-group">
 
-										<a href="/CollapseRecord/showall" class="list-group-item">崩塌</a>
-										<a href="/Huapo/showall" class="list-group-item">滑坡</a>
-										<a href="/Nishiliu/showall" class="list-group-item">泥石流</a>
-										<a href="/Yanrongtanta/showall" class="list-group-item">岩溶塌陷</a>
-										<a href="/Diliefeng/showall" class="list-group-item">地裂缝</a>
-										<a href="/Dimianchenjiang/showall" class="list-group-item">地面沉降</a>
-										<a href="/CishengzaihaiQita/showall" class="list-group-item">其他</a>
+										<a href="/CollapseRecord" class="list-group-item">崩塌</a>
+										<a href="/Huapo" class="list-group-item">滑坡</a>
+										<a href="/Nishiliu" class="list-group-item">泥石流</a>
+										<a href="/Yanrongtanta" class="list-group-item">岩溶塌陷</a>
+										<a href="/Diliefeng" class="list-group-item">地裂缝</a>
+										<a href="/Dimianchenjiang" class="list-group-item">地面沉降</a>
+										<a href="/CishengzaihaiQita" class="list-group-item">其他</a>
 
 
 									</div>
@@ -403,8 +404,8 @@
 									aria-labelledby="collapseListGroupHeading5">
 									<div class="list-group">
 
-										<a href="/ZhenqingJiben/showall" class="list-group-item">基本</a>
-										<a href="/DisasterPrediction/showall" class="list-group-item">灾情预测</a>
+										<a href="/ZhenqingJiben" class="list-group-item">基本</a>
+										<a href="/DisasterPrediction" class="list-group-item">灾情预测</a>
 
 
 									</div>
@@ -450,7 +451,7 @@
 			$.ajax({
 				url: "/CishengzaihaiQita", //query请求的URL，待修改
 				async: true,
-				type: "GET",
+				type: "POST",
 				data: {
 
 					"id": id
@@ -531,7 +532,7 @@
 			$.ajax({
 				url: "/CishengzaihaiQita", //query请求的URL，待修改
 				async: true,
-				type: "GET",
+				type: "POST",
 				data: {
 
 					"id": id

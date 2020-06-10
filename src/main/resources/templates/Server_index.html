@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>主页</title>
+    <title>多源异构灾情数据综合管理系统管理端  - 主页</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	<style>
-		.panel-group{max-height:2000px;overflow: auto;}
+		.panel-group{max-height:800px;overflow: auto;}
 		.leftMenu{margin:10px;margin-top:5px;}
 		.leftMenu .panel-heading{font-size:14px;padding-left:20px;height:36px;line-height:36px;color:white;position:relative;cursor:pointer;}/*转成手形图标*/
 		.leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
@@ -18,7 +18,7 @@
 		.leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
 	</style>
   </head>
-  <body style="  min-height: 2000px; padding-top: 70px;">
+  <body style="  min-height: 800px; padding-top: 70px;">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -28,20 +28,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统</a>
-        </div>
+   <a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统 <small> 管理端</small> </a>
+            </div>
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/adminindex">首页</a></li>
             <li><a href="/adminImportData">导入数据</a></li>
-            <li><a href="/admindataindex">查看灾情信息</a></li>
-            <li><a href="/adminShowQuest">请求管理</a></li>
+            <li><a href="/admindataindex">灾情信息</a></li>
+            <li><a href="/Quests">请求管理</a></li>
             <li><a href="/adminUserManage">用户管理</a></li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/adminLogout">管理员</a></li>
+            <li class="active"><a>管理端</a></li>
+             <li><a  href="/adminLogout"><small>注销</small></a></li>
             <li><a href="/dataexport"><small>切换到客户端</small></a></li>
           
           </ul>
@@ -59,7 +60,7 @@
 			部分数据维度缺失导致的数据无法得到综合利用的现状，建设多源灾异构情数据管理服务系
 			统，其目的在于对多源异构灾情数据进行综合管理，为救援决策提供数据支持。 </p>
 		</div>
-		<p class ="text-center" ><a class="btn btn-primary btn-lg" role="button">
+		<p class ="text-center" ><a class="btn btn-primary btn-lg" role="button" href="/admindataindex">
 			开始使用</a>
 		</p>
 	</div>

@@ -4,21 +4,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>用户管理</title>
+    <title>多源异构灾情数据综合管理系统管理端  - 用户管理</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
 	<style>
-		.panel-group{max-height:2000px;overflow: auto;}
+		.panel-group{max-height:800px;overflow: auto;}
 		.leftMenu{margin:10px;margin-top:5px;}
 		.leftMenu .panel-heading{font-size:14px;padding-left:20px;height:36px;line-height:36px;color:white;position:relative;cursor:pointer;}/*转成手形图标*/
 		.leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
 		.leftMenu .menu-item-left{padding: 2px; background: transparent; border:1px solid transparent;border-radius: 6px;}
 		.leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
+		.mybutton .btn{
+			margin-right: 10px;
+		}
 	</style>
   </head>
-  <body  style=" min-height: 2000px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
+  <body  style=" min-height: 800px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
 	<!-- 修改用户模态框（Modal） -->
 <div class="modal fade" id="modifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -52,7 +55,7 @@
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">确认修改</button>
+                <button type="submit" class="btn btn-primary" onclick='updateData()'>确认修改</button>
             </div>
             </form>
         </div><!-- /.modal-content -->
@@ -107,20 +110,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统</a>
+          <a class="navbar-brand" href="/adminindex">多源异构灾情数据综合管理系统 <small> 管理端</small> </a>
         </div>
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/adminindex">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li ><a href="/adminImportData">导入数据</a></li>
-            <li><a href="/admindataindex">查看灾情信息</a></li>
-            <li><a href="/adminShowQuest">请求管理</a></li>
+            <li><a href="/admindataindex">灾情信息</a></li>
+            <li><a href="/Quests">请求管理</a></li>
             <li  class="active"><a href="/adminUserManage">用户管理</a></li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/adminLogout">管理员</a></li>
+            <li class="active"><a>管理端</a></li>
+             <li><a  href="/adminLogout"><small>注销</small></a></li>
             <li><a href="/dataexport"><small>切换到客户端</small></a></li>
           
           </ul>
@@ -138,30 +142,41 @@
 							用户管理
 						</p>
 					</blockquote>
-					<table class="table table-bordered">
+					<table class="table table-striped">
 						<thead>
 							<tr>
 								
-								<th>账号</th>
-								<th>用户</th>
-								<th>密码</th>
-								<th>删除操作</th>
+								<th class="text-center">账号</th>
+								<th class="text-center">用户</th>
+								<th class="text-center">密码</th>
+								<th class="text-center">操作</th>
 							</tr>
 						</thead>
 						<tbody >
 							<tr th:each="usr:${User}">
 								
-								<td th:text="${usr.id}"></td>
-								<td th:text="${usr.name}"></td>
-								<td th:text="${usr.password}"></td>
-								<td>
-									<a th:href="@{'/adminUserManage/delete?userID='+${usr.id}}" class="btn btn-sm btn-danger deleteBtn">删除</a>
+								<td th:text="${usr.id}"style='vertical-align: middle;text-align: center;'></td>
+								<td th:text="${usr.name}"style='vertical-align: middle;text-align: center;'></td>
+								<td th:text="${usr.password}"style='vertical-align: middle;text-align: center;'></td>
+								<td style='vertical-align: middle;text-align: center;'>
+									<div class="mybutton">
+										<button class="btn btn-success"	data-target="#modifyModal"
+											th:onclick='showUpdateModal([[${usr.id}]])'>
+											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											编辑
+										</button>
+										<button class="btn btn-danger"	th:onclick='deleterow([[${usr.id}]])'>
+											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+											删除
+										</button>
+										
+									</div>
+
 								</td>
 							</tr>
 						</tbody>
 					</table>
 					<button class="btn btn-default " data-toggle="modal" data-target="#addModal">添加新用户</button>
-					<button class="btn btn-default" data-toggle="modal" data-target="#modifyModal">修改用户</button>
 									
 				</div>
 				<div class="col-md-3 column"   style="height:650px;background-color:rgba(255, 255, 255, 1);border-left:10px solid #eee" >
@@ -182,7 +197,7 @@
 					<ul class="list-group">
 						<li class="list-group-item"><a href="/adminImportData">导入数据</a></li>
 			            <li class="list-group-item"><a href="/admindataindex">查看灾情信息</a></li>
-            			<li class="list-group-item"><a href="/adminShowQuest">请求管理</a></li>
+            			<li class="list-group-item"><a href="/Quests">请求管理</a></li>
             			<li class="list-group-item"><a href="/adminUserManage">用户管理</a></li>
 					</ul>
 				</div>
@@ -210,6 +225,60 @@
                 $(this).find("span").toggleClass("glyphicon-chevron-up");
             });
         });
+
+		//删除一行数据
+		function deleterow(id){
+			$.ajax({
+				url: "/adminUserManage/delete", 
+				async: true,
+				type: "DELETE",
+				data: {
+					"userID": id
+				},
+				// 成功后开启模态框
+				success: function(){
+					alert("删除成功！");
+					window.location.reload();
+				},
+				error: function () {
+					alert("删除失败");
+					window.location.reload();
+				},
+			});
+		}
+
+		function showUpdateModal(id){
+
+			$('#userid').val(id);			
+
+			// 显示模态框
+			$('#modifyModal').modal('show');
+		}
+
+		function updateData(){
+			//将模态框中的数据拿出来，封装成对象传给controller
+			var data={}
+			data["id"] = $("#userid").val();
+			data["name"] = $("#username").val();
+			data["password"] = $("#userpwd").val();
+			$.ajax({
+				url:'/adminUserManage/modify',
+				async: true,
+				type:'PUT',
+				data:JSON.stringify(data),
+				success:function(){
+					alert("修改成功！");
+
+					window.location.reload();
+				},
+				error:function(){
+					alert("修改成功！");
+					window.location.reload();
+				},
+			});
+
+			console.log(data);
+		}
 	</script>
   </body>
 </html>

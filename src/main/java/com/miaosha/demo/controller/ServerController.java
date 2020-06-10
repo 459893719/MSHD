@@ -42,13 +42,14 @@ public class ServerController {
     
     
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
+    @ResponseBody
     public String isLogin(@RequestParam("username") String username,
                         @RequestParam("password") String password, Model model){
         if(UserService.checkLogin(username, password)){
-            return "Server_index";
+            return "success";
         }
         else
-            return "Server_Login";
+            return "fail";
     }
     
     
@@ -127,7 +128,7 @@ public class ServerController {
     }
     
     // 展示请求页
-    @RequestMapping(value = "/adminShowQuest")
+    @RequestMapping(value = "/Quests")
     public String showQuest(Model model){
     	List<DisasterRequest> drlist;
     	drlist = DisasterRequestService.selectNotSend();
@@ -139,7 +140,7 @@ public class ServerController {
     }
     
     // 展示已完成请求页
-    @RequestMapping(value = "/adminShowFinishedQuest")
+    @RequestMapping(value = "/FinishedQuests")
     public String showFinishedQuest(Model model){
     	List<DisasterRequest> drlist;
     	drlist = DisasterRequestService.selectSended();
@@ -151,7 +152,7 @@ public class ServerController {
     }
     
   //下载文件
-    @RequestMapping(value = "/showQuest", method = RequestMethod.PUT)
+    @RequestMapping(value = "/Quests", method = RequestMethod.PUT)
     @ResponseBody
     //ResponseEntity<byte[]>
     public String sendsolve(@RequestParam("key") String key) throws IOException {

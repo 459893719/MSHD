@@ -51,6 +51,8 @@ public class ShizongService {
     
     public static void beifen() {
     	List<Shizong> list = dsdao.selectAll();
+    	if(list==null) {return;}
+    	if(list.isEmpty()) return;
     	dsdao.beifen(list);
     	dsdao.deleteAll();
     }
