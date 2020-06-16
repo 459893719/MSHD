@@ -19,7 +19,7 @@ public interface ShuyouDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Shuyou disaster);
 
-    @Select("select * from shuyou")
+    @Select("select * from shuyou ORDER BY `key` ASC")
     public List<Shuyou> selectAll();
 
     @Select("select * from shuyou where type = #{type}")

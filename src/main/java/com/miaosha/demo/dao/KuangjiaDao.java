@@ -16,7 +16,7 @@ public interface KuangjiaDao {
             "#{cs.destroyed_square},#{cs.note},#{cs.reporting_unit})")
     public void Insert(@Param("cs") Kuangjia cs);
 
-    @Select("select * from kuangjia")
+    @Select("select * from kuangjia ORDER BY `key` ASC")
     public List<Kuangjia> selectAll();
 
     @Select("select * from kuangjia where reporting_unit = #{reporting_unit}")
@@ -31,7 +31,7 @@ public interface KuangjiaDao {
     @Delete("delete from kuangjia")
     public void deleteAll();  
     
-    @Update("update kuangjia SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
+    @Update("update kuangjia SET id = #{cs.id}, date = #{cs.date}, location = #{cs.location}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
     		+ "destroyed_square = #{cs.destroyed_square},note = #{cs.note},reporting_unit = #{cs.reporting_unit} where `key` = #{cs.key} ")
     public void updateByKey(@Param("cs") Kuangjia cs);
     

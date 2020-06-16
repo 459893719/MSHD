@@ -16,7 +16,7 @@ public interface FangwuQitaDao {
             "#{cs.destroyed_square},#{cs.note},#{cs.reporting_unit})")
     public void Insert(@Param("cs") FangwuQita cs);
 
-    @Select("select * from fangwuqita")
+    @Select("select * from fangwuqita ORDER BY `key` ASC")
     public List<FangwuQita> selectAll();
 
     @Select("select * from fangwuqita where reporting_unit = #{reporting_unit}")
@@ -31,7 +31,7 @@ public interface FangwuQitaDao {
     @Delete("delete from fangwuqita")
     public void deleteAll();   
     
-    @Update("update fangwuqita SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
+    @Update("update fangwuqita SET id = #{cs.id}, date = #{cs.date}, location = #{cs.location}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
     		+ "destroyed_square = #{cs.destroyed_square},note = #{cs.note},reporting_unit = #{cs.reporting_unit} where `key` = #{cs.key} ")
     public void updateByKey(@Param("cs") FangwuQita cs);
     

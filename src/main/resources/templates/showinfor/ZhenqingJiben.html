@@ -123,23 +123,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">类型</label>
-							<div class="col-sm-9">
-								<p class="form-control-static" id="dpType"></p>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
 							<div class="col-sm-9" >
 								<img th:src="@{/image/disasterprediction.png}" class="img-thumbnail" alt="图片">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">破坏情况描述</label>
-							<div class="col-sm-9">
-								<p class="form-control-static" id="dpDiscription">
-									发动机奥帆基地哦飞机扫荡发酵幅度萨芬撒旦的萨芬的萨芬萨发撒发大水范德萨剂都放假啊，范德萨佛祭扫放假撒飞洒发。
-								</p>
 							</div>
 						</div>
 						<div class="form-group">
@@ -219,21 +205,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">类型</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="dpType2" >
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
 							<div class="col-sm-9" id="dpPicture2">
 								<img th:src="@{/static/test.jpg}" alt="图片">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">破坏情况描述</label>
-							<div class="col-sm-9">
-								<textarea class="form-control" rows="3" id="dpDiscription2"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -516,18 +490,6 @@
 			//对type和grade属性做进一步改动
 			var type = parseInt(data.type)
 			var typeprint;
-			switch (type) {
-				case 1: typeprint = "天然地震";
-					break;
-				case 2: typeprint = "人为破坏引发";
-					break;
-				case 3: typeprint = "海啸引发";
-					break;
-				case 4: typeprint = "火山引发";
-					break;
-				case 5: typeprint = "其他";
-					break;
-			}
 
 			//将data中的每个属性放到modal中，data对象的属性名待修改
 			$("#dpID").text(data.id);
@@ -538,9 +500,7 @@
 			$("#dpDepth").text(data.depth);
 			$("#dpMagnitude").text(data.magnitude);
 			$("#dpIntensity").text(data.intensity);
-			$("#dpType").text(typeprint);
 			$("#dpPicture").text(data.picture);
-			$("#dpDiscription").text(data.note);
 			$("#dpReportingUnit").text(data.reporting_unit);
 
 
@@ -600,9 +560,7 @@
 			$("#dpDepth2").val(data.depth);
 			$("#dpMagnitude2").val(data.magnitude);
 			$("#dpIntensity2").val(data.intensity);
-			$("#dpType2").val(data.type);
 			$("#dpPicture2").text(data.picture);
-			$("#dpDiscription2").val(data.note);
 			$("#dpReportingUnit2").val(data.reporting_unit);
 
 			// 显示模态框
@@ -621,9 +579,7 @@
 			data["depth"] = $("#dpDepth2").val();
 			data["magnitude"] = $("#dpMagnitude2").val();
 			data["intensity"] = $("#dpIntensity2").val();
-			data["type"] = $("#dpType2").val();
 			data["picture"] = $("#dpPicture2").text();
-			data["note"] = $("#dpDiscription2").val();
 			data["reporting_unit"] = $("#dpReportingUnit2").val();
 
 			$.ajax({

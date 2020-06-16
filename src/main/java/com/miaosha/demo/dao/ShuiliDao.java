@@ -19,7 +19,7 @@ public interface ShuiliDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Shuili disaster);
 
-    @Select("select * from shuili")
+    @Select("select * from shuili ORDER BY `key` ASC")
     public List<Shuili> selectAll();
 
     @Select("select * from shuili where type = #{type}")

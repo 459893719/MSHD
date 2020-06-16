@@ -16,7 +16,7 @@ public interface HuapoDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") Huapo cr);
 
-    @Select("select * from huapo")
+    @Select("select * from huapo ORDER BY `key` ASC")
     public List<Huapo> selectAll();
 
     @Select("select * from huapo where type = #{type}")

@@ -17,16 +17,16 @@ public interface DisasterRequestDao {
             "#{dr.o_url},#{dr.request_unit})")
     public void Insert(@Param("dr") DisasterRequest dr);
 
-    @Select("select * from disaster_request")
+    @Select("select * from disaster_request ORDER BY `date` ASC")
     public List<DisasterRequest> selectAll();
 
     @Select("select * from disaster_request where `key` = #{key}")
     public List<DisasterRequest> selectByKey(@Param("key") String key);
     
-    @Select("select * from disaster_request where `status` = 0")
+    @Select("select * from disaster_request where `status` = 0 ORDER BY `date` ASC")
     public List<DisasterRequest> selectNotSend();
     
-    @Select("select * from disaster_request where `status` = 1")
+    @Select("select * from disaster_request where `status` = 1 ORDER BY `date` ASC")
     public List<DisasterRequest> selectSended();
     
     @Delete("delete from disaster_request where `key` = #{key}")

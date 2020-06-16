@@ -19,7 +19,7 @@ public interface GongshuiDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Gongshui disaster);
 
-    @Select("select * from gongshui")
+    @Select("select * from gongshui ORDER BY `key` ASC")
     public List<Gongshui> selectAll();
 
     @Select("select * from gongshui where type = #{type}")

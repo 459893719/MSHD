@@ -19,7 +19,7 @@ public interface DianliDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Dianli disaster);
 
-    @Select("select * from dianli")
+    @Select("select * from dianli ORDER BY `key` ASC")
     public List<Dianli> selectAll();
 
     @Select("select * from dianli where type = #{type}")

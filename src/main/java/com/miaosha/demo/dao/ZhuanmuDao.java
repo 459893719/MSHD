@@ -16,7 +16,7 @@ public interface ZhuanmuDao {
             "#{cs.destroyed_square},#{cs.note},#{cs.reporting_unit})")
     public void Insert(@Param("cs") Zhuanmu cs);
 
-    @Select("select * from zhuanmu")
+    @Select("select * from zhuanmu ORDER BY `key` ASC")
     public List<Zhuanmu> selectAll();
 
     @Select("select * from zhuanmu where reporting_unit = #{reporting_unit}")
@@ -31,7 +31,7 @@ public interface ZhuanmuDao {
     @Delete("delete from zhuanmu")
     public void deleteAll(); 
     
-    @Update("update zhuanmu SET id = #{cs.id}, date = #{cs.date}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
+    @Update("update zhuanmu SET id = #{cs.id}, date = #{cs.date}, location = #{cs.location}, basically_intact_square = #{cs.basically_intact_square}, damaged_square=#{cs.damaged_square},"
     		+ "destroyed_square = #{cs.destroyed_square},note = #{cs.note},reporting_unit = #{cs.reporting_unit} where `key` = #{cs.key} ")
     public void updateByKey(@Param("cs") Zhuanmu cs);
     

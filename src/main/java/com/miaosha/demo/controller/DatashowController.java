@@ -238,8 +238,8 @@ public class DatashowController {
     
     @RequestMapping(value = "/FangwuQita", method = RequestMethod.POST)
     @ResponseBody
-    public CivilStructure FangwuQitaquery(@RequestParam("id") String id) {
-    	return CivilStructureService.selectByKey(id).get(0);
+    public FangwuQita FangwuQitaquery(@RequestParam("id") String id) {
+    	return FangwuQitaService.selectByKey(id).get(0);
     }
     
     @RequestMapping(value = "/FangwuQita", method = RequestMethod.DELETE)

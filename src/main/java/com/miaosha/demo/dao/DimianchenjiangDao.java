@@ -16,7 +16,7 @@ public interface DimianchenjiangDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") Dimianchenjiang cr);
 
-    @Select("select * from dimianchenjiang")
+    @Select("select * from dimianchenjiang ORDER BY `key` ASC")
     public List<Dimianchenjiang> selectAll();
 
     @Select("select * from dimianchenjiang where type = #{type}")

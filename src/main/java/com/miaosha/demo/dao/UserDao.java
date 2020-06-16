@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserDao {
-	@Select("select * from t_user")
+	@Select("select * from t_user ORDER BY id ASC")
 	public List<User> selectAll();
 	
     @Select("select * from t_user where id=#{id}")//@Param("id")进行引用

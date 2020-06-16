@@ -7,7 +7,7 @@
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
-		.panel-group{max-height:2000px;overflow: auto;}
+		.panel-group{max-height:800px;overflow: auto;}
 		.leftMenu{margin:10px;margin-top:5px;}
 		.leftMenu .panel-heading{font-size:14px;padding-left:20px;height:36px;line-height:36px;color:white;position:relative;cursor:pointer;}/*转成手形图标*/
 		.leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
@@ -15,7 +15,7 @@
 		.leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
 	</style>
 </head>
-<body style=" min-height: 2000px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
+<body style=" min-height: 800px; padding-top: 70px; background-color:rgba(242, 242, 242, 1);">
 
 <!-- 导航栏 -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -170,11 +170,11 @@
 					"request_unit":data3
 				},
 				success : function(data) {
-					alert("导出成功");
+					alert("发送成功");
 					window.location.reload()
 				},
 				error : function(data) {
-					alert("导出失败");
+					alert("发送失败");
 					window.location.reload()
 				},
 				dataType : "text"

@@ -17,7 +17,7 @@ public interface NishiliuDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") Nishiliu cr);
 
-    @Select("select * from nishiliu")
+    @Select("select * from nishiliu ORDER BY `key` ASC")
     public List<Nishiliu> selectAll();
 
     @Select("select * from nishiliu where type = #{type}")

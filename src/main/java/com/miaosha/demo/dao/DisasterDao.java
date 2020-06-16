@@ -20,7 +20,7 @@ public interface DisasterDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Disaster disaster);
 
-    @Select("select * from comm_disaster")
+    @Select("select * from comm_disaster ORDER BY `key` ASC")
     public List<Disaster> selectAll();
 
     @Select("select * from comm_disaster where type = #{type}")

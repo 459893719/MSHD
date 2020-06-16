@@ -17,7 +17,7 @@ public interface DiliefengDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") Diliefeng cr);
 
-    @Select("select * from diliefeng")
+    @Select("select * from diliefeng ORDER BY `key` ASC")
     public List<Diliefeng> selectAll();
 
     @Select("select * from diliefeng where type = #{type}")

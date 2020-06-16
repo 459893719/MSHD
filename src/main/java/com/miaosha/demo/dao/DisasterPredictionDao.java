@@ -17,7 +17,7 @@ public interface DisasterPredictionDao {
             "(#{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})")
     public void Insert(@Param("item") DisasterPrediction item);
 
-    @Select("select * from disaster_prediction")
+    @Select("select * from disaster_prediction ORDER BY `key` ASC")
     public List<DisasterPrediction> selectAll();
 
     @Select("select * from disaster_prediction where type = #{type}")

@@ -17,7 +17,7 @@ public interface YanrongtantaDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") Yanrongtanta cr);
 
-    @Select("select * from yanrongtanta")
+    @Select("select * from yanrongtanta ORDER BY `key` ASC")
     public List<Yanrongtanta> selectAll();
 
     @Select("select * from yanrongtanta where type = #{type}")

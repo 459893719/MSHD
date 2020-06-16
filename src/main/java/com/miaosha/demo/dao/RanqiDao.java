@@ -18,7 +18,7 @@ public interface RanqiDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Ranqi disaster);
 
-    @Select("select * from ranqi")
+    @Select("select * from ranqi ORDER BY `key` ASC")
     public List<Ranqi> selectAll();
 
     @Select("select * from ranqi where type = #{type}")

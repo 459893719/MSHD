@@ -17,7 +17,7 @@ public interface DeathStatisticsDao {
             "#{ds.number},#{ds.reporting_unit})")
     public void Insert(@Param("ds") DeathStatistics ds);
 
-    @Select("select * from death_statistics")
+    @Select("select * from death_statistics ORDER BY `key` ASC")
     public List<DeathStatistics> selectAll();
 
 

@@ -16,7 +16,7 @@ public interface CishengzaihaiQitaDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") CishengzaihaiQita cr);
 
-    @Select("select * from cishengzaihaiqita")
+    @Select("select * from cishengzaihaiqita ORDER BY `key` ASC")
     public List<CishengzaihaiQita> selectAll();
 
     @Select("select * from cishengzaihaiqita where type = #{type}")

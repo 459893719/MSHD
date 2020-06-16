@@ -17,7 +17,7 @@ public interface ShizongDao {
             "#{ds.number},#{ds.reporting_unit})")
     public void Insert(@Param("ds") Shizong ds);
 
-    @Select("select * from shizong")
+    @Select("select * from shizong ORDER BY `key` ASC")
     public List<Shizong> selectAll();
 
 

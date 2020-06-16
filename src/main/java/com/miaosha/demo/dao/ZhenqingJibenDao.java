@@ -15,7 +15,7 @@ public interface ZhenqingJibenDao {
             "(#{item.id}, #{item.date}, #{item.location}, #{item.longitude}, #{item.latitude}, #{item.depth}, #{item.magnitude}, #{item.intensity}, #{item.type}, #{item.picture}, #{item.note},#{item.reporting_unit})")
     public void Insert(@Param("item") ZhenqingJiben item);
 
-    @Select("select * from zhenqingjiben")
+    @Select("select * from zhenqingjiben ORDER BY `key` ASC")
     public List<ZhenqingJiben> selectAll();
 
     @Select("select * from zhenqingjiben where type = #{type}")

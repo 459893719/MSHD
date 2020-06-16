@@ -17,7 +17,7 @@ public interface ShoushangDao {
             "#{ds.number},#{ds.reporting_unit})")
     public void Insert(@Param("ds") Shoushang ds);
 
-    @Select("select * from shoushang")
+    @Select("select * from shoushang ORDER BY `key` ASC")
     public List<Shoushang> selectAll();
 
 

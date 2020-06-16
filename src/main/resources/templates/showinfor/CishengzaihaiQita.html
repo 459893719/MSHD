@@ -99,12 +99,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">灾害程度</label>
-							<div class="col-sm-9">
-								<p class="form-control-static" id="crStatus"></p>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="col-sm-3 control-label">典型照片</label>
 							<div class="col-sm-9" >
 								<img th:src="@{/image/collapserecord.jpg}" class="img-thumbnail" alt="图片">
@@ -169,12 +163,6 @@
 							<label class="col-sm-3 control-label">类型</label>
 							<div class="col-sm-9">
 								<input type="text" class="form-control" id="crType2" >
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">灾害程度</label>
-							<div class="col-sm-9">
-								<input type="text" class="form-control" id="crStatus2" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -472,24 +460,20 @@
 			var status = parseInt(data.status)
 			var typeprint, statusprint;
 			switch (type) {
-				case 1: typeprint = "I. 特大型";
+				case 1: typeprint = "砂土液化";
 					break;
-				case 2: typeprint = "II. 大型";
+				case 2: typeprint = "火灾";
 					break;
-				case 3: typeprint = "III. 中型";
+				case 3: typeprint = "毒气泄露";
 					break;
-				case 4: typeprint = "IV. 小型";
+				case 4: typeprint = "爆炸";
 					break;
-			}
-			switch (status) {
-				case 1: statusprint = "I. 特大";
-					break;
-				case 2: statusprint = "II. 重大";
-					break;
-				case 3: statusprint = "III. 较大";
-					break;
-				case 4: statusprint = "IV. 一般";
-					break;
+				case 5: typeprint = "环境污染";
+				break;
+				case 6: typeprint = "瘟疫";
+				break;
+				case 7: typeprint = "海啸";
+				break;
 			}
 
 			//将data中的每个属性放到modal中，data对象的属性名待修改
@@ -497,7 +481,6 @@
 			$("#crDate").text(data.date);
 			$("#crLocation").text(data.location);
 			$("#crType").text(typeprint);
-			$("#crStatus").text(statusprint);
 			$("#crPicture").text(data.picture);
 			$("#crDiscription").text(data.note);
 			$("#crReportingUnit").text(data.reporting_unit);
@@ -554,7 +537,6 @@
 			$("#crDate2").val(data.date);
 			$("#crLocation2").val(data.location);
 			$("#crType2").val(data.type);
-			$("#crStatus2").val(data.status);
 			$("#crPicture2").text(data.picture);
 			$("#crDiscription2").val(data.note);
 			$("#crReportingUnit2").val(data.reporting_unit);
@@ -571,7 +553,6 @@
 			data["date"] = $("#crDate2").val();
 			data["location"] = $("#crLocation2").val();
 			data["type"] = $("#crType2").val();
-			data["status"] = $("#crStatus2").val();
 			data["picture"] = $("#crPicture2").text();
 			data["note"] = $("#crDiscription2").val();
 			data["reporting_unit"] = $("#crReportingUnit2").val();

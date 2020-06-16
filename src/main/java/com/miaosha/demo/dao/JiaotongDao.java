@@ -19,7 +19,7 @@ public interface JiaotongDao {
             "#{disaster.grade},#{disaster.picture},#{disaster.note},#{disaster.reporting_unit})")
     public void Insert(@Param("disaster") Jiaotong disaster);
 
-    @Select("select * from jiaotong")
+    @Select("select * from jiaotong ORDER BY `key` ASC")
     public List<Jiaotong> selectAll();
 
     @Select("select * from jiaotong where type = #{type}")

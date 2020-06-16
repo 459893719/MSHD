@@ -17,7 +17,7 @@ public interface CollapseRecordDao {
             "#{cr.type},#{cr.status},#{cr.note},#{cr.picture},#{cr.reporting_unit})")
     public void Insert(@Param("cr") CollapseRecord cr);
 
-    @Select("select * from collapse_record")
+    @Select("select * from collapse_record ORDER BY `key` ASC")
     public List<CollapseRecord> selectAll();
 
     @Select("select * from collapse_record where type = #{type}")
